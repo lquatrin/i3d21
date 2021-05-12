@@ -51,7 +51,7 @@ def multLinesTensor2(ts):
 
 ### Neural network for digit recognition
 
-The last part of this assignment consisted on making some tests on a simple 2-layer neural network for digit recognition using the MNIST database. Each image is 28x28 pixels with 1 color channel, defining grayscale images. We can use the **torchvision.utils.make_grid** function to see each batch in a more compact view.
+The last part of this assignment consisted on making some tests on a simple 2-layer neural network for digit recognition using the MNIST dataset. Each image is 28x28 pixels with 1 color channel, defining grayscale images. We can use the **torchvision.utils.make_grid** function to see each batch in a more compact view.
 
 ```python
 def show_batch(batch):
@@ -62,3 +62,17 @@ show_batch(images)
 ``` 
 
 ![Batch of 32 images](imgs/a1/bach_of_images.png)
+
+Through the **torch.bincount** function, it is also possible to check how balanced a batch is:
+
+```python
+print("Batch bincount:", torch.bincount(labels))
+print("Train dataset bincount:", mnist_train_data.targets.bincount())
+print("Test dataset bincount:", mnist_test_data.targets.bincount())
+> Batch bincount: tensor([3, 5, 3, 2, 2, 2, 4, 5, 1, 5])
+> Train dataset bincount: tensor([5923, 6742, 5958, 6131, 5842, 5421, 5918, 6265, 5851, 5949])
+> Test dataset bincount: tensor([980, 1135, 1032, 1010,  982,  892,  958, 1028,  974, 1009])
+``` 
+
+
+
