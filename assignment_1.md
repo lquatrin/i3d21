@@ -74,5 +74,55 @@ print("Test dataset bincount:", mnist_test_data.targets.bincount())
 > Test dataset bincount: tensor([980, 1135, 1032, 1010,  982,  892,  958, 1028,  974, 1009])
 ``` 
 
+Now, to perform the digit recognition using the MNIST dataset, a network was created using the nn.Sequential function, with an intermediate layer (usually defined by 128 nodes), followed by a ReLU activation function. In order to pass each set of images to the network, it was necessary to transform the image into a vector. In addition, the stochastic gradient gradient method was chosen:
 
+```python
+mnist_model = nn.Sequential(
+    nn.Linear(dim_in, dim_hidden),
+    nn.ReLU(),
+    nn.Linear(dim_hidden, dim_out)
+).to(device_gpu)
+
+loss_function = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(mnist_model.parameters(), lr = 0.01)
+``` 
+
+The optimization loop was defined by:
+
+```python
+for epoch in loop:
+  loss_train = 0
+  for batch_images, batch_labels in data_loader_train:
+    batch_images = batch_images.to(device_gpu)
+    batch_labels = batch_labels.to(device_gpu)
+
+    batch_size = batch_images.shape[0]
+    outputs = mnist_model(batch_images.view(batch_size, -1)) 
+    loss = loss_function(outputs, batch_labels)
+    loss_train += loss.item()
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```
+
+A validation loop is also added to compute the accuracy for each epoch using the validation data.
+
+When using a low learning rate, it was necessary more iterations to converge on a reasonable accuracy, which was also noticed when increasing the number of nodes in the intermediate layey. However, using a high learning rate can make the model never converge.
+
+The batch size also affects the performance of the training. For smaller batches, the loss function decreased faster, obtaining greater accuracy: 97.71 for 8 images per batch, 97.64 for 16, and 96.95 to 32. However, it took a longer time per iteration: 11.68, 8.99 and 7.16 respectively.
+
+When passing the model to GPU, i realized that each iteration of the training ended up taking more time compared to CPU (7.16 to 9.68 seconds), using an intermediate layer of 128 nodes.
+
+In this case, I did a test extrapolating the number of nodes in the intermediate layer to 10000. In this case, I could see that the CPU model took about 50 s per iteration, while the GPU model remained at a certain 9 s. In this case, a simple network does not end up having such a performance impact, as it cannot exploit GPU parallelization effectively. In addition, passing the model to the GPU can generate additional time due to memory allocation and transfer issues.
+
+Finally, i generate the results using a intermediate layer using 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy using the validation data increasing according to each interation, and the loss function decreases. Then, an accuracy of 97.07% was achieved when using the data from test set. Below are the graphs with the values of precision and loss function throughout the training. The loss validation was not evaluated in this implementation.
+
+![Accuracy per Iteration](imgs/a1/accuracy.png)
+
+![Loss Function](imgs/a1/loss_function.png)
+
+I also plotted the confusion matrix to check the performance of the model for each category. As we can see, the majority of cases were correctly classified using the simple neural network implemented in this assignment.
+
+![Confusion Matrix](imgs/a1/confusion_matrix.png)
 
