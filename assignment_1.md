@@ -61,4 +61,4 @@ def show_batch(batch):
 show_batch(images)
 ``` 
 
-![Batch of 32 images](imgs/a1/batch_of_images.png)
+![Batch of 32 images](imgs/a1/bach_of_images.png)
