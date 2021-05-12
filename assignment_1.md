@@ -74,7 +74,7 @@ print("Test dataset bincount:", mnist_test_data.targets.bincount())
 > Test dataset bincount: tensor([980, 1135, 1032, 1010,  982,  892,  958, 1028,  974, 1009])
 ``` 
 
-Now, to perform the digit recognition using the MNIST dataset, a network was created using the nn.Sequential function, with an intermediate layer (usually defined by 128 nodes), followed by a ReLU activation function. In order to pass each set of images to the network, it was necessary to transform the image into a vector. In addition, the stochastic gradient gradient method was chosen:
+Now, to perform the digit recognition using the MNIST dataset, a network was created using a nn.Sequential class, with an intermediate layer (usually defined by 128 nodes), followed by a ReLU activation function. In order to pass each set of images to the network, it was necessary to transform the image into a vector. In addition, the stochastic gradient gradient method was chosen:
 
 ```python
 mnist_model = nn.Sequential(
