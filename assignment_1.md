@@ -1,10 +1,10 @@
-# 3D Graphics Systems Course - IMPA 2021
+# Assignment 1 - 3D Graphics Systems Course - IMPA 2021
 
 #### Leonardo Quatrin Campagnolo
 
 ---------
 
-## Assignment 1 - Python / Collab and MNIST
+## Python / Collab and MNIST
 
 In this first assignment, the objective was to get more familiar with pytorch and google colab environment. So, i spent some time reading the documentation to be able to understand how to handle tensors with Pytorch and how to create a simple neural network to perform digit recognition.
 
