@@ -55,6 +55,46 @@ We saw how some triangles are not well defined, due to the normal loss. We then 
 
 <img src="imgs/a6/predicted_mesh_3000.png" width="40%">
 
+We then achieved a reasonable result even using 2000 less iterations than the initial experiment.
+
+The current results were achieved considering the linear combination of four losses. If we consider only the camfer distance, we approximate the point cloud of both meshes:
+
+![Chamfer predicter point cloud](imgs/a6/chamfer_predicter_dolphin.png)
+
+However, we're not able to keep the mesh integrity:
+
+<img src="imgs/a6/chamfer_dolphin_mesh00.png" width="40%">
+
+Changing the parameters of each loss function may not result in a solution. Using a higher value for **mesh_normal_consistency** may deform to much the mesh for each optimization loop, ending in a result far from the target:
+
+![Predicted mesh with 0.5 normal consistency](imgs/a6/e_1_dolphin_normal.png)
+
+The above image was generated using the following weights:
+
+```python
+w_chamfer   = 1.00
+w_edge      = 1.00
+w_normal    = 0.50
+w_laplacian = 0.10
+``` 
+
+We also experiment to decrease the weight of the **mesh_edge_loss**, to prevent a high edge length regularization. In this case, we wan to check if using a lower weigth in this loss function can better approximate the extremities of the dolphin.
+
+![Predicted mesh with 0.5 normal consistency](imgs/a6/e_1_dolphin_normal.png)
+
+The above image was generated using the following weights:
+
+```python
+w_chamfer   = 1.00
+w_edge      = 0.10
+w_normal    = 0.50
+w_laplacian = 0.10
+``` 
+
+All the experiments were generated using the SGD optimizer. We also tested the Adam and RMSprop to apply deformation to the mesh. The Adam optimizer required more steps to converge.
+
+TODO RMSProp
+
 ### Experimenting with Other Shapes
 
 Now we want to deform a mesh into a mug:
