@@ -78,16 +78,16 @@ w_normal    = 0.50
 w_laplacian = 0.10
 ``` 
 
-We also experiment to decrease the weight of the **mesh_edge_loss**, to prevent a high edge length regularization. In this case, we wan to check if using a lower weigth in this loss function can better approximate the extremities of the dolphin.
+We also experiment to decrease the weight of the **mesh_edge_loss**, to prevent a high edge length regularization. In this case, we wan to check if using a lower weigth in this loss function can better approximate the extremities of the dolphin. We compare the result with the standard weigths and with the target mesh:
 
-![Predicted mesh with 0.5 normal consistency](imgs/a6/e_1_dolphin_normal.png)
+<img src="imgs/a6/e_1_predicted.png" width="30%"><img src="imgs/a6/e_1_standard.png" width="30%"><img src="imgs/a6/e_1_target.png" width="30%">
 
-The above image was generated using the following weights:
+We can see the rostrum slightly better in this result. The above image was generated using the following weights:
 
 ```python
 w_chamfer   = 1.00
 w_edge      = 0.10
-w_normal    = 0.50
+w_normal    = 0.01
 w_laplacian = 0.10
 ``` 
 
