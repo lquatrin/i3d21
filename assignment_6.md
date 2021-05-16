@@ -107,7 +107,11 @@ According to the Theorem of closed surfaces, a closed surface is homeomorphic to
 
 Indeed, if we try to deform the sphere into the mug, we get the following result:
 
-ADD IMAGE
+<img src="imgs/a6/mug_predicted_sphere.png" width="30%"><img src="imgs/a6/mug_target.png" width="30%"><img src="imgs/a6/mug_predicted_sphere_c.png" width="30%">
+
+Also computing the losses per iteration:
+
+![Loss Functions](imgs/a6/p_mug_losses.png)
 
 We also tried to deform using a torus as our source mesh, available from PyTorch3D:
 
