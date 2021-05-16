@@ -119,7 +119,11 @@ We also tried to deform using a torus as our source mesh, available from PyTorch
 
 In theory, we should be able to deform the torus into the mug, however, we achieved the following result:
 
-ADD IMAGE
+<img src="imgs/a6/mug_predicted_torus.png" width="30%"><img src="imgs/a6/mug_target_torus.png" width="30%"><img src="imgs/a6/mug_predicted_torus_c.png" width="30%">
+
+With losses per iteration:
+
+![Loss Functions](imgs/a6/p_mug_losses_2.png)
 
 Since the chamfer distance is used to approximate the target mesh, we think that there is a possibility of getting the wrong samples to compute the distance, which cause the mesh to diverge from what we expect. We tried a last experiiment using only the chamfer distance to check the resulting predicted mesh only considering a point cloud.
 
@@ -131,7 +135,7 @@ We also made an additional test with a genus 0 mesh:
 
 Since it have genus 0, we can approximate using a normalized sphere. The predicted mesh is:
 
-
+<img src="imgs/a6/among_predicted.png" width="30%"><img src="imgs/a6/among_target.png" width="30%"><img src="imgs/a6/among_c.png" width="30%">
 
 ### References
 
