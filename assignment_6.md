@@ -125,7 +125,7 @@ With losses per iteration:
 
 ![Loss Functions](imgs/a6/p_mug_losses_2.png)
 
-Since the chamfer distance is used to approximate the target mesh, we think that there is a possibility of getting the wrong samples to compute the distance, which cause the mesh to diverge from what we expect. We tried a last experiiment using only the chamfer distance to check the resulting predicted mesh only considering a point cloud.
+Since the chamfer distance is used to approximate the target mesh, we think that there is a possibility of getting the wrong samples to compute the distance, which cause the mesh to diverge from what we expect. We tried a last experiment using only the chamfer distance to check the resulting predicted mesh only considering a point cloud.
 
 ADD IMAGE
 
