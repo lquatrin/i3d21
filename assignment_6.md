@@ -12,7 +12,9 @@ We use the MeshLab system to better visualize the generated meshes.
 
 ### Creating the mesh object
 
-To speed up the optimization process, we must ensure that each mesh is normalized. So, we center the mesh at the origin by translating all vertices using its mean position. We also scale all vertices to stay at [-1, 1].
+To speed up the optimization process, we must ensure that each mesh is normalized. So, we center the mesh at the origin by translating all vertices using its mean position. We also scale all vertices to stay at [-1, 1]. Then we have a normalized sphere as our source mesh, and a normalized dolphin as our target mesh:
+
+![Source and target Mesh](imgs/a6/source_target.png)
 
 ### Deforming a Sphere mesh to a Dolphin
 
