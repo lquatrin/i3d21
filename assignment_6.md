@@ -18,5 +18,12 @@ To speed up the optimization process, we must ensure that each mesh is normalize
 
 ### Deforming a Sphere mesh to a Dolphin
 
+The optimization procedure wants to learn how to offset the vertices of the source mesh to make it closer to the target mesh. To achieve this, the distance between the predicted and the target meshes are computed. The chamfer distance is used by sampling a point cloud from each mesh at each step of the optimization loop. In addition, other 3 loss functions are added into the loss function to ensure smoothness of the predicted mesh: **mesh_edge_length**, **mesh_normal_consistency**, and **mesh_laplacian_smoothing** [1].
+
 
 ### Experimenting with Other Shapes
+
+
+### References
+
+[1] PyTorch3D Loss functions for meshes and point clouds. Available at: https://pytorch3d.readthedocs.io/en/latest/modules/loss.html.
