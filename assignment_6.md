@@ -129,6 +129,10 @@ Since the chamfer distance is used to approximate the target mesh, we think that
 
 ADD IMAGE
 
+With losses per iteration:
+
+![Loss Functions](imgs/a6/p_mug_losses_3.png)
+
 We also made an additional test with a genus 0 mesh:
 
 ![Among Us](imgs/a6/among_us_mesh.png)
