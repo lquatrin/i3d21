@@ -93,7 +93,13 @@ w_laplacian = 0.10
 
 All the experiments were generated using the SGD optimizer. We also tested the Adam and RMSprop to apply deformation to the mesh. The Adam optimizer required more steps to converge.
 
-TODO RMSProp
+Adam Results:
+
+![Loss Functions](imgs/a6/adam_losses.png)
+
+RMSprop Results:
+
+![Loss Functions](imgs/a6/rmsprop_losses.png)
 
 ### Experimenting with Other Shapes
 
