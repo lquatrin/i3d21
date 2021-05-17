@@ -95,9 +95,13 @@ All the experiments were generated using the SGD optimizer. We also tested the A
 
 Adam Results:
 
+![Adam Result](imgs/a6/adam_result.png)
+
 ![Loss Functions](imgs/a6/adam_losses.png)
 
 RMSprop Results:
+
+![RMSprop Result](imgs/a6/rms_result.png)
 
 ![Loss Functions](imgs/a6/rmsprop_losses.png)
 
