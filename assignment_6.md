@@ -139,7 +139,7 @@ We also made an additional test with a genus 0 mesh:
 
 Since it have genus 0, we can approximate using a normalized sphere. The predicted mesh is:
 
-<img src="imgs/a6/among_predicted.png" width="30%"><img src="imgs/a6/among_target.png" width="30%"><img src="imgs/a6/among_c.png" width="30%">
+<img src="imgs/a6/among_us_predicted.png" width="30%"><img src="imgs/a6/among_us_target.png" width="30%"><img src="imgs/a6/among_us_c.png" width="30%">
 
 ### References
 
