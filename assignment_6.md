@@ -107,7 +107,7 @@ According to the Theorem of closed surfaces, a closed surface is homeomorphic to
 
 Indeed, if we try to deform the sphere into the mug, we get the following result:
 
-<img src="imgs/a6/mug_predicted_sphere.png" width="30%"><img src="imgs/a6/mug_target.png" width="30%"><img src="imgs/a6/mug_predicted_sphere_c.png" width="30%">
+<img src="imgs/a6/mug_sphere.png" width="30%"><img src="imgs/a6/mug_sphere_target.png" width="30%"><img src="imgs/a6/mug_sphere_c.png" width="30%">
 
 Also computing the losses per iteration:
 
@@ -127,7 +127,7 @@ With losses per iteration:
 
 Since the chamfer distance is used to approximate the target mesh, we think that there is a possibility of getting the wrong samples to compute the distance, which cause the mesh to diverge from what we expect. We tried a last experiment using only the chamfer distance to check the resulting predicted mesh only considering a point cloud.
 
-ADD IMAGE
+<img src="imgs/a6/mug_predicter.png" width="30%"><img src="imgs/a6/mug_target.png" width="30%"><img src="imgs/a6/mug_points_c.png" width="30%">
 
 With losses per iteration:
 
