@@ -30,8 +30,34 @@ This representation does not generate the singularity problem, but we must conve
 
 3. Quaternion: Considered the most interesting way to represent rotations, which can also provide a smooth interpolation, and consistent rotation between the parameters and the model. However, it requires a 4D vector to represent each rotation. Similar to Euler angles, the order of each rotation matters, which can lead to different results. Also, there is a particular property of quaternions that, if we want to generate a set of random quaternions, it will be more uniform at a sphere.
 
-4. A recent paper used SVD to represent rotations. We didn't : https://arxiv.org/pdf/2006.14616.pdf
+4. A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations[1].
 
 ### Results
 
 Uma coisa que fiz nesse caso foi rodar a função de otimização sem aplicar a máscara, e vi que ao final as câmeras respeitaram a distância, mas justamente em posições diferentes, como se estivessem em um outro sistema de coordenadas.
+
+For the results section, we start by showing the result using the optimization procedure using the axis-angle representation. After 2000 iterations, we're able to achieve the following result:
+
+
+
+
+With the loss vs iteration graph below:
+
+
+
+To improve the approximation, i tried to not randomly initialize the rotation and translation of all cameras, but making all start at the trivial location. It makes sense that a better initial guess may lead to a better approximation after the optimization procedure.
+
+
+
+
+
+
+
+
+
+
+
+### References
+
+[1] An Analysis of SVD for Deep Rotation Estimation.
+
