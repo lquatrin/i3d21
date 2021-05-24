@@ -4,7 +4,7 @@
 
 ---------
 
-## Assignment 3 - Camera - Bundle Adjustment
+## Assignment 3 - Camera - Bundle Adjustment TODO
 
 In this assignment, the objective was to estimate the extrinsic parameters of a set (bundle) of cameras, given multiple pairs of relative transformations between them. The PyTorch3D API is used to set up an optimization process to minimize the discrepancies between pairs of relative cameras.
 
