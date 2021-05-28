@@ -27,7 +27,7 @@ Both the **torch.tensor** and **torch.Tensor** functions end up creating a copy 
 
 ### Tensor operations
 
-We then made a simple experiment performing a multiplication operation on each row of a matrix. The simplest way to do this would be to implementing a for, multiplying each row by a number. However, in cases where we have larger tensors, this turns out to be very costly.
+When we need to compute large batch operations on tensor, it is better to use the available function from PyTorch. If we perform a multiplication operation on each row of a matrix, the simplest way to do this would be to implementing a for, multiplying each row by a number. However, in cases where we have larger tensors, this turns out to be very costly.
 Thus, a test was performed using the **torch.mul** function and * operator. When comparing each implementation, we see how the performance improved, using a tensor of size 1000x600:
 
 ```python
