@@ -30,6 +30,10 @@ Also changing the shader, it is possible to generate different effects. Here we 
 
 ![Cow mesh with hardflatshader](imgs/a7/2_2.png)
 
+Some types of shader require some data to be presented in the **Meshes** object. When using **SoftGouraudShader**, the **textures** parameter must be a **TexturesVertex** type, which differs from using the UV mapping (**TexturesUV** type). In this case, we specify the current color value attached to each vertex as its estimated normal.
+
+## TODO:
+
 ### Moving the scene
 
 
