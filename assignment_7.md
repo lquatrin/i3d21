@@ -39,7 +39,7 @@ Some types of shader require some data to be presented in the **Meshes** object.
 
 ### Batched Rendering
 
-Creating a batch of different cameras it is possible to visualize the mesh with different viewpoints:
+Using the **look_at_view_transform** method, we can create a batch of different cameras to visualize the mesh at different viewpoints:
 
 ![Batch of cows](imgs/a7/3_0.png)
 
