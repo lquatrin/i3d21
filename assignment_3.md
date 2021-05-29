@@ -40,7 +40,7 @@ Considered the most interesting way to represent rotations, which can also provi
 
 A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1]. In this report, i didn't try SVD representation for the bundle adjustment problem.
 
-### Results
+### Optimization Results
 
 The SGD optimizer was used to optimize both rotations and translations of each camera. For each loop step, the essential matrix between each pair of cameras is evaluated and compared with the ground truth, which defines the loss function **camera_distance**. We initialize the first camera as the trivial case, and the others are initialized with random values. In the first experiment, the axis angle representation is used to compute the rotation matrix of each camera.
 
