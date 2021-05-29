@@ -82,10 +82,13 @@ iteration=1999; camera_distance=4.957e-08
 ![Camera init](imgs/a3/init.png)
 
 ![Camera ground truth](imgs/a3/gt.png)
+
 ![Camera optimized](imgs/a3/approx.png)
 
 ![Cameras with standard optimization](imgs/a3/camera_std.png)
+
 ![Cameras with trivial initialization](imgs/a3/camera_init.png)
+
 ![Cameras with quaternion parametrization](imgs/a3/camera_quat.png)
 
 ![Computed Losses](imgs/a3/all_losses.png)
