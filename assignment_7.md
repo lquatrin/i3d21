@@ -96,5 +96,10 @@ We can note how the lighting effects are different at each mesh.
 
 ### Rendering Point Clouds
 
+[1]
 
 ### Plotly visualization of Point Clouds
+
+### References
+
+[1] Pulsar: Efficient Sphere-based Neural Rendering
