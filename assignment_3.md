@@ -86,7 +86,7 @@ We can see the gerenated images using the quaternion representation are also sim
 
 ![Images wih quaternions](imgs/a3/images_quat.png)
 
-In this case, i also think some adjusts can be done in the optimization loop to use quaternion representation properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
+In this case, i also think some modifications could be done in the optimization loop to compare quaternions properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
 
 ![Computed Losses](imgs/a3/all_losses.png)
 
