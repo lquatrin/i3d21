@@ -72,9 +72,9 @@ Using the **look_at_view_transform** method, it is possible to create a batch of
 
 Here we have two different views, each one rendering the current mesh in a different viewport:
 
-![Batch of cows](imgs/a7/4_1.png)
+<img src="imgs/a7/4_1.png" width="30%">
 
-If we want to create a single object of **Meshes** with two objects, we use the method **join_meshes_as_scene**.
+If we want to create a single object of **Meshes** with two objects, we use the method **join_meshes_as_scene**, and render the scene again:
 
 ```python
 offset1 = mesh.verts_padded().new_tensor([0, 0, -1]).expand(mesh.verts_packed().shape)
@@ -88,9 +88,11 @@ lights.location = torch.tensor([[0.0, 0.0, -3.0]], device=device)
 images = renderer(double_mesh, cameras=cameras, lights=lights)
 ```
 
-Then, using our previously rotated cow_mesh, we combine these two meshes and render the scene again. Note that, in this case, the light effect is different on each object:
+Using our previously rotated cow_mesh, we get the following result:
 
-![Batch of cows](imgs/a7/4_2.png)
+<img src="imgs/a7/4_2.png" width="30%">
+
+We can note how the lighting effects are different at each mesh.
 
 ### Rendering Point Clouds
 
