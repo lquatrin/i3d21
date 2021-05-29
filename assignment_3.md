@@ -38,54 +38,47 @@ Considered the most interesting way to represent rotations, which can also provi
 
 #### 4. Other representations:
 
-A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1]. In this report, i didn't try this representation for the bundle adjustment problem.
+A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1]. In this report, i didn't try SVD representation for the bundle adjustment problem.
 
 ### Results
 
-For the optimization loop, t
+The SGD optimizer was used to optimize both rotations and translations of each camera. For each loop step, the essential matrix between each pair of cameras is evaluated and compared with the ground truth, which defines the loss function. We initialize the first camera as the trivial case, and the others are initialized with random values. In the first experiment, the axis angle representation is used to compute the rotation matrix of each camera.
 
-calc_camera_distance compares a pair of cameras. This function is important as it defines the loss that we are minimizing. The method utilizes the so3_relative_angle function from the SO3 API.
-
-get_relative_camera computes the parameters of a relative camera that maps between a pair of absolute cameras. Here we utilize the compose and inverse class methods from the PyTorch3D Transforms API.
-
-
-Uma coisa que fiz nesse caso foi rodar a função de otimização sem aplicar a máscara, e vi que ao final as câmeras respeitaram a distância, mas justamente em posições diferentes, como se estivessem em um outro sistema de coordenadas.
-
-For the results section, we start by showing the result using the optimization procedure using the axis-angle representation. After 2000 iterations, we're able to achieve the following result:
-
-
-With the loss vs iteration graph below:
-
-
-
-To improve the approximation, i tried to not randomly initialize the rotation and translation of all cameras, but making all start at the trivial location. It makes sense that a better initial guess may lead to a better approximation after the optimization procedure.
-
-iteration=1999; camera_distance=4.597e-03
-iteration=1999; camera_distance=7.092e-08
-iteration=1999; camera_distance=4.957e-08
-
-
-
-
-
-
-
+For the first result, using 2000 iterations, we achieve a loss of 4.597e-03:
 
 ![Bundle after optimization](imgs/a3/camera_1.png)
 
+with the cameras in purple being our ground truth, and the orange cameras being the approximated ones. The graph of loss vs iterations shows how the distance between the cameras are decreasing during the optimization loop. We can see that in the first steps, the accumulated loos is higher, since we start the cameras at random states:
+
 ![Loss per iteration](imgs/a3/loss.png)
+
+Using the Cow Mesh, we can make a qualitative comparison between the optimized cameras with our ground truth:
+
+Initial state of the cameras:
 
 ![Camera init](imgs/a3/init.png)
 
+Images generated with the Ground Truth cameras:
+
 ![Camera ground truth](imgs/a3/gt.png)
+
+Images generated with the optimized cameras:
 
 ![Camera optimized](imgs/a3/approx.png)
 
-![Cameras with standard optimization](imgs/a3/camera_std.png)
+We can note that the first camera does not change during the optimization process, since we define it as the trivial case. We can also note small differences between the ground truth and the optimized cameras. Take the image from the second row and third column as an example: we can note how it generated a slightly different image.
+
+### Additional Results
+
+To improve the approximation, i tried to not randomly initialize the rotation and translation of the cameras, but making all start as the trivial case. It seemed to be a better initial guess instead of just using random values. In this case, running the same optimization loop, i was able to achieve a better result:
 
 ![Cameras with trivial initialization](imgs/a3/camera_init.png)
 
+Then, i made an additional experiment representing each rotation using a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle for rotations. However, the quaternions were transformed back to a matrix to compute the relative cameras and the loss function. I was able to achieve a good result for the loss function, however, the transformation of each estimated camera did not seemed to be as good as what the loss function shows:
+
 ![Cameras with quaternion parametrization](imgs/a3/camera_quat.png)
+
+In this case, I think some adjusts were necessary to use the quaternion representation properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
 
 ![Computed Losses](imgs/a3/all_losses.png)
 
