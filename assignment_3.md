@@ -38,10 +38,15 @@ Considered the most interesting way to represent rotations, which can also provi
 
 #### 4. Other representations:
 
-A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1]. In our report, i didn't try this representation for our bundle adjustment problem.
+A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1]. In this report, i didn't try this representation for the bundle adjustment problem.
 
 ### Results
 
+For the optimization loop, t
+
+calc_camera_distance compares a pair of cameras. This function is important as it defines the loss that we are minimizing. The method utilizes the so3_relative_angle function from the SO3 API.
+
+get_relative_camera computes the parameters of a relative camera that maps between a pair of absolute cameras. Here we utilize the compose and inverse class methods from the PyTorch3D Transforms API.
 
 
 Uma coisa que fiz nesse caso foi rodar a função de otimização sem aplicar a máscara, e vi que ao final as câmeras respeitaram a distância, mas justamente em posições diferentes, como se estivessem em um outro sistema de coordenadas.
@@ -70,9 +75,24 @@ iteration=1999; camera_distance=4.957e-08
 
 
 
+![Bundle after optimization](imgs/a3/camera_1.png)
 
+![Loss per iteration](imgs/a3/loss.png)
+
+![Camera init](imgs/a3/init.png)
+
+![Camera ground truth](imgs/a3/gt.png)
+![Camera optimized](imgs/a3/approx.png)
+
+![Cameras with standard optimization](imgs/a3/camera_std.png)
+![Cameras with trivial initialization](imgs/a3/camera_init.png)
+![Cameras with quaternion parametrization](imgs/a3/camera_quat.png)
+
+![Computed Losses](imgs/a3/all_losses.png)
 
 ### References
 
 [1] An Analysis of SVD for Deep Rotation Estimation.
+
+
 
