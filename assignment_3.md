@@ -38,7 +38,7 @@ Considered the most interesting way to represent rotations, which can also provi
 
 #### 4. Other representations:
 
-A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1]. I didn't explore this representation is this assignment.
+A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1].
 
 ### Results
 
