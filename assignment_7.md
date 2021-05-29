@@ -24,10 +24,7 @@ In PyTorch3D, a renderer is composed of a rasterizer and a shader which each hav
 
 It is possible to update the rendering parameters by passing it when generating a new batch of images, such as light source position or material.
 
-![Cow mesh with different light position](imgs/a7/2_1.png)
-
-![Cow mesh with different material](imgs/a7/2_3.png)
-
+<img src="imgs/a7/2_1.png" width="40%"><img src="imgs/a7/2_3.png" width="40%">
 
 Also changing the shader, it is possible to generate different effects. Here we have another result of the cow mesh using a new **MeshRenderer** with **HardFlatShader**:
 
