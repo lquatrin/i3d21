@@ -70,6 +70,28 @@ Using the **look_at_view_transform** method, it is possible to create a batch of
 
 ![Batch of cows](imgs/a7/3_0.png)
 
+Here we have two different views, each one rendering the current mesh in a different viewport:
+
+![Batch of cows](imgs/a7/4_1.png)
+
+If we want to create a single object of **Meshes** with two objects, we use the method **join_meshes_as_scene**.
+
+```python
+offset1 = mesh.verts_padded().new_tensor([0, 0, -1]).expand(mesh.verts_packed().shape)
+offset2 = mesh.verts_padded().new_tensor([0, 0, 1]).expand(mesh.verts_packed().shape)
+double_mesh = join_meshes_as_scene([cow_mesh.clone().offset_verts_(offset1), mesh.clone().offset_verts_(offset2)])
+
+R, T = look_at_view_transform(dist=4, elev=0.0, azim=90)
+cameras = FoVPerspectiveCameras(device=device, R=R, T=T)
+
+lights.location = torch.tensor([[0.0, 0.0, -3.0]], device=device)
+images = renderer(double_mesh, cameras=cameras, lights=lights)
+```
+
+Then, using our previously rotated cow_mesh, we combine these two meshes and render the scene again. Note that, in this case, the light effect is different on each object:
+
+![Batch of cows](imgs/a7/4_2.png)
+
 ### Rendering Point Clouds
 
 
