@@ -14,6 +14,8 @@ In this report, the cow mesh was used for the experiments, which can be loaded f
 
 ![Texture Map](imgs/a7/cow_mesh_texture_map.png)
 
+We can note the red dots defining the UV coordinate of each vertex.
+
 ### Rendering a Mesh
 
 
