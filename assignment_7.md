@@ -22,9 +22,9 @@ In PyTorch3D, a renderer is composed of a rasterizer and a shader which each hav
 
 ![Cow mesh with SoftPhongShader](imgs/a7/2_0.png)
 
-It is possible to update the rendering parameters by passing it when generating a new batch of images, such as light source position; material; or cameras.
+It is possible to update the rendering parameters by passing it when generating a new batch of images, such as light source position or material.
 
-<img src="imgs/a7/2_1.png" width="30%"><img src="imgs/a7/2_3.png" width="30%"><img src="imgs/a7/3_1.png" width="30%">
+<img src="imgs/a7/2_1.png" width="30%"><img src="imgs/a7/2_3.png" width="30%">
 
 Also changing the shader, it is possible to generate different effects. Here we have another result of the cow mesh using a new **MeshRenderer** with **HardFlatShader**:
 
@@ -36,10 +36,17 @@ Some types of shader require some data to be presented in the **Meshes** object.
 
 ### Moving the scene
 
+As mentioned before, we can change the light source or material parameter to update the current renderer. It is also possible to change the current camera. For each new one, we use the **look_at_view_transform** method, which receives 3 parameters: the distance of the camera from the object, the elevation and the azimutal angle:
+
+TODO: find a representative picture
+
+Changing these parameters will generate different images of the current mesh:
+
+<img src="imgs/a7/3_1.png" width="30%">
 
 ### Batched Rendering
 
-Using the **look_at_view_transform** method, we can create a batch of different cameras to visualize the mesh at different viewpoints:
+Using the **look_at_view_transform** method, it is possible to create a batch of different cameras to visualize the mesh at different viewpoints:
 
 ![Batch of cows](imgs/a7/3_0.png)
 
