@@ -78,7 +78,7 @@ We can see by the images generated after this optmization are closer to the grou
 
 ![Images wih trivial initialized_cameras](imgs/a3/images_init.png)
 
-Then, i made an additional experiment representing each rotation using a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle for rotations. However, the quaternions were transformed back to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. We also apply the trivial initialization for all cameras, but in this case, we initialize each rotation with the identity quaternion. I was able to reach a camera_distance = 4.957e-08 as the final loss:
+Then, i made an additional experiment representing each rotation as a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle for rotations. However, the quaternions were transformed back to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. We also apply the trivial initialization for all cameras, but in this case, we initialize each rotation with the identity quaternion. I was able to reach a camera_distance = 4.957e-08 as the final loss:
 
 ![Cameras with quaternions](imgs/a3/camera_quat.png)
 
