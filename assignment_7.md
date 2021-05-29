@@ -44,6 +44,26 @@ Changing these parameters will generate different images of the current mesh:
 
 <img src="imgs/a7/3_1.png" width="30%">
 
+It is also possible to move the current object. Here, we create a new mesh by passing a new list of vertices rotated around the Y-axis:
+
+```python
+from pytorch3d.transforms import axis_angle_to_matrix
+import math
+a_angle = torch.Tensor([0, math.pi, 0])
+rotate_transform = Rotate(axis_angle_to_matrix(a_angle))
+
+verts  = mesh.verts_list()[0].clone().detach()
+verts = rotate_transform.transform_points(verts)
+
+cow_mesh = Meshes(verts=[verts],
+                  faces=mesh.faces_list(),
+                  textures=mesh.textures)
+```
+
+Rotating the object will also change the lighting effect, since the light source stayed in the same position, which can be noted by the following image:
+
+<img src="imgs/a7/3_2.png" width="30%">
+
 ### Batched Rendering
 
 Using the **look_at_view_transform** method, it is possible to create a batch of different cameras to visualize the mesh at different viewpoints:
