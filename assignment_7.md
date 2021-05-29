@@ -20,7 +20,7 @@ where the red dots defines the UV coordinate of each vertex.
 
 In PyTorch3D, a renderer is composed of a rasterizer and a shader which each have a number of subcomponents such as a camera (orthographic/perspective). First, the **MeshRenderer** will be used with a perspective camera and a point light, using the  **MeshRasterizer** and the **SoftPhongShader**:
 
-![Cow mesh with SoftPhongShader](imgs/a7/2_0.png)
+<img src="imgs/a7/2_0.png" width="30%">
 
 It is possible to update the rendering parameters by passing it when generating a new batch of images, such as light source position or material.
 
@@ -28,7 +28,7 @@ It is possible to update the rendering parameters by passing it when generating 
 
 Also changing the shader, it is possible to generate different effects. Here we have another result of the cow mesh using a new **MeshRenderer** with **HardFlatShader**:
 
-![Cow mesh with hardflatshader](imgs/a7/2_2.png)
+<img src="imgs/a7/2_2.png" width="30%">
 
 Some types of shader require some data to be presented in the **Meshes** object. When using **SoftGouraudShader**, the **textures** parameter must be a **TexturesVertex** type, which differs from using the UV mapping (**TexturesUV** type). In this case, we specify the current color value attached to each vertex as its estimated normal.
 
