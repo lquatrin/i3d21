@@ -54,20 +54,16 @@ Uma coisa que fiz nesse caso foi rodar a função de otimização sem aplicar a 
 For the results section, we start by showing the result using the optimization procedure using the axis-angle representation. After 2000 iterations, we're able to achieve the following result:
 
 
-
-
-camera_distance=4.597e-03
-
 With the loss vs iteration graph below:
 
 
 
 To improve the approximation, i tried to not randomly initialize the rotation and translation of all cameras, but making all start at the trivial location. It makes sense that a better initial guess may lead to a better approximation after the optimization procedure.
 
-
-iteration=1999; camera_distance=6.887e-03
+iteration=1999; camera_distance=4.597e-03
 iteration=1999; camera_distance=7.092e-08
 iteration=1999; camera_distance=4.957e-08
+
 
 
 
