@@ -12,7 +12,7 @@ In this assignment, the idea is to practice operations with 3D meshes and point 
 
 In this report, the cow mesh was used for the experiments, which can be loaded from PyTorch3D repository. The function **load_objs_as_meshes** can be used to load all the data from the current object. It contains a UV coordinate defined for each vertex, and we can visualize the current UV mapping using the function **texturesuv_image_matplotlib** from pytorch3d.vis.texture_vis:
 
-![Texture Map](imgs/a7/cow_mesh_texture_map.png)
+<img src="imgs/a7/cow_mesh_texture_map.png" width="30%">
 
 where the red dots defines the UV coordinate of each vertex.
 
