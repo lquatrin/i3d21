@@ -98,6 +98,9 @@ We can note how the lighting effects are different at each mesh.
 
 [1]
 
+
+FoVOrthographicCameras
+
 ### Plotly visualization of Point Clouds
 
 ### References
