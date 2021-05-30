@@ -30,9 +30,9 @@ Also changing the shader, it is possible to generate different effects. Here we 
 
 <img src="imgs/a7/2_2.png" width="30%">
 
-Some types of shader require some data to be presented in the **Meshes** object. When using **SoftGouraudShader**, the **textures** parameter must be a **TexturesVertex** type, which differs from using the UV mapping (**TexturesUV** type). In this case, we specify the current color value attached to each vertex as its estimated normal.
+Some types of shader require some data to be presented in the **Meshes** object. When using **SoftGouraudShader**, the **textures** parameter must be a **TexturesVertex** type, which differs from using the UV mapping (**TexturesUV** type). In this case, we specify the current color value attached to each vertex as its estimated normal. The cow mesh already have a normal list attached to each vertex. However, we can also estimate them by averaging the normals of the faces that shares the same vertex. Normalizing them with **(normals+1.0) * 0.5**, i got the following result:
 
-## TODO:
+<img src="imgs/a7/gradient.png" width="30%">
 
 ### Moving the scene
 
