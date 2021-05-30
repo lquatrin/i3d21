@@ -103,6 +103,8 @@ FoVOrthographicCameras
 
 ### Plotly visualization of Point Clouds
 
+It is possible to render point clouds using the avaiable methods from **pytorch3d.vis.plotly_vis**.
+
 ### References
 
-[1] Pulsar: Efficient Sphere-based Neural Rendering
+[1] Pulsar: Efficient Sphere-based Neural Rendering (https://arxiv.org/pdf/2004.07484.pdf)
