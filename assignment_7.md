@@ -36,11 +36,7 @@ Some types of shader require some data to be presented in the **Meshes** object.
 
 ### Moving the scene
 
-As mentioned before, we can change the light source or material parameter to update the current renderer. It is also possible to change the current camera. For each new one, we use the **look_at_view_transform** method, which receives 3 parameters: the distance of the camera from the object, the elevation and the azimutal angle:
-
-TODO: find a representative picture
-
-Changing these parameters will generate different images of the current mesh:
+As mentioned before, we can change the light source or material parameter to update the current renderer. It is also possible to change the current camera. For each new one, we use the **look_at_view_transform** method, which receives 3 parameters: the distance of the camera from the object, the elevation and the azimutal angle. Changing these parameters will generate different images of the current mesh:
 
 <img src="imgs/a7/3_1.png" width="30%">
 
