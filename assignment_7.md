@@ -56,7 +56,7 @@ cow_mesh = Meshes(verts=[verts],
                   textures=mesh.textures)
 ```
 
-Rotating the object will also change the lighting effect, since the light source stayed in the same position, which can be noted by the following image:
+Rotating the object will consequently change the lighting effect, since the light source stayed in the same position, which can be noted by the following image:
 
 <img src="imgs/a7/3_2.png" width="30%">
 
