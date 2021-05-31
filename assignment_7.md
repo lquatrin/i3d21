@@ -102,8 +102,7 @@ There are a few parameters that can be modified, such as background color and th
 
 #### Pulsar Backend
 
-[1]
-TODO: More discussion about the pulsar backend
+The pulsar backend [1] is also available in PyTorch3D. In this case, it is a rendering based on spheres:
 
 <img src="imgs/a7/5_3.png" width="30%">
 
