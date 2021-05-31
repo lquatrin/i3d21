@@ -24,27 +24,27 @@ To be able to find a valid solution to this problem, the first camera defines th
 
 ### Representing rotations
 
-The initial solution to this problem uses the log axis-angle representation to store the rotation between each pair of cameras. Using PyTorch3D API, we can recover the 3x3 rotation matrix from the axis-angle using the method **so3_exponential_map**. There are a few possible solutions to how we can represent each rotation matrix:
+One of the problems of this assignment was how to represent each rotation matrix. The initial solution to this problem uses the log axis-angle representation. Using PyTorch3D API, it is possible to recover the 3x3 rotation matrix from the axis-angle using the method **so3_exponential_map**. In fact, there are a few possible solution to represent rotations:
 
 #### 1. Fixed/Euler angles:
 
-In this representation, the rotations are computed as a sequence of rotations, using the axes of a coordinate system (global or local). The final rotation is computed by accumulating all rotations around each axis (Rx, Ry, Rz). 
+In this representation, the rotations are composed as a sequence of rotations, using the axes of a coordinate system (global or local). In this case, the final rotation is computed by accumulating all rotations around each axis (Rx, Ry, Rz). They are not commutative, i.e., the order matters. So, if we use different sequences, it will generate different final rotations. 
 
-There are a few problems when using this reprensetation: first, they are not commutative, i.e., the order matters. So, if we use different sequences, it will generate different final rotations. Also, they present a singularity problem, which cause the loss of one degree of freedom in three-dimensions, known as "gimbal lock". It is also difficult to provide a smooth interpolation between two distinct points. Finally, a slightly change in the parameters does not represent the same rotation of the rigid body. We can take the rotation around the pole of a sphere as an example: even rotating the point around the sphere, the distance does not correspond at the same amount if we rotate the same point at its equator.
+There are a few problems when using this representation: it has a singularity problem, which cause the loss of one degree of freedom in three-dimensions, known as "gimbal lock". It is also difficult to provide a smooth interpolation between two distinct points. Also, a slightly change in the parameters does not represent the same rotation of the rigid body. We can take the rotation around the pole of a sphere as an example: even rotating the point around the sphere, the distance does not correspond at the same amount if we rotate the same point at the equator of the sphere.
 
 #### 2. Axis angle:
 
-Used as the solution to this assignment. In this case, the rotation is calculated based on an arbitrary axis, which is defined by the composition of 3 angles. According to PyTorch3D documentation, the arbitrary axis is calculated using the Rodriguez Formula, from method **so3_exponential_map**.
+This is the standard reprensetation used in this assignment. In this case, the rotation is calculated based on an arbitrary axis, which is defined by the composition of 3 angles. According to the PyTorch3D documentation, the arbitrary axis is calculated using the Rodriguez Formula (from **so3_exponential_map**).
 
 This representation does not generate the singularity problem, but we must convert back to a matrix to be able to composite a rotation. In addition, there is an ambiguity if we have the same axis with exchanged sign, since they can represent the same rotation. Still, they present the same limitation from the euler angles: it is difficult to provide a smooth interpolation between two points, and the small change of the parameters does not represent the same amount in a rigid body.
 
 #### 3. Quaternion:
 
-Considered the most interesting way to represent rotations, which can also provide a smooth interpolation, and consistent rotation between the parameters and the model. However, it requires a 4D vector to represent each rotation. Similar to Euler angles, the order of each rotation matters, which can lead to different results. Also, there is a particular property of quaternions that, if we want to generate a set of random quaternions, it will be more uniform at a sphere.
+Considered a most robust way to represent rotations, which also provides a smooth interpolation and consistent rotation between the parameters. However, it requires a 4D vector to represent each rotation. Similar to Euler angles, the order of each rotation matters. Also, there is a particular property of quaternions that, if we want to generate a set of random quaternions, it will be more uniform at a sphere.
 
 #### 4. Other representations:
 
-A recent paper used SVD to predict rotations, which lead to better results for different applications. In this case, 9 values are used to represent rotations [1]. In this report, i didn't try SVD representation for the bundle adjustment problem.
+A recent paper used SVD to predict rotations. In this case, 9 values are used to represent rotations [1]. In this report, i didn't try SVD representation for the bundle adjustment problem.
 
 ### Optimization Results
 
