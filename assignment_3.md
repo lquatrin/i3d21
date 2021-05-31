@@ -56,7 +56,7 @@ For the first result, using 2000 iterations, we reached a result with a camera_d
 
 ![Bundle after optimization](imgs/a3/camera_std.png)
 
-with the cameras in purple being our ground truth, and the orange cameras being the approximated ones. The graph of loss vs iterations shows how the distance between the cameras are decreasing during the optimization loop. We can see that in the first steps, the accumulated loos is higher, since we start the cameras at random states:
+with the cameras in purple being our ground truth, and the orange cameras being the approximated ones. The graph of loss vs iterations shows how the distance between the cameras are decreasing during the optimization loop. We can see that in the first steps, the accumulated loss is higher, since the cameras starts with random values:
 
 ![Loss per iteration](imgs/a3/loss.png)
 
