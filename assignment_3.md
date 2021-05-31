@@ -76,7 +76,7 @@ To improve the approximation, i tried to not randomly initialize the rotation an
 
 ![Cameras with trivial initialization](imgs/a3/camera_init.png)
 
-We can see by the images generated after this optmization are closer to the ground truth:
+We can see by the images generated after this optmization are closer to the ground truth. Here, we have first the results generated with the ground truth, then using the trivial initialization:
 
 <img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/images_init.png" width="50%">
 
@@ -84,7 +84,7 @@ Lastly, i made an additional experiment representing each rotation as a quaterni
 
 ![Cameras with quaternions](imgs/a3/camera_quat.png)
 
-We can see the gerenated images using the quaternion representation are also similar to the ground truth, since we achieved a good result:
+We can see the gerenated images using the quaternion representation are also similar to the ground truth, since we achieved a good result. As shown before, we first have the results generated with the ground truth, and then using the quaternion representation:
 
 <img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/images_quat.png" width="50%">
 
