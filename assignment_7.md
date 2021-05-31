@@ -96,14 +96,38 @@ We can note how the lighting effects are different at each mesh.
 
 ### Rendering Point Clouds
 
+Pytorch3D also provide an option to render point clouds, by creating a **PointClouds** object. Each object receives a list of vertex positions and a list of features, such as the rgb color attached to each point. In this case, a **PointsRasterizer** is created and passed as a parameter to a **PointsRenderer**:
+
+<img src="imgs/a7/5_0.png" width="30%">
+
+There are a few parameters that can be modified, such as background color and the compositor function that blends the points rendered at each pixel. 
+
+<img src="imgs/a7/5_1.png" width="30%"><img src="imgs/a7/5_2.png" width="30%">
+
+#### Pulsar Backend
+
 [1]
+TODO: More discussion about the pulsar backend
 
+<img src="imgs/a7/5_3.png" width="30%">
 
-FoVOrthographicCameras
+In this case, i use the orthographic projection, changing the current camera to **FoVOrthographicCameras**. Otherwise, only the first image will be rendered correctly, and the other will not render the point cloud.
+
+<img src="imgs/a7/5_3_batch.png" width="30%">
 
 ### Plotly visualization of Point Clouds
 
-It is possible to render point clouds using the avaiable methods from **pytorch3d.vis.plotly_vis**.
+It is possible to render point clouds using the avaiable methods from **pytorch3d.vis.plotly_vis**. First, it is possible to render the point cloud using the function **plot_scene**:
+
+<img src="imgs/a7/6_1.png" width="40%">
+
+It is possible to pass a batch of points for the **PointClouds** object, similar to **Meshes**. In this case, i made a simple test by rendering a batch of 2 point clouds:
+
+<img src="imgs/a7/6_2.png" width="40%">
+
+Finally, using the **plot_batch_individually** method, it is possible to render the batch of point clouds:
+
+<img src="imgs/a7/6_3.png" width="40%">
 
 ### References
 
