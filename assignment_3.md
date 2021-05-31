@@ -20,7 +20,7 @@ Then, for each loop, the optimization triest to align the orange cameras with th
 
 ![Solution](https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_final.png?raw=1)
 
-To be able to find a valid solution to this problem, the first camera defines the reference coordinate system. Thus, the solution to the problem consists of finding the relative transformations between each pair of cameras. With that in mind, the first camera is considered the trivial case, where its rotation matrix is the identity, and the translation is a zero vector. We can also visualize this as a normalization process, which can be done for any set of cameras given to the optimization procedure.
+To be able to find a valid solution to this problem, the first camera must be set as an anchor of the set of cameras, defining a reference coordinate system. Thus, the solution to the problem will consist on finding the relative transformations between each pair of cameras. With that in mind, the first camera is considered the trivial case, where its rotation matrix is the identity, and the translation is a zero vector. We can also visualize this as a normalization process, which can be done for any set of cameras given to the optimization procedure.
 
 ### Representing rotations
 
@@ -48,9 +48,11 @@ A recent paper used SVD to predict rotations. In this case, 9 values are used to
 
 ### Optimization Results
 
-The SGD optimizer was used to optimize both rotations and translations of each camera. For each loop step, the essential matrix between each pair of cameras is evaluated and compared with a ground truth, which defines the loss function **camera_distance**. We initialize the first camera as the trivial case, and the others are initialized with random values. In the first experiment, the axis angle representation is used to compute the rotation matrix of each camera.
+The SGD optimizer was used to estimate the extrinsic parameters of each camera. For each loop step, the relative matrix between each pair of cameras is evaluated and compared with a ground truth, which defines the loss function **camera_distance**. Each relative matrix is computed by getting the view matrix (or extrinsic camera matrix) of one camera, and multiplying by the inverse of a second view matrix, from other camera. Then, the rotation and translation of these relative matrices are used to compare with a known ground truth, also computing the loss function.
 
-For the first result, using 2000 iterations, we reached a result with camera_distance = 4.597e-03 at the last iteration:
+The first camera is initialized with the trivial case, and the others are initialized with random values. Since the axis-angle represetation is being used in this first experiment, both rotation and translation of the first camera are initialized with the a zero vector.
+
+For the first result, using 2000 iterations, we reached a result with a camera_distance = 4.597e-03 at the last iteration:
 
 ![Bundle after optimization](imgs/a3/camera_std.png)
 
