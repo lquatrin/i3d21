@@ -119,15 +119,15 @@ In this case, i use the orthographic projection, changing the current camera to 
 
 It is possible to render point clouds using the avaiable methods from **pytorch3d.vis.plotly_vis**. First, it is possible to render the point cloud using the function **plot_scene**:
 
-<img src="imgs/a7/6_1.png" width="40%">
+<img src="imgs/a7/6_1.png" width="50%">
 
 It is possible to pass a batch of points for the **PointClouds** object, similar to **Meshes**. In this case, i made a simple test by rendering a batch of 2 point clouds:
 
-<img src="imgs/a7/6_2.png" width="40%">
+<img src="imgs/a7/6_2.png" width="50%">
 
 Finally, using the **plot_batch_individually** method, it is possible to render the batch of point clouds:
 
-<img src="imgs/a7/6_3.png" width="40%">
+<img src="imgs/a7/6_3.png" width="50%">
 
 ### References
 
