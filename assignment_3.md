@@ -60,21 +60,15 @@ with the cameras in purple being our ground truth, and the orange cameras being 
 
 ![Loss per iteration](imgs/a3/loss.png)
 
-Using the Cow Mesh, we can make a qualitative comparison between the optimized cameras with our ground truth:
+Using the Cow Mesh, it is possible to generate a qualitative comparison between the optimized cameras with the ground truth. First we have the images generated using the initial state of the cameras:
 
-Initial state of the cameras:
+<img src="imgs/a3/init.png" width="40%">
 
-![Camera init](imgs/a3/init.png)
+Now comparing the Ground truth, with the optimzed cameras:
 
-Images generated with the Ground Truth cameras:
+<img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/approx.png" width="50%">
 
-![Camera ground truth](imgs/a3/gt.png)
-
-Images generated with the optimized cameras:
-
-![Camera optimized](imgs/a3/approx.png)
-
-We can note that the first camera does not change during the optimization process, since we define it as the trivial case. We can also note small differences between the ground truth and the optimized cameras. Take the image from the second row and third column as an example: we can note how it generated a slightly different image.
+We can note that the first camera does not change during the optimization process, since it is the trivial case. There is some small differences between the ground truth and the optimized cameras. Take the image from the second row and third column as an example: we can note how it generated a slightly different image.
 
 ### Additional Results
 
@@ -84,17 +78,17 @@ To improve the approximation, i tried to not randomly initialize the rotation an
 
 We can see by the images generated after this optmization are closer to the ground truth:
 
-![Images wih trivial initialized_cameras](imgs/a3/images_init.png)
+<img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/images_init.png" width="50%">
 
-Then, i made an additional experiment representing each rotation as a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle for rotations. However, the quaternions were transformed back to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. We also apply the trivial initialization for all cameras, but in this case, we initialize each rotation with the identity quaternion. I was able to reach a camera_distance = 4.957e-08 as the final loss:
+Lastly, i made an additional experiment representing each rotation as a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle representation for rotations. However, the quaternions were transformed back to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. I also apply the trivial initialization for all cameras, but in this case, each rotation is initialized with the identity quaternion, which means no rotation. I was able to reach a camera_distance = 4.957e-08 as the final loss:
 
 ![Cameras with quaternions](imgs/a3/camera_quat.png)
 
 We can see the gerenated images using the quaternion representation are also similar to the ground truth, since we achieved a good result:
 
-![Images wih quaternions](imgs/a3/images_quat.png)
+<img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/images_quat.png" width="50%">
 
-In this case, i also think some modifications could be done in the optimization loop to compare quaternions properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
+In this case, i also think some modifications could be done in the optimization loop to compare and compute the relative transformations with quaternions properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
 
 ![Computed Losses](imgs/a3/all_losses.png)
 
