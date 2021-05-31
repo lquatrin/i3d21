@@ -125,7 +125,7 @@ It is possible to pass a batch of points for the **PointClouds** object, similar
 
 <img src="imgs/a7/6_2.png" width="50%">
 
-Finally, using the **plot_batch_individually** method, it is possible to render the batch of point clouds:
+Finally, using the **plot_batch_individually** method, it is possible to render each point cloud:
 
 <img src="imgs/a7/6_3.png" width="50%">
 
