@@ -6,15 +6,21 @@
 
 ## Assignment 3 - Camera - Bundle Adjustment
 
-In this assignment, the objective was to estimate the extrinsic parameters of a set (bundle) of cameras, given multiple pairs of relative transformations between them. The PyTorch3D API is used to set up an optimization process to minimize the discrepancies between pairs of relative cameras.
+In this assignment, the objective was to estimate the extrinsic parameters of a set (bundle) of cameras, given multiple pairs of relative transformations between them. The PyTorch3D API was used to represent and optimize the transformation matrix of each camera.
 
 ### Setup
 
-The problem consists on finding the relative positions between a set of **N** cameras. To achieve this, the rotation and translation matrices between each pair of cameras are estimated. The intrinsic parameters of the cameras are implicitly known, so only the extrinsic parameters are considered. If we consider the epipolar geometry, we are actually computing the essential matrix, which maps one camera to another. 
- 
-To be able to find a valid solution to this problem, the first camera defines the reference coordinate system. Thus, the solution to the problem consists of finding the relative transformations between each pair of cameras. With that in mind, the first camera is considered the trivial case, where its rotations matrix is the zero vector for translation.
+Given an optical system of N cameras, we want to find the extrinsic parameters of each camera. To optimize these parameters, the relative positions between each pair of cameras are computed, computing the relative matrix which maps one camera to another. The intrinsic parameters of the cameras are implicitly known, so only the extrinsic parameters are considered. Considering the epipolar geometry, we compute the essential matrix, estimating an affine transformation from one camera to another. 
 
-Using this initial state for the first camera, a solution for the bundle adjustment problem can be found by minimizing the discrepancy between each pair of cameras, taking the first camera as our reference coordinate system. We can also visualize this as a normalization process, which can be done for any set of cameras that as given to our optimization process.
+The optimization procedure starts by randomly initializing the estimated cameras, plotted in orange:
+
+![Initialization](https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_initialization.png)
+
+Then, for each loop, the optimization triest to align the orange cameras with the ground truth, defined in purple, minimizing the distance between pairs of relative cameras:
+
+![Solution](https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_final.png?raw=1)
+
+To be able to find a valid solution to this problem, the first camera defines the reference coordinate system. Thus, the solution to the problem consists of finding the relative transformations between each pair of cameras. With that in mind, the first camera is considered the trivial case, where its rotation matrix is the identity, and the translation is a zero vector. We can also visualize this as a normalization process, which can be done for any set of cameras given to the optimization procedure.
 
 ### Representing rotations
 
