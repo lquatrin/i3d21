@@ -16,7 +16,7 @@ It is possible to note several challenges encountered when determining a vast da
 
 ### Data visualization with Plotly
 
-We used a subset of the ShapeNet in this assignment, containing 329 models from the original dataset.
+In this assignment, it was used a subset of ShapeNet containing 329 models.
 
 
 ### Creating a mesh using a parametric model
