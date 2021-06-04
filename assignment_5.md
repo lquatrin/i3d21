@@ -18,6 +18,16 @@ It is possible to note several challenges encountered when determining a vast da
 
 In this assignment, it was used a subset of ShapeNet containing 329 models.
 
+<img src="imgs/a5/3_1.png" width="30%">
+
+<img src="imgs/a5/3_2.png" width="30%">
+
+<img src="imgs/a5/3_3.png" width="30%">
+
+<img src="imgs/a5/3_4.png" width="30%">
+
+<img src="imgs/a5/e_2.png" width="30%">
+
 
 ### Creating a mesh using a parametric model
 
