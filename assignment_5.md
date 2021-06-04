@@ -40,16 +40,12 @@ model_faces_l = [shapenet_dataset[i+250]['faces'].to(device) for i in range(10)]
 model_textures_l_data = [torch.rand_like(model_verts_l[i]*0.5 + 0.4).to(device) for i in range(10)]
 model_textures_l = TexturesVertex(verts_features=model_textures_l_data)
 
-model_meshes_l_10 = Meshes(verts=model_verts_l,
-                      faces=model_faces_l,
-                      textures=model_textures_l)
-
+model_meshes_l_10 = Meshes(verts=model_verts_l, faces=model_faces_l, textures=model_textures_l)
 ```
 
 Then, using the method **plot_batch_individually**, we're able to visualize the current batch of meshes:
 
-<img src="imgs/a5/e_2.png" width="30%">
-
+<img src="imgs/a5/e_2.png" width="100%">
 
 ### Creating new meshes using parametric models
 
