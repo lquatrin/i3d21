@@ -85,11 +85,21 @@ As an alternative, it is possible to build a point cloud using the method **samp
 
 #### Arc
 
-<img src="imgs/a5/e_3_a.png" width="30%">
+The second function is an arc formed by the function:
+
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;s(x)=1.0-(2.0\,(x-0.5))^2\" />
+
+<img src="imgs/a5/e_3_a.png" width="50%">
+
+Using plotly, we render the mesh without textures:
 
 <img src="imgs/a5/e_3_a1.png" width="30%">
 
+However, unlike the cilinder, we can note the UV coordinates defined for each vertex being different from each approach:
+
 <img src="imgs/a5/e_3_a2_0.png" width="30%"><img src="imgs/a5/e_3_a2_1.png" width="30%">
+
+In this case, it generates different results:
 
 <img src="imgs/a5/e_3_a3.png" width="30%">
 
