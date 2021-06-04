@@ -29,7 +29,65 @@ In this assignment, it was used a subset of ShapeNet containing 329 models.
 <img src="imgs/a5/e_2.png" width="30%">
 
 
-### Creating a mesh using a parametric model
+### Creating new meshes using parametric models
+
+In the last part of this assignment, i tried to create new meshes using parametric functions, creating new meshes by applying a surface of revolution. I made a experiment with 3 different functions. First, a simple constant value was used to create a cilinder.
+
+
+#### Cilinder
+
+<img src="imgs/a5/e_3_c.png" width="30%">
+
+<img src="imgs/a5/e_3_c1.png" width="30%">
+
+<img src="imgs/a5/e_3_c2_0.png" width="30%"><img src="imgs/a5/e_3_c2_1.png" width="30%">
+
+<img src="imgs/a5/e_3_c3.png" width="30%">
+
+<img src="imgs/a5/e_3_c4.png" width="30%">
+
+#### Arc
+
+<img src="imgs/a5/e_3_a.png" width="30%">
+
+<img src="imgs/a5/e_3_a1.png" width="30%">
+
+<img src="imgs/a5/e_3_a2_0.png" width="30%"><img src="imgs/a5/e_3_a2_1.png" width="30%">
+
+<img src="imgs/a5/e_3_a3.png" width="30%">
+
+<img src="imgs/a5/e_3_a3_1.png" width="30%">
+
+<img src="imgs/a5/e_3_a4.png" width="30%">
+
+#### Vase (1)
+
+<img src="imgs/a5/e_3_u.png" width="30%">
+
+<img src="imgs/a5/e_3_u1.png" width="30%">
+
+<img src="imgs/a5/e_3_u2_0.png" width="30%"><img src="imgs/a5/e_3_v2_1.png" width="30%">
+
+<img src="imgs/a5/e_3_u3.png" width="30%">
+
+<img src="imgs/a5/e_3_u3_1.png" width="30%">
+
+<img src="imgs/a5/e_3_u4.png" width="30%">
+
+
+#### Vase (2)
+
+<img src="imgs/a5/e_3_v.png" width="30%">
+
+<img src="imgs/a5/e_3_v1.png" width="30%">
+
+<img src="imgs/a5/e_3_v2_0.png" width="30%"><img src="imgs/a5/e_3_v2_1.png" width="30%">
+
+<img src="imgs/a5/e_3_v3.png" width="30%">
+
+<img src="imgs/a5/e_3_v3_1.png" width="30%">
+
+<img src="imgs/a5/e_3_v4.png" width="30%">
 
 
 ### References
