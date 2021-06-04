@@ -126,4 +126,4 @@ Finally, using the **plot_batch_individually** method, it is possible to render 
 
 ### References
 
-[1] Pulsar: Efficient Sphere-based Neural Rendering (https://arxiv.org/pdf/2004.07484.pdf)
+[1] Lassner, C. and Zollhöfer, M., “Pulsar: Efficient Sphere-based Neural Rendering”, arXiv e-prints, 2020. URL: https://arxiv.org/pdf/2004.07484.pdf
