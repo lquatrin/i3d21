@@ -117,6 +117,8 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 
 #### Vase (2)
 
+In this last result, we modify one of the values used to generate the bezier curve:
+
 ```python
 [0.0, 0.25,  0.5, 0.75, 1.0],
 [0.1, 1.0 ,  0.2, 0.0 , 0.3],
@@ -126,7 +128,11 @@ In this case, it generates the following mesh:
 
 <img src="imgs/a5/e_3_v.png" width="40%"><img src="imgs/a5/e_3_v1.png" width="50%">
 
+In this case, the UV coordinates are a little different from the previous mesh:
+
 <img src="imgs/a5/e_3_v2_0.png" width="30%"><img src="imgs/a5/e_3_v2_1.png" width="30%">
+
+Using the **MeshRenderer**, we can visualize the mesh with UV mapping:
 
 <img src="imgs/a5/e_3_v3.png" width="30%">
 
