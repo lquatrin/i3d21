@@ -59,7 +59,7 @@ where **r** is the value of the curve along the interval and **u**,**v** defines
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;s=%20\int_{a}^{b}%20\sqrt{1%20+%20\left(\frac{dy}{dx}\right)^2}%20\,dx%20\" />
 
-with dy/dx being evaluated using finite differences. To compute the accumulated distance from 0 to a certain v, we accumulate steps of 0.01 to approximate the arc length.
+with dy/dx being evaluated using finite differences. To compute the accumulated distance from 0 to a certain v, we accumulate steps of 0.01 to approximate the arc length. For the following results, the first image uses the arc length, and the second image uses uniform distribution.
 
 #### Cilinder
 
@@ -97,11 +97,9 @@ Unlike the cilinder, we can note the UV coordinates defined for each vertex bein
 
 In this case, it generates different results:
 
-<img src="imgs/a5/e_3_a3.png" width="50%">
+<img src="imgs/a5/e_3_a3.png" width="80%">
 
-Here we have another view of the same meshes:
-
-<img src="imgs/a5/e_3_a3_1.png" width="50%">
+<img src="imgs/a5/e_3_a3_1.png" width="80%">
 
 #### Vase (1)
 
@@ -136,7 +134,7 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 [0.1, 1.0 ,  0.2, 0.0 , 0.3],
 ```
 
-In this case, it is expected a slight different 
+In this case, it generates the following mesh:
 
 <img src="imgs/a5/e_3_v.png" width="30%">
 
