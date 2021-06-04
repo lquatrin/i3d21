@@ -28,9 +28,25 @@ It is not possible to show the texture with UV mapping. However, it is possible 
 
 <img src="imgs/a5/3_2.png" width="60%">
 
-<img src="imgs/a5/3_3.png" width="30%">
+To visualize more than one mesh, we can render them at different plots, otherwise they will overlap:
 
-<img src="imgs/a5/3_4.png" width="30%">
+<img src="imgs/a5/3_3.png" width="50%"><img src="imgs/a5/3_4.png" width="50%">
+
+It is also possible to define a batch of meshes, by adding them as a list of tensors:
+
+```python
+model_verts_l = [shapenet_dataset[i+250]['verts'].to(device) for i in range(10)]
+model_faces_l = [shapenet_dataset[i+250]['faces'].to(device) for i in range(10)]
+model_textures_l_data = [torch.rand_like(model_verts_l[i]*0.5 + 0.4).to(device) for i in range(10)]
+model_textures_l = TexturesVertex(verts_features=model_textures_l_data)
+
+model_meshes_l_10 = Meshes(verts=model_verts_l,
+                      faces=model_faces_l,
+                      textures=model_textures_l)
+
+```
+
+Then, using the method **plot_batch_individually**, we're able to visualize the current batch of meshes:
 
 <img src="imgs/a5/e_2.png" width="30%">
 
