@@ -73,7 +73,7 @@ Using the method **texturesuv_image_matplotlib**, it possible to check the UV co
 
 Since the cilinder is a constant value, both strategies generates the same result. Then, since we're using UV mapping, a **MeshRenderer** is required to visualize the current mesh: 
 
-<img src="imgs/a5/e_3_c3.png" width="30%">
+<img src="imgs/a5/e_3_c3.png" width="50%">
 
 #### Arc
 
@@ -89,9 +89,9 @@ Unlike the cilinder, we can note the UV coordinates defined for each vertex bein
 
 In this case, it generates different results:
 
-<img src="imgs/a5/e_3_a3.png" width="80%">
+<img src="imgs/a5/e_3_a3.png" width="50%">
 
-<img src="imgs/a5/e_3_a3_1.png" width="80%">
+<img src="imgs/a5/e_3_a3_1.png" width="50%">
 
 #### Vase (1)
 
@@ -110,9 +110,9 @@ Visualizing the texture map, we can note how the curve length differs when reach
 
 Using the **MeshRenderer**, the following results were generated using two different viewpoints:
 
-<img src="imgs/a5/e_3_u3.png" width="30%">
+<img src="imgs/a5/e_3_u3.png" width="50%">
 
-<img src="imgs/a5/e_3_u3_1.png" width="30%">
+<img src="imgs/a5/e_3_u3_1.png" width="50%">
 
 
 #### Vase (2)
@@ -134,9 +134,9 @@ In this case, the UV coordinates are a little different from the previous mesh:
 
 Using the **MeshRenderer**, we can visualize the mesh with UV mapping:
 
-<img src="imgs/a5/e_3_v3.png" width="30%">
+<img src="imgs/a5/e_3_v3.png" width="50%">
 
-<img src="imgs/a5/e_3_v3_1.png" width="30%">
+<img src="imgs/a5/e_3_v3_1.png" width="50%">
 
 
 ### Point cloud to visualize meshes with TextureUV
