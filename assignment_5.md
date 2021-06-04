@@ -101,9 +101,13 @@ However, unlike the cilinder, we can note the UV coordinates defined for each ve
 
 In this case, it generates different results:
 
-<img src="imgs/a5/e_3_a3.png" width="30%">
+<img src="imgs/a5/e_3_a3.png" width="50%">
 
-<img src="imgs/a5/e_3_a3_1.png" width="30%">
+Here we have another view of the same meshes:
+
+<img src="imgs/a5/e_3_a3_1.png" width="50%">
+
+And then, finally, render using point clouds with plotly:
 
 <img src="imgs/a5/e_3_a4.png" width="30%">
 
