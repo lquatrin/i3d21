@@ -65,11 +65,7 @@ with dy/dx being evaluated using finite differences. To compute the accumulated 
 
 The first experiment was creating a cilinder mesh. In this case, the function consists on a constant value:
 
-<img src="imgs/a5/e_3_c.png" width="40%">
-
-Using plotly, we can see the mesh without texture:
-
-<img src="imgs/a5/e_3_c1.png" width="50%">
+<img src="imgs/a5/e_3_c.png" width="40%"><img src="imgs/a5/e_3_c1.png" width="50%">
 
 Using the method **texturesuv_image_matplotlib**, it possible to check the UV coordinate defined for each vertex, using both strategies. First, we have the mapping using the arc length. The second image shows an uniform distribution:  
 
@@ -85,11 +81,7 @@ The second function is an arc formed by the function:
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;s(x)=1.0-(2.0\,(x-0.5))^2\" />
 
-<img src="imgs/a5/e_3_a.png" width="50%">
-
-Using plotly, we render the mesh without textures:
-
-<img src="imgs/a5/e_3_a1.png" width="30%">
+<img src="imgs/a5/e_3_a.png" width="40%"><img src="imgs/a5/e_3_a1.png" width="50%">
 
 Unlike the cilinder, we can note the UV coordinates defined for each vertex being different from each approach:
 
@@ -110,11 +102,7 @@ The last results consisted on using the bezier library to generate a curve simil
 [0.1, 2.0 ,  0.2, 0.0 , 0.3]
 ```
 
-<img src="imgs/a5/e_3_u.png" width="30%">
-
-Using the plotly, we can see a mesh similar to a vase:
-
-<img src="imgs/a5/e_3_u1.png" width="30%">
+<img src="imgs/a5/e_3_u.png" width="40%"><img src="imgs/a5/e_3_u1.png" width="50%">
 
 Visualizing the texture map, we can note how the curve length differs when reaching v = 0:
 
@@ -136,9 +124,7 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 
 In this case, it generates the following mesh:
 
-<img src="imgs/a5/e_3_v.png" width="30%">
-
-<img src="imgs/a5/e_3_v1.png" width="30%">
+<img src="imgs/a5/e_3_v.png" width="40%"><img src="imgs/a5/e_3_v1.png" width="50%">
 
 <img src="imgs/a5/e_3_v2_0.png" width="30%"><img src="imgs/a5/e_3_v2_1.png" width="30%">
 
