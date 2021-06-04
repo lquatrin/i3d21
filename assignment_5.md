@@ -16,11 +16,17 @@ It is possible to note several challenges encountered when determining a vast da
 
 ### Data visualization with Plotly
 
-In this assignment, it was used a subset of ShapeNet containing 329 models.
+In this assignment, it was used a subset of ShapeNet containing 329 models. The ShapeNet dataloader has its own render function to visualize the models, but in this assignment, we will focus on visualizations with Plotly. Here we have an example showing some of the models using the ShapeNet's renderer:
 
-<img src="imgs/a5/3_1.png" width="30%">
+<img src="imgs/a5/shapenet_render.png" width="100%">
 
-<img src="imgs/a5/3_2.png" width="30%">
+Now using plotly we can render and manipulate the viewpoint of a mesh:
+
+<img src="imgs/a5/3_1.png" width="60%">
+
+It is not possible to show the texture with UV mapping. However, it is possible to define a color for each vertex. Here, we have the same model with random colors defined at each vertex:
+
+<img src="imgs/a5/3_2.png" width="60%">
 
 <img src="imgs/a5/3_3.png" width="30%">
 
