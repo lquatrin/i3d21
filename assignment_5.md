@@ -49,8 +49,12 @@ Then, using the method **plot_batch_individually**, we're able to visualize the 
 
 ### Creating new meshes using parametric models
 
-In the last part of this assignment, i tried to create new meshes using parametric functions, creating new meshes by applying a surface of revolution. I made a experiment with 3 different functions. First, a simple constant value was used to create a cilinder.
+In the last part of this assignment, i experiment the generation of new meshes using parametric functions, creating new meshes by applying a surface of revolution.
 
+For each mesh, a curve is rotated around the Y-axis, by computing the vertices of each mesh:
+
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+[r * math.sin(angle), z, r * math.cos(angle)]
 
 #### Cilinder
 
