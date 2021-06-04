@@ -62,6 +62,11 @@ In the last part of this assignment, i tried to create new meshes using parametr
 
 #### Vase (1)
 
+I also experimented the bezier library to generate a curve similar to a vase. Since i'm using the colab environment, a older version was installed since it conflicts with the numpy version used with pytorch3 ("2020.1.14" version). 
+
+     [0.0, 0.25,  0.5, 0.75, 1.0],
+     [0.1, 2.0 ,  0.2, 0.0 , 0.3],
+
 <img src="imgs/a5/e_3_u.png" width="30%">
 
 <img src="imgs/a5/e_3_u1.png" width="30%">
@@ -76,6 +81,9 @@ In the last part of this assignment, i tried to create new meshes using parametr
 
 
 #### Vase (2)
+
+     [0.0, 0.25,  0.5, 0.75, 1.0],
+     [0.1, 1.0 ,  0.2, 0.0 , 0.3],
 
 <img src="imgs/a5/e_3_v.png" width="30%">
 
