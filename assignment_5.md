@@ -59,17 +59,27 @@ where **r** is the value of the curve along the interval and **u**,**v** defines
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;s=%20\int_{a}^{b}%20\sqrt{1%20+%20\left(\frac{dy}{dx}\right)^2}%20\,dx%20\" />
 
-where dy/dx is calculate using finite differences. To compute the accumulated distance from 0 to a certain v, we accumulate steps of 0.01 to approximate the arc length.
+with dy/dx being evaluated using finite differences. To compute the accumulated distance from 0 to a certain v, we accumulate steps of 0.01 to approximate the arc length.
 
 #### Cilinder
 
-<img src="imgs/a5/e_3_c.png" width="30%">
+The first experiment was creating a cilinder mesh. In this case, the function consists on a constant value:
 
-<img src="imgs/a5/e_3_c1.png" width="30%">
+<img src="imgs/a5/e_3_c.png" width="40%">
+
+Using plotly, we can see the mesh without texture:
+
+<img src="imgs/a5/e_3_c1.png" width="50%">
+
+Using the method **texturesuv_image_matplotlib**, it possible to check the UV coordinate defined for each vertex, using both strategies. First, we have the mapping using the arc length. The second image shows an uniform distribution:  
 
 <img src="imgs/a5/e_3_c2_0.png" width="30%"><img src="imgs/a5/e_3_c2_1.png" width="30%">
 
+Since the cilinder is a constant value, both strategies generates the same result. Then, since we're using UV mapping, a **MeshRenderer** is required to visualize the current mesh: 
+
 <img src="imgs/a5/e_3_c3.png" width="30%">
+
+As an alternative, it is possible to build a point cloud using the method **sample_points_from_meshes**, and visualize with plotly:
 
 <img src="imgs/a5/e_3_c4.png" width="30%">
 
