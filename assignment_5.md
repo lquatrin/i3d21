@@ -51,10 +51,13 @@ Then, using the method **plot_batch_individually**, we're able to visualize the 
 
 In the last part of this assignment, i experiment the generation of new meshes using parametric functions, creating new meshes by applying a surface of revolution.
 
-For each mesh, a curve is rotated around the Y-axis, by computing the vertices of each mesh:
+For each mesh, a curve is rotated around the Y-axis, with each vertex being defined at:
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
-[r * math.sin(angle), z, r * math.cos(angle)]
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;v_{pos}=[r(v)%20sin(u%202%20\pi),%20v,%20r(v)%20cos(u%202%20\pi)]" />
+
+where **r** is the value of the curve along the interval and **u**,**v** defines the vertices of our mesh. The UV coordinates were estimated to map an image on the surface of the mesh. Two approaches were implemented: first, we directly map the UV values into the UV coordinates. The second approach, we compute the curve distance by summing the arc length function:
+
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;s=%20\int_{a}^{b}%20\sqrt{1%20+%20\left(\frac{dy}{dx}\right)^2}%20\,dx%20\" />
 
 #### Cilinder
 
