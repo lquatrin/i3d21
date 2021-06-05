@@ -20,7 +20,7 @@ To speed up the optimization process, it is important to normalize the vertices,
 
 The optimization procedure wants to learn how to offset the vertices of the source mesh to make it closer to the target mesh. To achieve this, the distance between the predicted and the target meshes are computed. The chamfer distance is used by sampling a point cloud from each mesh at each step of the optimization loop. In addition, other 3 loss functions were added into the loss function to ensure smoothness of the predicted mesh: **mesh_edge_length**, **mesh_normal_consistency**, and **mesh_laplacian_smoothing** [1].
 
-After 5000 iterations, it generates the following result:
+After 5000 iterations, it generates the following result, compared with a point cloud sampled with the ground truth:
 
 ![Predicted Dolphin](imgs/a6/p_dolphin_point_cloud.png) ![Target Dolphin](imgs/a6/dolphin_point_cloud.png)
 
