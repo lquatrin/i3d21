@@ -61,7 +61,7 @@ def show_batch(batch):
 show_batch(images)
 ``` 
 
-![Batch of 32 images](imgs/a1/bach_of_images.png)
+![Batch of 32 images](data/imgs/a1/bach_of_images.png)
 
 Through the **torch.bincount** function, it is also possible to check how balanced a batch is:
 
@@ -116,11 +116,11 @@ When passing the model to GPU, i realized that each iteration of the training en
 
 Finally, i generate the results using a intermediate layer using 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy using the validation data increasing according to each interation, and the loss function decreases. Then, an accuracy of 97.07% was achieved when using the data from test set. Below are the graphs with the values of precision and loss function throughout the training. The loss validation was not evaluated in this report.
 
-![Accuracy per Iteration](imgs/a1/accuracy.png)
+![Accuracy per Iteration](data/imgs/a1/accuracy.png)
 
-![Loss Function](imgs/a1/loss_function.png)
+![Loss Function](data/imgs/a1/loss_function.png)
 
 I also plotted the confusion matrix to check the performance of the model for each category. As we can see, the majority of cases were correctly classified using the simple neural network implemented in this assignment.
 
-![Confusion Matrix](imgs/a1/confusion_matrix.png)
+![Confusion Matrix](data/imgs/a1/confusion_matrix.png)
 
