@@ -75,7 +75,7 @@ Since the function used to build a cilinder is a constant value, both strategies
 
 #### Arc
 
-The second function is an arc formed by the function:
+The second function is an arc defined by the following expression:
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;s(x)=1.0-(2.0\,(x-0.5))^2\" />
 
