@@ -16,19 +16,19 @@ It is possible to note several challenges encountered when determining a vast da
 
 ### Data visualization with Plotly
 
-In this assignment, it was used a subset of ShapeNet containing 329 models. The ShapeNet dataloader has its own render function to visualize the models, but in this assignment, we will focus on visualizations with Plotly. Here we have an example showing some of the models using the ShapeNet's renderer:
+In this assignment, it was used a subset of ShapeNet containing 329 models. The ShapeNet dataloader has its own render function to visualize the models, but in this assignment, the idead was to focus on visualizations with Plotly. Here we have an example showing some of the models using the ShapeNet's renderer:
 
 <img src="imgs/a5/shapenet_render.png" width="100%">
 
-Now using plotly we can render and manipulate the viewpoint of a mesh:
+Now using plotly, i first started by rendering the mesh using the method **plot_scene**:
 
 <img src="imgs/a5/3_1.png" width="60%">
 
-It is not possible to show the texture with UV mapping. However, it is possible to define a color for each vertex. Here, we have the same model with random colors defined at each vertex:
+Plotly has an advantage of giving an interactive rendering, but does not show the textures when using UV mapping. However, it is possible to define a color for each vertex. Here, i made an adjustment to the mesh setting **TexturesVertex** object using randomized values:
 
 <img src="imgs/a5/3_2.png" width="60%">
 
-To visualize more than one mesh, we can render them at different plots, otherwise they will overlap:
+Then, i made a last experiment showing two models. If we try to put them in a same plot, they will overlap. Using the method **plot_scene**, we can create two subplots to  visualize each mesh:
 
 <img src="imgs/a5/3_3.png" width="50%"><img src="imgs/a5/3_4.png" width="50%">
 
