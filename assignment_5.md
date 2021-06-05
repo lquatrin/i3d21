@@ -57,7 +57,7 @@ where **r** is the curve along the interval [0,1] and **u**,**v** defines the ve
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;s=%20\int_{a}^{b}%20\sqrt{1%20+%20\left(\frac{dy}{dx}\right)^2}%20\,dx%20\" />
 
-with dy/dx being evaluated using finite differences. To compute the accumulated distance from 0 to a certain v, we accumulate steps of 0.01 to approximate the arc length. For the following results, the first image uses the arc length, and the second image uses uniform distribution.
+with dy/dx being evaluated using finite differences. To compute the distance from 0 to a certain v, steps of 0.01 are accumulated to approximate the arc length. For the following results, the first image uses the arc length, and the second image uses uniform distribution.
 
 #### Cilinder
 
