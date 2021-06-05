@@ -39,31 +39,25 @@ And here we have the sphere deformed into a dolphin given the result from the op
 
 Using MeshLab, we can compare the resulting meshes:
 
-<img src="imgs/a6/p_dolphin_meshlab.png" width="30%"><img src="imgs/a6/dolphin_meshlab.png" width="30%"><img src="imgs/a6/c_dolphin_meshlab.png" width="30%">
+<img src="data/imgs/a6/meshlab/2_2_predicted.png" width="30%"><img src="data/imgs/a6/meshlab/2_2_target.png" width="30%"><img src="data/imgs/a6/meshlab/2_2_diff.png" width="30%">
 
 We notice how the fins, tail and rostrum have been smoothed by the optimization procedure, resulting in a mesh with some differences compared with the target. We can also note how the curvatures in general have also been smoothed by the optimization procedure.
 
 Taking a look at each loss function captured during the optimization loop, we see how chamfer distance decreases at the first iterations, then the normal loss decreasing more slowly.
 
-![Loss Functions](imgs/a6/p_dolphin_losses.png)
+<img src="data/imgs/a6/2_g.png" width="70%">
 
-Then, we made other two tests checking if we're able to reach a good result with lower iterations. First we made a test with 2500 iterations, resulting in the following mesh:
+Then, we made other two tests checking if we're able to reach a good result with lower iterations. First we made a test with 2500 iterations, but i saw some triangles not well defined, due to the normal loss. I then tested with 3000 iterations and got a better result. Here are both results of the mesh using 2500 and 3000 iterations:
 
-<img src="imgs/a6/predicted_mesh_2500.png" width="40%">
+<img src="data/imgs/a6/meshlab/2_3_2500.png" width="40%"><img src="data/imgs/a6/meshlab/2_3_3000.png" width="40%">
 
-We saw how some triangles are not well defined, due to the normal loss. We then tested with 3000 iterations:
+The current results were achieved considering the linear combination of four losses. Considering only the camfer distance, it also generates a good approximation of the point cloud:
 
-<img src="imgs/a6/predicted_mesh_3000.png" width="40%">
+![Chamfer predicter point cloud](data/imgs/a6/2_4.png)
 
-We then achieved a reasonable result even using 2000 less iterations than the initial experiment.
+However, the mesh integrity is compromised, since the optimization only considers the distance between points: 
 
-The current results were achieved considering the linear combination of four losses. If we consider only the camfer distance, we approximate the point cloud of both meshes:
-
-![Chamfer predicter point cloud](imgs/a6/chamfer_predicter_dolphin.png)
-
-However, we're not able to keep the mesh integrity:
-
-<img src="imgs/a6/chamfer_dolphin_mesh00.png" width="40%">
+<img src="data/imgs/a6/meshlab/2_4.png" width="40%">
 
 Changing the parameters of each loss function may not result in a solution. Using a higher value for **mesh_normal_consistency** may deform to much the mesh for each optimization loop, ending in a result far from the target:
 
