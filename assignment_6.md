@@ -165,5 +165,3 @@ Since it have genus 0, we can approximate using a normalized sphere. The predict
 ### References
 
 [1] PyTorch3D Loss functions for meshes and point clouds. Available at: https://pytorch3d.readthedocs.io/en/latest/modules/loss.html.
-
-[2] Introduction to Topology: Classification of Surfaces. Available at: https://people.math.osu.edu/fiedorowicz.1/math655/classification.html.
