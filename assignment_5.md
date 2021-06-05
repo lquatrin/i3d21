@@ -4,7 +4,7 @@
 
 ---------
 
-## Assignment 5 - ShapeNet Data and Plotly visualization TODO
+## Assignment 5 - ShapeNet Data and Plotly visualization
 
 In this assignment, the idea was to manipulate and visualize some mdoels of the ShapeNet dataset, also trying to explore other different ways to visualize 3D models with plotly and PyTorch3D. We also made a further exploration on the generation of models using parametric functions with surfaces of revolution.
 
