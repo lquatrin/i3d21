@@ -65,11 +65,11 @@ The first experiment was creating a cilinder mesh. In this case, the function co
 
 <img src="imgs/a5/e_3_c.png" width="40%"><img src="imgs/a5/e_3_c1.png" width="50%">
 
-Using the method **texturesuv_image_matplotlib**, it possible to check the UV coordinate defined for each vertex, using both strategies. First, we have the mapping using the arc length. The second image shows an uniform distribution:  
+Using the method **texturesuv_image_matplotlib**, it possible to check the UV coordinates defined for each vertex, using both strategies:
 
 <img src="imgs/a5/e_3_c2_0.png" width="30%"><img src="imgs/a5/e_3_c2_1.png" width="30%">
 
-Since the function used to build a cilinder is a constant value, both strategies generates the same result. Then, since we're using UV mapping, a **MeshRenderer** is required to visualize the current mesh with texture data: 
+Since the function is constant, both strategies generates the same result. Since we're defining a **TexturesUV** for each mesh, a **MeshRenderer** is required to visualize the current object with texture data: 
 
 <img src="imgs/a5/e_3_c3.png" width="50%">
 
