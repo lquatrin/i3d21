@@ -116,7 +116,7 @@ which ended up being reflected in the generated mesh:
 
 Now we want to deform a mesh into a mug:
 
-![Mug](imgs/a6/mug.png)
+![Mug](data/imgs/a6/3_target.png)
 
 In this case, we won't be able to use a sphere as our source mesh, because we must have a homeomorphism between the topological spaces of both meshes. It means that, from a topological viewpoint, they are the same space and share the same topological properties. It results in a continuous mapping with a continuous inverse function that we want to find via an optimization process to correctly deform our source mesh to the target mesh.
 
@@ -124,39 +124,43 @@ According to the Theorem of closed surfaces, a closed surface is homeomorphic to
 
 Indeed, if we try to deform the sphere into the mug, we get the following result:
 
-<img src="imgs/a6/mug_sphere.png" width="30%"><img src="imgs/a6/mug_sphere_target.png" width="30%"><img src="imgs/a6/mug_sphere_c.png" width="30%">
+<img src="data/imgs/a6/meshlab/3_2.png" width="30%"><img src="data/imgs/a6/meshlab/3.png" width="30%"><img src="data/imgs/a6/meshlab/3_2_diff.png" width="30%">
 
 Also computing the losses per iteration:
 
-![Loss Functions](imgs/a6/p_mug_losses.png)
+![Loss Functions](data/imgs/a6/3_2_g.png)
 
 We also tried to deform using a torus as our source mesh, available from PyTorch3D:
 
-![Torus and Mug](imgs/a6/torus_and_mug.png)
+![Torus and Mug](data/imgs/a6/3_3_meshes.png)
 
 In theory, we should be able to deform the torus into the mug, however, we achieved the following result:
 
-<img src="imgs/a6/mug_predicted_torus.png" width="30%"><img src="imgs/a6/mug_target_torus.png" width="30%"><img src="imgs/a6/mug_predicted_torus_c.png" width="30%">
+<img src="data/imgs/a6/meshlab/3_3.png" width="30%"><img src="data/imgs/a6/meshlab/3.png" width="30%"><img src="data/imgs/a6/meshlab/3_3_diff.png" width="30%">
 
 With losses per iteration:
 
-![Loss Functions](imgs/a6/p_mug_losses_2.png)
+![Loss Functions](data/imgs/a6/3_3_1_g.png)
 
 Since the chamfer distance is used to approximate the target mesh, we think that there is a possibility of getting the wrong samples to compute the distance, which cause the mesh to diverge from what we expect. We tried a last experiment using only the chamfer distance to check the resulting predicted mesh only considering a point cloud.
 
-<img src="imgs/a6/mug_predicter.png" width="30%"><img src="imgs/a6/mug_target.png" width="30%"><img src="imgs/a6/mug_points_c.png" width="30%">
+<img src="data/imgs/a6/meshlab/3_3_1.png" width="30%"><img src="data/imgs/a6/meshlab/3.png" width="30%"><img src="data/imgs/a6/meshlab/3_3_1_diff.png" width="30%">
 
 With losses per iteration:
 
-![Loss Functions](imgs/a6/p_mug_losses_3.png)
+![Loss Functions](data/imgs/a6/3_3_2_g.png)
+
+<img src="data/imgs/a6/meshlab/3_3_1_pointdiff.png" width="50%">
+
+#### Testing with additional meshes:
 
 We also made an additional test with a genus 0 mesh:
 
-![Among Us](imgs/a6/among_us_mesh.png)
+![Among Us](data/imgs/a6/e_2_mesh.png)
 
 Since it have genus 0, we can approximate using a normalized sphere. The predicted mesh is:
 
-<img src="imgs/a6/among_us_predicted.png" width="30%"><img src="imgs/a6/among_us_target.png" width="30%"><img src="imgs/a6/among_us_c.png" width="30%">
+<img src="data/imgs/a6/meshlab/e_2_1.png" width="30%"><img src="data/imgs/a6/meshlab/e_2_0.png" width="30%"><img src="data/imgs/a6/meshlab/e_2_diff.png" width="30%">
 
 ### References
 
