@@ -47,11 +47,9 @@ Taking a look at each loss function captured during the optimization loop, we se
 
 <img src="data/imgs/a6/2_g.png" width="70%">
 
-Then, we made other two tests checking if we're able to reach a good result with lower iterations. First we made a test with 2500 iterations, but i saw some triangles not well defined, due to the normal loss. I then tested with 3000 iterations and got a better result. Here are both results of the mesh using 2500 and 3000 iterations:
+Then, i made other two tests checking if it is possible to reach a good result with lower iterations. First i made a test with 2500 iterations, but i saw some triangles not well defined, due to the normal loss. I then tested with 3000 iterations and got a better result. Here are both results of the mesh using 2500 and 3000 iterations:
 
 <img src="data/imgs/a6/meshlab/2_3_2500.png" width="50%"><img src="data/imgs/a6/meshlab/2_3_3000.png" width="50%">
-
-It is possible to note some non well-formed triangles in the first mesh, generated with 2500 iterations.
 
 #### Changing the loss weights
 
