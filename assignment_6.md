@@ -65,7 +65,7 @@ Changing the parameters of each loss function may not result in a solution. Usin
 
 ![Predicted mesh with 0.5 normal consistency](data/imgs/a6/e_1_w1.png)
 
-The above image was generated using the following weights:
+Using the following weights:
 
 ```python
 w_chamfer   = 1.00
@@ -78,11 +78,7 @@ We also experiment to decrease the weight of the **mesh_edge_loss**, to prevent 
 
 ![Predicted mesh with 0.5 normal consistency](data/imgs/a6/e_1_w2.png)
 
-However, when i put to meshlab, some bad formed triangles appeared:
-
-<img src="data/imgs/a6/meshlab/e_1_w2.png" width="30%">
-
-We can see the rostrum slightly better in this result. The above image was generated using the following weights:
+Using the following weights:
 
 ```python
 w_chamfer   = 1.00
@@ -90,20 +86,25 @@ w_edge      = 0.10
 w_normal    = 0.01
 w_laplacian = 0.10
 ``` 
+However, when i put to meshlab, some bad formed triangles appeared:
 
-All the experiments were generated using the SGD optimizer. We also tested the Adam and RMSprop to apply deformation to the mesh. The Adam optimizer required more steps to converge.
+<img src="data/imgs/a6/meshlab/e_1_w2.png" width="30%">
+
+#### Using other optimizers
+
+All the experiments were generated using the SGD optimizer. I also tested the Adam and RMSprop to apply deformation to the mesh. For both experiments, i set a learning rate equals to 0.01.
 
 Adam Results:
 
-![Adam Result](imgs/a6/adam_result.png)
+![Adam Result](data/imgs/a6/2_5_adam.png)
 
-![Loss Functions](imgs/a6/adam_losses.png)
+![Loss Functions](data/imgs/a6/2_5_adam_g.png)
 
 RMSprop Results:
 
-![RMSprop Result](imgs/a6/rms_result.png)
+![RMSprop Result](data/imgs/a6/2_5_rmsprop.png)
 
-![Loss Functions](imgs/a6/rmsprop_losses.png)
+![Loss Functions](data/imgs/a6/2_5_rmsprop_g.png)
 
 ### Experimenting with Other Shapes
 
