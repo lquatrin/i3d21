@@ -24,15 +24,15 @@ Now using plotly, i first started by rendering the mesh using the method **plot_
 
 <img src="imgs/a5/3_1.png" width="60%">
 
-Plotly has an advantage of giving an interactive rendering, but does not show the textures when using UV mapping. However, it is possible to define a color for each vertex. Here, i made an adjustment to the mesh setting **TexturesVertex** object using randomized values:
+Plotly has an advantage of providing an interactive rendering, but does not show the textures when using UV mapping. However, it is possible to define a color for each vertex. Here, i made an adjustment to the mesh setting a **TexturesVertex** object using randomized values:
 
 <img src="imgs/a5/3_2.png" width="60%">
 
-Then, i made a last experiment showing two models. If we try to put them in a same plot, they will overlap. Using the method **plot_scene**, we can create two subplots to  visualize each mesh:
+Then, i tried to show two models in a same plot. Since they are centered at the origin, they will overlap. Using the method **plot_scene**, we can create two subplots to  visualize each mesh:
 
 <img src="imgs/a5/3_3.png" width="50%"><img src="imgs/a5/3_4.png" width="50%">
 
-It is also possible to define a batch of meshes, by adding them as a list of tensors:
+In a last experiment, i created a batch of meshes, by adding them as a list of tensors. In this case, i used 10 models starting at 250:
 
 ```python
 model_verts_l = [shapenet_dataset[i+250]['verts'].to(device) for i in range(10)]
@@ -43,15 +43,13 @@ model_textures_l = TexturesVertex(verts_features=model_textures_l_data)
 model_meshes_l_10 = Meshes(verts=model_verts_l, faces=model_faces_l, textures=model_textures_l)
 ```
 
-Then, using the method **plot_batch_individually**, it is possible to visualize the current batch of meshes:
+In this case, i use the method **plot_batch_individually** with 5 columns per line to visualize the current batch of meshes:
 
 <img src="imgs/a5/e_2.png" width="100%">
 
 ### Creating new meshes using parametric models
 
-In the last part of this assignment, i experiment the generation of new meshes using parametric functions, creating new meshes by applying a surface of revolution.
-
-For each mesh, a curve is rotated around the Y-axis, with each vertex being defined at:
+In the last part of this assignment, i experimented the generation of new meshes using parametric functions, by applying a surface of revolution. For each mesh, a curve is rotated around the Y-axis, with each vertex being defined by:
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;v_{pos}=[r(v)%20sin(u%202%20\pi),%20v,%20r(v)%20cos(u%202%20\pi)]" />
 
