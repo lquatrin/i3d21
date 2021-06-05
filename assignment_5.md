@@ -93,7 +93,7 @@ In this case, it generates different results:
 
 <img src="imgs/a5/e_3_a3_1.png" width="50%">
 
-#### Vase (1)
+#### Vase
 
 The last results consisted on using the bezier library to generate a curve similar to a vase. Since i'm using the colab environment, an older version was installed since it conflicts with the numpy version used with pytorch3d ("2020.1.14" version). The first curve uses the following 5 control points: 
 
@@ -115,30 +115,6 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 <img src="imgs/a5/e_3_u3_1.png" width="50%">
 
 
-#### Vase (2)
-
-In this last result, we modify one of the values used to generate the bezier curve:
-
-```python
-[0.0, 0.25,  0.5, 0.75, 1.0],
-[0.1, 1.0 ,  0.2, 0.0 , 0.3],
-```
-
-In this case, it generates the following mesh:
-
-<img src="imgs/a5/e_3_v.png" width="40%"><img src="imgs/a5/e_3_v1.png" width="50%">
-
-In this case, the UV coordinates are a little different from the previous mesh:
-
-<img src="imgs/a5/e_3_v2_0.png" width="30%"><img src="imgs/a5/e_3_v2_1.png" width="30%">
-
-Using the **MeshRenderer**, we can visualize the mesh with UV mapping:
-
-<img src="imgs/a5/e_3_v3.png" width="50%">
-
-<img src="imgs/a5/e_3_v3_1.png" width="50%">
-
-
 ### Point cloud to visualize meshes with TextureUV
 
 It is not possible to visualize the mesh with plotly when using TexturesUV. However, there is an alternative by generating a point cloud, using the method **sample_points_from_meshes**. Here, i made some additional visualization with the generated meshes using point clouds:
@@ -148,8 +124,6 @@ It is not possible to visualize the mesh with plotly when using TexturesUV. Howe
 <img src="imgs/a5/e_3_a4.png" width="50%">
   
 <img src="imgs/a5/e_3_u4.png" width="50%">
-
-<img src="imgs/a5/e_3_v4.png" width="50%">
 
 ### References
 
