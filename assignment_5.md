@@ -18,19 +18,19 @@ It is possible to note several challenges encountered when determining a vast da
 
 In this assignment, it was used a subset of ShapeNet containing 329 models. The ShapeNet dataloader has its own render function to visualize the models, but in this assignment, the idead was to focus on visualizations with Plotly. Here we have an example showing some of the models using the ShapeNet's renderer:
 
-<img src="imgs/a5/shapenet_render.png" width="100%">
+<img src="data/imgs/a5/shapenet_render.png" width="100%">
 
 Now using plotly, i first started by rendering the mesh using the method **plot_scene**:
 
-<img src="imgs/a5/3_1.png" width="60%">
+<img src="data/imgs/a5/3_1.png" width="60%">
 
 Plotly has an advantage of providing an interactive rendering, but does not show the textures when using UV mapping. However, it is possible to define a color for each vertex. Here, i made an adjustment to the mesh setting a **TexturesVertex** object using randomized values:
 
-<img src="imgs/a5/3_2.png" width="60%">
+<img src="data/imgs/a5/3_2.png" width="60%">
 
 Then, i tried to show two models in a same plot. Since they are centered at the origin, they will overlap. Using the method **plot_scene**, we can create two subplots to  visualize each mesh:
 
-<img src="imgs/a5/3_3.png" width="50%"><img src="imgs/a5/3_4.png" width="50%">
+<img src="data/imgs/a5/3_3.png" width="50%"><img src="data/imgs/a5/3_4.png" width="50%">
 
 In a last experiment, i created a batch of meshes, by adding them as a list of tensors. In this case, i used 10 models starting at 250:
 
@@ -45,7 +45,7 @@ model_meshes_l_10 = Meshes(verts=model_verts_l, faces=model_faces_l, textures=mo
 
 In this case, i use the method **plot_batch_individually** with 5 columns per line to visualize the current batch of meshes:
 
-<img src="imgs/a5/e_2.png" width="100%">
+<img src="data/imgs/a5/e_2.png" width="100%">
 
 ### Creating new meshes using parametric models
 
@@ -63,15 +63,15 @@ with dy/dx being evaluated using finite differences. To compute the distance fro
 
 The first experiment was creating a cilinder mesh. In this case, the function consists on a constant value:
 
-<img src="imgs/a5/e_3_c.png" width="40%"><img src="imgs/a5/e_3_c1.png" width="50%">
+<img src="data/imgs/a5/e_3_c.png" width="40%"><img src="data/imgs/a5/e_3_c1.png" width="50%">
 
 Using the method **texturesuv_image_matplotlib**, it possible to check the UV coordinates defined for each vertex, using both strategies:
 
-<img src="imgs/a5/e_3_c2_0.png" width="30%"><img src="imgs/a5/e_3_c2_1.png" width="30%">
+<img src="data/imgs/a5/e_3_c2_0.png" width="30%"><img src="data/imgs/a5/e_3_c2_1.png" width="30%">
 
 Since the function is constant, both strategies generates the same result. Since we're defining a **TexturesUV** for each mesh, a **MeshRenderer** is required to visualize the current object with texture data: 
 
-<img src="imgs/a5/e_3_c3.png" width="50%">
+<img src="data/imgs/a5/e_3_c3.png" width="50%">
 
 #### Arc
 
@@ -79,17 +79,17 @@ The second function is an arc defined by the following expression:
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;s(x)=1.0-(2.0\,(x-0.5))^2\" />
 
-<img src="imgs/a5/e_3_a.png" width="40%"><img src="imgs/a5/e_3_a1.png" width="50%">
+<img src="data/imgs/a5/e_3_a.png" width="40%"><img src="data/imgs/a5/e_3_a1.png" width="50%">
 
 Unlike the cilinder, we can note the UV coordinates defined for each vertex are different from each approach:
 
-<img src="imgs/a5/e_3_a2_0.png" width="30%"><img src="imgs/a5/e_3_a2_1.png" width="30%">
+<img src="data/imgs/a5/e_3_a2_0.png" width="30%"><img src="data/imgs/a5/e_3_a2_1.png" width="30%">
 
 Then, it generated different rendering results:
 
-<img src="imgs/a5/e_3_a3.png" width="50%">
+<img src="data/imgs/a5/e_3_a3.png" width="50%">
 
-<img src="imgs/a5/e_3_a3_1.png" width="50%">
+<img src="data/imgs/a5/e_3_a3_1.png" width="50%">
 
 #### Vase
 
@@ -100,17 +100,17 @@ In the last result, i did use the bezier library to generate a curve similar to 
 [0.1, 2.0 ,  0.2, 0.0 , 0.3]
 ```
 
-<img src="imgs/a5/e_3_u.png" width="40%"><img src="imgs/a5/e_3_u1.png" width="50%">
+<img src="data/imgs/a5/e_3_u.png" width="40%"><img src="data/imgs/a5/e_3_u1.png" width="50%">
 
 Visualizing the texture map, we can note how the curve length differs near v = 0:
 
-<img src="imgs/a5/e_3_u2_0.png" width="30%"><img src="imgs/a5/e_3_v2_1.png" width="30%">
+<img src="data/imgs/a5/e_3_u2_0.png" width="30%"><img src="data/imgs/a5/e_3_v2_1.png" width="30%">
 
 Using the **MeshRenderer**, the following results were generated using two different viewpoints:
 
-<img src="imgs/a5/e_3_u3.png" width="50%">
+<img src="data/imgs/a5/e_3_u3.png" width="50%">
 
-<img src="imgs/a5/e_3_u3_1.png" width="50%">
+<img src="data/imgs/a5/e_3_u3_1.png" width="50%">
 
 
 ### Point cloud to visualize meshes with TextureUV
@@ -118,11 +118,11 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 As we saw before, it is not possible to visualize the mesh with plotly when using TexturesUV. However, there is an alternative by generating a point cloud, using the method **sample_points_from_meshes**. Here, i made additional visualizations with the point clouds sampled from each mesh:
 
 <p align="center">
-<img src="imgs/a5/e_3_c4.png" width="50%">
+<img src="data/imgs/a5/e_3_c4.png" width="50%">
 
-<img src="imgs/a5/e_3_a4.png" width="50%">
+<img src="data/imgs/a5/e_3_a4.png" width="50%">
   
-<img src="imgs/a5/e_3_u4.png" width="50%">
+<img src="data/imgs/a5/e_3_u4.png" width="50%">
 </p>
   
 ### References
