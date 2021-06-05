@@ -81,11 +81,11 @@ The second function is an arc defined by the following expression:
 
 <img src="imgs/a5/e_3_a.png" width="40%"><img src="imgs/a5/e_3_a1.png" width="50%">
 
-Unlike the cilinder, we can note the UV coordinates defined for each vertex being different from each approach:
+Unlike the cilinder, we can note the UV coordinates defined for each vertex are different from each approach:
 
 <img src="imgs/a5/e_3_a2_0.png" width="30%"><img src="imgs/a5/e_3_a2_1.png" width="30%">
 
-In this case, it generates different results:
+Then, it generated different rendering results:
 
 <img src="imgs/a5/e_3_a3.png" width="50%">
 
@@ -93,7 +93,7 @@ In this case, it generates different results:
 
 #### Vase
 
-The last results consisted on using the bezier library to generate a curve similar to a vase. Since i'm using the colab environment, an older version was installed since it conflicts with the numpy version used with pytorch3d ("2020.1.14" version). The first curve uses the following 5 control points: 
+In the last result, i did use the bezier library to generate a curve similar to a vase. Since i'm using the colab environment, an older version was installed since it conflicts with the numpy version used with pytorch3d ("2020.1.14" version). The curve uses the following 5 control points: 
 
 ```python
 [0.0, 0.25,  0.5, 0.75, 1.0]
@@ -102,7 +102,7 @@ The last results consisted on using the bezier library to generate a curve simil
 
 <img src="imgs/a5/e_3_u.png" width="40%"><img src="imgs/a5/e_3_u1.png" width="50%">
 
-Visualizing the texture map, we can note how the curve length differs when reaching v = 0:
+Visualizing the texture map, we can note how the curve length differs near v = 0:
 
 <img src="imgs/a5/e_3_u2_0.png" width="30%"><img src="imgs/a5/e_3_v2_1.png" width="30%">
 
@@ -115,7 +115,7 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 
 ### Point cloud to visualize meshes with TextureUV
 
-It is not possible to visualize the mesh with plotly when using TexturesUV. However, there is an alternative by generating a point cloud, using the method **sample_points_from_meshes**. Here, i made additional visualizations with the generated meshes using point clouds:
+As we saw before, it is not possible to visualize the mesh with plotly when using TexturesUV. However, there is an alternative by generating a point cloud, using the method **sample_points_from_meshes**. Here, i made additional visualizations with the point clouds sampled from each mesh:
 
 <p align="center">
 <img src="imgs/a5/e_3_c4.png" width="50%">
