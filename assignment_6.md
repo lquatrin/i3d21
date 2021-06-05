@@ -6,7 +6,7 @@
 
 ## Assignment 6 - Deform a source mesh to form a target mesh using 3D loss functions
 
-In this assignment, the objective was learn how to deform an initial shape to fit a target shape. We start by using a sphere to deform into a target mesh, using an optimization procedure to offset each vertex at each step, making it closer to the target mesh. To be able to do that, we use different PyTorch3D mesh loss functions and evaluate the optimized results.
+In this assignment, the objective was learn how to deform an initial shape to fit a target shape. We start by using a sphere to deform into a target mesh, using an optimization procedure to offset each vertex at each step, making it closer to the target mesh. To be able to do that, we use different PyTorch3D mesh loss functions and evaluate the optimized results. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/blob/main/code/a6/Assignment6.ipynb).
 
 We use the MeshLab system to better visualize the generated meshes.
 
