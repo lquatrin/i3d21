@@ -43,7 +43,7 @@ model_textures_l = TexturesVertex(verts_features=model_textures_l_data)
 model_meshes_l_10 = Meshes(verts=model_verts_l, faces=model_faces_l, textures=model_textures_l)
 ```
 
-Then, using the method **plot_batch_individually**, we're able to visualize the current batch of meshes:
+Then, using the method **plot_batch_individually**, it is possible to visualize the current batch of meshes:
 
 <img src="imgs/a5/e_2.png" width="100%">
 
