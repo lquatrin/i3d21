@@ -35,7 +35,7 @@ w_laplacian = 0.10
 
 And here we have the sphere deformed into a dolphin given the result from the optimization procedure:
 
-![Predicted and target Mesh](imgs/a6/c_dolphin.png)
+![Predicted and target Mesh](data/imgs/a6/2_2_meshes.png)
 
 Using MeshLab, we can compare the resulting meshes:
 
