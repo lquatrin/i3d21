@@ -6,7 +6,7 @@
 
 ## Assignment 7 - Render Point Clouds and Meshes
 
-In this assignment, the idea is to practice operations with 3D meshes and point clouds using the PyTorch3D.
+In this assignment, the idea is to practice operations with 3D meshes and point clouds using the PyTorch3D. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/blob/main/code/a7/Assignment7.ipynb).
 
 ### Loading a textured mesh and visualizing its texture map
 
