@@ -115,7 +115,7 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 
 ### Point cloud to visualize meshes with TextureUV
 
-It is not possible to visualize the mesh with plotly when using TexturesUV. However, there is an alternative by generating a point cloud, using the method **sample_points_from_meshes**. Here, i made some additional visualization with the generated meshes using point clouds:
+It is not possible to visualize the mesh with plotly when using TexturesUV. However, there is an alternative by generating a point cloud, using the method **sample_points_from_meshes**. Here, i made additional visualizations with the generated meshes using point clouds:
 
 <p align="center">
 <img src="imgs/a5/e_3_c4.png" width="50%">
