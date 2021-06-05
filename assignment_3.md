@@ -54,19 +54,19 @@ The first camera is initialized with the trivial case, and the others are initia
 
 For the first result, using 2000 iterations, we reached a result with a camera_distance = 4.597e-03 at the last iteration:
 
-![Bundle after optimization](imgs/a3/camera_std.png)
+![Bundle after optimization](data/imgs/a3/camera_std.png)
 
 with the cameras in purple being our ground truth, and the orange cameras being the approximated ones. The graph of loss vs iterations shows how the distance between the cameras are decreasing during the optimization loop. We can see that in the first steps, the accumulated loss is higher, since the cameras are initialized with random values:
 
-![Loss per iteration](imgs/a3/loss.png)
+![Loss per iteration](data/imgs/a3/loss.png)
 
 Using the Cow Mesh, it is possible to generate a qualitative comparison between the optimized cameras with the ground truth. First we have the images generated using the initial state of the cameras:
 
-<img src="imgs/a3/init.png" width="40%">
+<img src="data/imgs/a3/init.png" width="40%">
 
 Now comparing the Ground truth, with the optimzed cameras:
 
-<img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/approx.png" width="50%">
+<img src="data/imgs/a3/gt.png" width="50%"><img src="data/imgs/a3/approx.png" width="50%">
 
 We can note that the first camera does not change during the optimization process, since it is the trivial case. There is some small differences between the ground truth and the optimized cameras. Take the image from the second row and third column as an example: we can note how it generated a slightly different image.
 
@@ -74,23 +74,23 @@ We can note that the first camera does not change during the optimization proces
 
 To improve the approximation, i tried to not randomly initialize the rotation and translation of the cameras, but making all start as the trivial case. It seemed to be a better initial guess instead of just using random values. In this case, running the same optimization loop, i was able to achieve a result of camera_distance = 7.092e-08 at the last iteration:
 
-![Cameras with trivial initialization](imgs/a3/camera_init.png)
+![Cameras with trivial initialization](data/imgs/a3/camera_init.png)
 
 We can see by the images generated after this optmization are closer to the ground truth. Here, we have first the results generated with the ground truth, then using the trivial initialization:
 
-<img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/images_init.png" width="50%">
+<img src="data/imgs/a3/gt.png" width="50%"><img src="data/imgs/a3/images_init.png" width="50%">
 
 Lastly, i made an additional experiment representing each rotation as a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle representation for rotations. However, the quaternions were transformed back to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. I also apply the trivial initialization for all cameras, but in this case, each rotation is initialized with the identity quaternion, which means no rotation. I was able to reach a camera_distance = 4.957e-08 as the final loss:
 
-![Cameras with quaternions](imgs/a3/camera_quat.png)
+![Cameras with quaternions](data/imgs/a3/camera_quat.png)
 
 We can see the gerenated images using the quaternion representation are also similar to the ground truth, since we achieved a good result. As shown before, we first have the results generated with the ground truth, and then using the quaternion representation:
 
-<img src="imgs/a3/gt.png" width="50%"><img src="imgs/a3/images_quat.png" width="50%">
+<img src="data/imgs/a3/gt.png" width="50%"><img src="data/imgs/a3/images_quat.png" width="50%">
 
 In this case, i also think some modifications could be done in the optimization loop to compare and compute the relative transformations with quaternions properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
 
-![Computed Losses](imgs/a3/all_losses.png)
+![Computed Losses](data/imgs/a3/all_losses.png)
 
 ### References
 
