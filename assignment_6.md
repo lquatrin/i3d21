@@ -14,7 +14,7 @@ We use the MeshLab system to better visualize the generated meshes.
 
 To speed up the optimization process, it is important to normalize the vertices, centering the mesh at the origin by translating its mean position, and scaling all vertices to stay in the interval [-1, 1]. Then we have a normalized sphere as the source mesh, and a normalized dolphin as the target:
 
-![Source and target Mesh](imgs/a6/source_target.png)
+![Source and target Mesh](data/imgs/a6/1_2_meshes.png)
 
 ### Deforming a Sphere mesh to a Dolphin
 
@@ -22,7 +22,7 @@ The optimization procedure wants to learn how to offset the vertices of the sour
 
 After 5000 iterations, it generates the following result, compared with a point cloud sampled from the ground truth mesh:
 
-![Predicted Dolphin](imgs/a6/p_dolphin_point_cloud.png) ![Target Dolphin](imgs/a6/dolphin_point_cloud.png)
+![Predicted Dolphin](data/imgs/a6/2.png) ![Target Dolphin](data/imgs/a6/1_3.png)
 
 Using different weights for each loss function:
 
