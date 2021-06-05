@@ -53,7 +53,9 @@ Then, we made other two tests checking if we're able to reach a good result with
 
 It is possible to note some non well-formed triangles in the first mesh, generated with 2500 iterations.
 
-The current results were achieved considering the linear combination of four losses. Considering only the camfer distance, it also generates a good approximation of the point cloud:
+#### Changing the loss weights
+
+The current results were achieved considering the linear combination of four losses. Considering only the chamfer distance, it also generates a good approximation of the point cloud:
 
 ![Chamfer predicter point cloud](data/imgs/a6/2_4.png)
 
@@ -92,13 +94,15 @@ However, when i put to meshlab, some bad formed triangles appeared:
 
 #### Using other optimizers
 
-All the experiments were generated using the SGD optimizer. I also tested the Adam and RMSprop to apply deformation to the mesh. For both experiments, i set a learning rate equals to 0.01.
+All the experiments were generated using the SGD optimizer. I also tested the Adam and RMSprop to apply deformation to the mesh. For both experiments, i noticed that both methods required more steps to show some convergence. So, in both experiments, i set a learning rate equals to 0.01.
 
-Adam Results:
+I first tested the Adam optimizer and i was able to find the following result, with the loss per iteration graph:
 
-![Adam Result](data/imgs/a6/2_5_adam.png)
+<img src="data/imgs/a6/2_5_adam.png" width="30%"><img src="data/imgs/a6/2_5_adam_g.png" width="40%">
 
-![Loss Functions](data/imgs/a6/2_5_adam_g.png)
+One of the things that i noticed is how the normal loss has some peaks even after 4000 iterations. When i put to meshlab, i could see some triangles not being smoothed in the mesh:
+
+<img src="data/imgs/a6/meshlab/2_5_adam.png" width="30%">
 
 RMSprop Results:
 
