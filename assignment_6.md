@@ -37,7 +37,7 @@ And here we have the sphere deformed into a dolphin given the result from the op
 
 ![Predicted and target Mesh](data/imgs/a6/2_2_meshes.png)
 
-Using MeshLab, we can compare the resulting meshes:
+Using MeshLab, we can compare the predicted mesh with the ground truth:
 
 <img src="data/imgs/a6/meshlab/2_2_predicted.png" width="30%"><img src="data/imgs/a6/meshlab/2_2_target.png" width="30%"><img src="data/imgs/a6/meshlab/2_2_diff.png" width="30%">
 
