@@ -71,7 +71,7 @@ Using the method **texturesuv_image_matplotlib**, it possible to check the UV co
 
 <img src="imgs/a5/e_3_c2_0.png" width="30%"><img src="imgs/a5/e_3_c2_1.png" width="30%">
 
-Since the cilinder is a constant value, both strategies generates the same result. Then, since we're using UV mapping, a **MeshRenderer** is required to visualize the current mesh: 
+Since the function used to build a cilinder is a constant value, both strategies generates the same result. Then, since we're using UV mapping, a **MeshRenderer** is required to visualize the current mesh with texture data: 
 
 <img src="imgs/a5/e_3_c3.png" width="50%">
 
