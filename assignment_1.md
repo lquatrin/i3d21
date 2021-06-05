@@ -6,7 +6,7 @@
 
 ## Assignment 1 - Python / Collab and MNIST
 
-In this first assignment, the objective was to get more familiar with pytorch and google colab environment. So, i spent some time reading the documentation to be able to understand how to handle tensors with Pytorch and how to create a simple neural network to perform digit recognition.
+In this first assignment, the objective was to get more familiar with pytorch and google colab environment. So, i spent some time reading the documentation to be able to understand how to handle tensors with Pytorch and how to create a simple neural network to perform digit recognition. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/blob/main/code/a1/Assignment_1.ipynb).
 
 ### PyTorch Tensors
 
