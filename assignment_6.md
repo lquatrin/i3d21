@@ -55,13 +55,13 @@ Then, i made other two tests checking if it is possible to reach a good result w
 
 The current results were achieved considering the linear combination of four losses. Considering only the chamfer distance, it also generates a good approximation of the point cloud. However, the mesh is compromised, since the optimization only considers the distance between points. Here, we can see the point cloud optimized and the mesh visualized on meshlab:
 
-<img src="data/imgs/a6/2_4.png" width="40%"><img src="data/imgs/a6/meshlab/2_4.png" width="40%">
+<img src="data/imgs/a6/2_4.png" width="40%"><img src="data/imgs/a6/meshlab/2_4.png" width="60%">
 
 Changing the parameters of each loss function may not result in a solution. Using a higher value for **mesh_normal_consistency** may deform to much the mesh for each optimization loop, ending in a result far from the target:
 
 ![Predicted mesh with 0.5 normal consistency](data/imgs/a6/e_1_w1.png)
 
-Using the following weights:
+Weights used in this experiment:
 
 ```python
 w_chamfer   = 1.00
@@ -70,11 +70,11 @@ w_normal    = 0.50
 w_laplacian = 0.10
 ``` 
 
-We also experiment to decrease the weight of the **mesh_edge_loss**, to prevent a high edge length regularization. In this case, we wan to check if using a lower weigth in this loss function can better approximate the extremities of the dolphin. After running the optimization loop, i got the following result:
+I also experiment decreasing the weight of the **mesh_edge_loss**, to prevent a high edge length regularization. In this case, we wan to check if using a lower weigth in this loss function can better approximate the extremities of the dolphin. However, when i put to meshlab, some triangles with swapped faces appeared, as we can see in the following result:
 
-![Predicted mesh with 0.5 normal consistency](data/imgs/a6/e_1_w2.png)
+<img src="data/imgs/a6/e_1_w2.png" width="40%"><img src="data/imgs/a6/meshlab/e_1_w2.png" width="60%">
 
-Using the following weights:
+Weights used in this experiment:
 
 ```python
 w_chamfer   = 1.00
@@ -82,9 +82,6 @@ w_edge      = 0.10
 w_normal    = 0.01
 w_laplacian = 0.10
 ``` 
-However, when i put to meshlab, some bad formed triangles appeared:
-
-<img src="data/imgs/a6/meshlab/e_1_w2.png" width="30%">
 
 #### Using other optimizers
 
