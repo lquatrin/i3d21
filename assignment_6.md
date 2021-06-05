@@ -20,7 +20,7 @@ To speed up the optimization process, it is important to normalize the vertices,
 
 The optimization procedure wants to learn how to offset the vertices of the source mesh to make it closer to the target mesh. To achieve this, the distance between the predicted and the target meshes are computed. The chamfer distance is used by sampling a point cloud from each mesh at each step of the optimization loop. In addition, other 3 loss functions were added into the loss function to ensure smoothness of the predicted mesh: **mesh_edge_length**, **mesh_normal_consistency**, and **mesh_laplacian_smoothing** [1].
 
-After 5000 iterations, it generates the following result, compared with a point cloud sampled from the ground truth mesh:
+After 5000 iterations, with a learning rate of 1.0 and momentum 0.9, it generates the following result, compared with a point cloud sampled from the ground truth mesh:
 
 ![Predicted Dolphin](data/imgs/a6/2.png) ![Target Dolphin](data/imgs/a6/1_3.png)
 
@@ -85,7 +85,7 @@ w_laplacian = 0.10
 
 #### Using other optimizers
 
-All the experiments were generated using the SGD optimizer. I also tested the Adam and RMSprop to apply deformation to the mesh. For both experiments, i noticed that both methods required more steps to show some convergence. So, in both experiments, i set a learning rate equals to 0.01.
+All the experiments were generated using the SGD optimizer. I also tested the Adam and RMSprop to apply deformation to the mesh. For both experiments, i noticed that both methods requires a lower learning rate to be able to convergence to some result. So, in these experiments, i set a learning rate equals to 0.01.
 
 I first tested the Adam optimizer and i was able to find the following result, with the loss per iteration graph:
 
