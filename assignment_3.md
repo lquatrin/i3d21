@@ -74,7 +74,7 @@ We can note that the first camera does not change during the optimization proces
 
 To improve the approximation, i tried to not randomly initialize the rotation and translation of the cameras, but making all start as the trivial case. It seemed to be a better initial guess instead of just using random values. In this case, running the same optimization loop, i was able to achieve a result of camera_distance = 7.092e-08 at the last iteration:
 
-![Cameras with trivial initialization](imgs/a3/camera_init.png)
+![Cameras with trivial initialization](data/imgs/a3/camera_init.png)
 
 We can see by the images generated after this optmization are closer to the ground truth. Here, we have first the results generated with the ground truth, then using the trivial initialization:
 
@@ -82,7 +82,7 @@ We can see by the images generated after this optmization are closer to the grou
 
 Lastly, i made an additional experiment representing each rotation as a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle representation for rotations. However, the quaternions were transformed back to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. I also apply the trivial initialization for all cameras, but in this case, each rotation is initialized with the identity quaternion, which means no rotation. I was able to reach a camera_distance = 4.957e-08 as the final loss:
 
-![Cameras with quaternions](imgs/a3/camera_quat.png)
+![Cameras with quaternions](data/imgs/a3/camera_quat.png)
 
 We can see the gerenated images using the quaternion representation are also similar to the ground truth, since we achieved a good result. As shown before, we first have the results generated with the ground truth, and then using the quaternion representation:
 
