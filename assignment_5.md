@@ -153,4 +153,4 @@ It is not possible to visualize the mesh with plotly when using TexturesUV. Howe
 
 ### References
 
-[1] ShapeNet: An Information-Rich 3D Model Repository
+[1] Chang, A.X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z., Savarese, S., Savva, M., Song, S., Su, H., Xiao, J., Yi, L., & Yu, F. (2015). ShapeNet: An Information-Rich 3D Model Repository. ArXiv, abs/1512.03012. (URL: https://arxiv.org/abs/1512.03012).
