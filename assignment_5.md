@@ -119,12 +119,14 @@ Using the **MeshRenderer**, the following results were generated using two diffe
 
 It is not possible to visualize the mesh with plotly when using TexturesUV. However, there is an alternative by generating a point cloud, using the method **sample_points_from_meshes**. Here, i made some additional visualization with the generated meshes using point clouds:
 
+<p align="center">
 <img src="imgs/a5/e_3_c4.png" width="50%">
 
 <img src="imgs/a5/e_3_a4.png" width="50%">
   
 <img src="imgs/a5/e_3_u4.png" width="50%">
-
+</p>
+  
 ### References
 
 [1] Chang, A.X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z., Savarese, S., Savva, M., Song, S., Su, H., Xiao, J., Yi, L., & Yu, F. (2015). ShapeNet: An Information-Rich 3D Model Repository. ArXiv, abs/1512.03012. (URL: https://arxiv.org/abs/1512.03012).
