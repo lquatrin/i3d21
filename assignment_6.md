@@ -53,13 +53,9 @@ Then, i made other two tests checking if it is possible to reach a good result w
 
 #### Changing the loss weights
 
-The current results were achieved considering the linear combination of four losses. Considering only the chamfer distance, it also generates a good approximation of the point cloud:
+The current results were achieved considering the linear combination of four losses. Considering only the chamfer distance, it also generates a good approximation of the point cloud. However, the mesh is compromised, since the optimization only considers the distance between points. Here, we can see the point cloud optimized and the mesh visualized on meshlab:
 
-![Chamfer predicter point cloud](data/imgs/a6/2_4.png)
-
-However, the mesh integrity is compromised, since the optimization only considers the distance between points: 
-
-<img src="data/imgs/a6/meshlab/2_4.png" width="40%">
+<img src="data/imgs/a6/2_4.png" width="40%"><img src="data/imgs/a6/meshlab/2_4.png" width="40%">
 
 Changing the parameters of each loss function may not result in a solution. Using a higher value for **mesh_normal_consistency** may deform to much the mesh for each optimization loop, ending in a result far from the target:
 
