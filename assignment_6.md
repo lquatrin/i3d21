@@ -63,7 +63,7 @@ However, the mesh integrity is compromised, since the optimization only consider
 
 Changing the parameters of each loss function may not result in a solution. Using a higher value for **mesh_normal_consistency** may deform to much the mesh for each optimization loop, ending in a result far from the target:
 
-![Predicted mesh with 0.5 normal consistency](imgs/a6/e_1_dolphin_normal.png)
+![Predicted mesh with 0.5 normal consistency](data/imgs/a6/e_1_w1.png)
 
 The above image was generated using the following weights:
 
@@ -74,9 +74,13 @@ w_normal    = 0.50
 w_laplacian = 0.10
 ``` 
 
-We also experiment to decrease the weight of the **mesh_edge_loss**, to prevent a high edge length regularization. In this case, we wan to check if using a lower weigth in this loss function can better approximate the extremities of the dolphin. We compare the result with the standard weigths and with the target mesh:
+We also experiment to decrease the weight of the **mesh_edge_loss**, to prevent a high edge length regularization. In this case, we wan to check if using a lower weigth in this loss function can better approximate the extremities of the dolphin. After running the optimization loop, i got the following result:
 
-<img src="imgs/a6/e_1_predicted.png" width="30%"><img src="imgs/a6/e_1_standard.png" width="30%"><img src="imgs/a6/e_1_target.png" width="30%">
+![Predicted mesh with 0.5 normal consistency](data/imgs/a6/e_1_w2.png)
+
+However, when i put to meshlab, some bad formed triangles appeared:
+
+<img src="data/imgs/a6/meshlab/e_1_w2.png" width="30%">
 
 We can see the rostrum slightly better in this result. The above image was generated using the following weights:
 
