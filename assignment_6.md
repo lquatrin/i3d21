@@ -98,17 +98,19 @@ All the experiments were generated using the SGD optimizer. I also tested the Ad
 
 I first tested the Adam optimizer and i was able to find the following result, with the loss per iteration graph:
 
-<img src="data/imgs/a6/2_5_adam.png" width="30%"><img src="data/imgs/a6/2_5_adam_g.png" width="40%">
+<img src="data/imgs/a6/2_5_adam.png" width="30%"><img src="data/imgs/a6/2_5_adam_g.png" width="70%">
 
-One of the things that i noticed is how the normal loss has some peaks even after 4000 iterations. When i put to meshlab, i could see some triangles not being smoothed in the mesh:
+One of the things that i noticed is how the normal loss has some peaks even after 4000 iterations. Using meshlab, we can see that some triangles are not well smoothed in the mesh:
 
-<img src="data/imgs/a6/meshlab/2_5_adam.png" width="30%">
+<img src="data/imgs/a6/meshlab/2_5_adam.png" width="50%">
 
-RMSprop Results:
+Then, i tested the RMSprop optimizer. In this case, i noticed that the normal loss did not converge well over the iterations:
 
-![RMSprop Result](data/imgs/a6/2_5_rmsprop.png)
+<img src="data/imgs/a6/2_5_rmsprop.png" width="30%"><img src="data/imgs/a6/2_5_rmsprop_g.png" width="70%">
 
-![Loss Functions](data/imgs/a6/2_5_rmsprop_g.png)
+which ended up being reflected in the generated mesh:
+
+<img src="data/imgs/a6/meshlab/2_5_rmsprop.png" width="50%">
 
 ### Experimenting with Other Shapes
 
