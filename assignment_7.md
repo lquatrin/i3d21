@@ -103,9 +103,7 @@ There are a few parameters that can be modified, such as background color and th
 #### Pulsar Backend
 
 The pulsar backend [1] is also available in PyTorch3D. In this case, the scene is represented by a set of spheres, each being defined by a position, a radius, an opacity and a feature vector, which can correspond to lighting properties or an abstract
-feature representation for use in a neural network. The renderer has a parameter called "gamma", which TODO, and a bg_col parameter which defined the background color:
-
-Here, we have a first imagem using Pulsar:
+feature representation for use in a neural network. The renderer has a parameter called "gamma", which controls the blending functions. a small value leads to hard blending, and a large value leads to soft blending. According to the authors, they allow values in the interval [1e-5, 1] to maintain numerical stability. Lastly, a "bg_col" parameter can also be used to define the background color. Here, we have a first image using Pulsar:
 
 <img src="data/imgs/a7/5_3.png" width="30%">
 
