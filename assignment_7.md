@@ -69,11 +69,11 @@ Normalizing them with **(normals+1.0) * 0.5**, i got the following result:
 
 ### Moving the scene
 
-As mentioned before, we can change the light source or material parameter to update the current renderer. It is also possible to change the current camera. For each new one, we use the **look_at_view_transform** method, which receives 3 parameters: the distance of the camera from the object, the elevation and the azimutal angle. Changing these parameters will generate different images of the current mesh:
+I first experimented changing the light and material parameters to update the current renderer. Now, we want to move the scene, changing the current camera or moving the current mesh. First, i changed the camera by modifying the parameters of the method **look_at_view_transform**, which receives 3 parameters: the camera distance, the elevation and the azimutal angle. Changing these parameters will generate different images of the current mesh:
 
 <img src="data/imgs/a7/3_1.png" width="30%">
 
-It is also possible to move the current object. Here, we create a new mesh by passing a new list of vertices rotated around the Y-axis:
+Then, i tried to rotate the mesh, by using the **Rotate** method [2], which creates a Transform3d that can be applied to a set of points. Here, i create a new mesh by passing a new list of vertices rotated around the Y-axis:
 
 ```python
 from pytorch3d.transforms import axis_angle_to_matrix
@@ -135,7 +135,7 @@ There are a few parameters that can be modified, such as background color and th
 
 #### Pulsar Backend
 
-The pulsar backend [2] is also available in PyTorch3D. In this case, the scene is represented by a set of spheres, each being defined by a position, a radius, an opacity and a feature vector, which can correspond to lighting properties or an abstract
+The pulsar backend [3] is also available in PyTorch3D. In this case, the scene is represented by a set of spheres, each being defined by a position, a radius, an opacity and a feature vector, which can correspond to lighting properties or an abstract
 feature representation for use in a neural network. The renderer has a parameter called "gamma", which controls the blending functions. a small value leads to hard blending, and a large value leads to soft blending. According to the authors, they allow values in the interval [1e-5, 1] to maintain numerical stability. Lastly, a "bg_col" parameter can also be used to define the background color. Here, we have a first image using Pulsar:
 
 <img src="data/imgs/a7/5_3.png" width="30%">
@@ -161,5 +161,7 @@ Finally, using the **plot_batch_individually** method, it is possible to render 
 ### References
 
 [1] PyTorch3D: shader. URL: https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html.
+
+[2] PyTorch3D: transforms. URL: https://pytorch3d.readthedocs.io/en/latest/modules/transforms.html.
 
 [2] Lassner, C. and Zollhöfer, M., “Pulsar: Efficient Sphere-based Neural Rendering”, arXiv e-prints, 2020. URL: https://arxiv.org/pdf/2004.07484.pdf
