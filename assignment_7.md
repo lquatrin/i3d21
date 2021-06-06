@@ -107,10 +107,9 @@ feature representation for use in a neural network. The renderer has a parameter
 
 <img src="data/imgs/a7/5_3.png" width="30%">
 
-Then, i created a batch of pointclouds to visualize with Pulsar at different viewpoints, using the method **image_grid** to visualize them. In this case, it is requires to pass a list of point clouds and a list of gamma values. However, the renderer did not accept a list of background colors, so we set the same value for all rendered images:
+Then, i created a batch of pointclouds to visualize with Pulsar at different viewpoints, using the method **image_grid** to visualize them. In this case, it is requires to pass a list of point clouds and a list of gamma values. However, the renderer did not accept a list of background colors, so we set the same for all rendered images:
 
 <img src="data/imgs/a7/5_3_batch.png" width="30%">
-
 
 ### Plotly visualization of Point Clouds
 
