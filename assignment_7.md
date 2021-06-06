@@ -117,7 +117,7 @@ lights.location = torch.tensor([[0.0, 0.0, -3.0]], device=device)
 images = renderer(double_mesh, cameras=cameras, lights=lights)
 ```
 
-with the following image as result. We can note how the lighting effects are different at each mesh.
+with the following image as result. We can note how the lighting effects are different at each mesh, since they are in the same scene.
 
 <img src="data/imgs/a7/4_2.png" width="30%">
 
