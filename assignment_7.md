@@ -95,7 +95,7 @@ Rotating the object will consequently change the lighting effect, since the ligh
 
 ### Batched Rendering
 
-Using the **look_at_view_transform** method, it is possible to create a batch of different cameras to visualize the mesh at different viewpoints, by passing a 1D tensor with different values:
+Using the **look_at_view_transform** method [3], it is possible to create a batch of different cameras to visualize the mesh at different viewpoints, by passing a 1D tensor with different values:
 
 ![Batch of cows](data/imgs/a7/3_0.png)
 
@@ -129,7 +129,7 @@ Pytorch3D also provide an option to render point clouds, by creating a **PointCl
 
 #### Pulsar Backend
 
-The pulsar backend [3] is also available in PyTorch3D. In this case, the scene is represented by a set of spheres, each being defined by a position, a radius, an opacity and a feature vector, which can correspond to lighting properties or an abstract
+The pulsar backend [4] is also available in PyTorch3D. In this case, the scene is represented by a set of spheres, each being defined by a position, a radius, an opacity and a feature vector, which can correspond to lighting properties or an abstract
 feature representation for use in a neural network. The renderer has a parameter called "gamma", which controls the blending functions. a small value leads to hard blending, and a large value leads to soft blending. According to the authors, they allow values in the interval [1e-5, 1] to maintain numerical stability. Lastly, a "bg_col" parameter can also be used to define the background color. Here, we have a first image using Pulsar:
 
 <img src="data/imgs/a7/5_3.png" width="30%">
@@ -154,8 +154,10 @@ Finally, using the **plot_batch_individually** method, it is possible to render 
 
 ### References
 
-[1] PyTorch3D: shader. URL: https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html.
+[1] PyTorch3D Documentation: shader. URL: https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html.
 
-[2] PyTorch3D: transforms. URL: https://pytorch3d.readthedocs.io/en/latest/modules/transforms.html.
+[2] PyTorch3D Documentation: transforms. URL: https://pytorch3d.readthedocs.io/en/latest/modules/transforms.html.
 
-[2] Lassner, C. and Zollhöfer, M., “Pulsar: Efficient Sphere-based Neural Rendering”, arXiv e-prints, 2020. URL: https://arxiv.org/pdf/2004.07484.pdf
+[3] PyTorch3D Documentation: cameras. URL: https://pytorch3d.readthedocs.io/en/latest/modules/renderer/cameras.html.
+
+[4] Lassner, C. and Zollhöfer, M., “Pulsar: Efficient Sphere-based Neural Rendering”, arXiv e-prints, 2020. URL: https://arxiv.org/pdf/2004.07484.pdf
