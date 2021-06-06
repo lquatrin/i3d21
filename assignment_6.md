@@ -117,23 +117,27 @@ Indeed, if we try to deform the sphere into the mug, we get the following result
 
 <img src="data/imgs/a6/meshlab/3_2.png" width="30%"><img src="data/imgs/a6/meshlab/3.png" width="30%"><img src="data/imgs/a6/meshlab/3_2_diff.png" width="30%">
 
-Also computing the losses per iteration:
+With the following graph of loss per iteration:
 
-![Loss Functions](data/imgs/a6/3_2_g.png)
+<img src="data/imgs/a6/3_2_g.png" width="60%">
 
-We also tried to deform using a torus as our source mesh, available from PyTorch3D:
+Then, the next experiment consisted on using a torus to deform the mesh:
 
 ![Torus and Mug](data/imgs/a6/3_3_meshes.png)
 
-In theory, we should be able to deform the torus into the mug, however, we achieved the following result:
+In theory, we should be able to deform 1-torus into the mug. However, sometimes the optimization procedure cannot converge to a good result even when we theoretical requirements are solved. Getting the following images as a reference:
+
+<img src="https://i.stack.imgur.com/qa0Ja.jpg" width="60%">
+
+we can see that it is not trivial to define a distance function that can actually test pairs of points that are topologically close. We can see the mesh generated on meshlab, which presents several malformed triangles, with reversed faces, and not respecting the mug hole:
 
 <img src="data/imgs/a6/meshlab/3_3.png" width="30%"><img src="data/imgs/a6/meshlab/3.png" width="30%"><img src="data/imgs/a6/meshlab/3_3_diff.png" width="30%">
 
-With losses per iteration:
+With the losses per iteration being computed:
 
-![Loss Functions](data/imgs/a6/3_3_1_g.png)
+<img src="data/imgs/a6/3_3_1_g.png" width="60%">
 
-Since the chamfer distance is used to approximate the target mesh, we think that there is a possibility of getting the wrong samples to compute the distance, which cause the mesh to diverge from what we expect. We tried a last experiment using only the chamfer distance to check the resulting predicted mesh only considering a point cloud.
+Since the chamfer distance is used to approximate the target mesh, i think that there is a possibility of getting the wrong samples to compute the distance, which cause the mesh to diverge from what it is expected. i tried a last experiment using only the chamfer distance to check the resulting predicted mesh only considering a point cloud.
 
 <img src="data/imgs/a6/meshlab/3_3_1.png" width="30%"><img src="data/imgs/a6/meshlab/3.png" width="30%"><img src="data/imgs/a6/meshlab/3_3_1_diff.png" width="30%">
 
@@ -141,15 +145,17 @@ With losses per iteration:
 
 ![Loss Functions](data/imgs/a6/3_3_2_g.png)
 
+Here, i visualize only the vertices of the predicted mesh in blue, and the mug in red. We can see that it seems the predicted mesh put more vertices "inside" the mug. In this case, considering that chamfer distance gets always the closest pairs of points, maybe it is one of the problems with the current solution.
+
 <img src="data/imgs/a6/meshlab/3_3_1_pointdiff.png" width="50%">
 
 #### Testing with additional meshes:
 
-We also made an additional test with a genus 0 mesh:
+As a final additional result, i tried to made an additional test using another mesh with genus 0:
 
 ![Among Us](data/imgs/a6/e_2_mesh.png)
 
-Since it have genus 0, we can approximate using a normalized sphere. The predicted mesh is:
+In this case, we can simply use a normalized sphere. After the optmization process, i achieved the following result:
 
 <img src="data/imgs/a6/meshlab/e_2_1.png" width="30%"><img src="data/imgs/a6/meshlab/e_2_0.png" width="30%"><img src="data/imgs/a6/meshlab/e_2_diff.png" width="30%">
 
