@@ -103,13 +103,16 @@ There are a few parameters that can be modified, such as background color and th
 #### Pulsar Backend
 
 The pulsar backend [1] is also available in PyTorch3D. In this case, the scene is represented by a set of spheres, each being defined by a position, a radius, an opacity and a feature vector, which can correspond to lighting properties or an abstract
-feature representation for use in a neural network.
+feature representation for use in a neural network. The renderer has a parameter called "gamma", which TODO, and a bg_col parameter which defined the background color:
+
+Here, we have a first imagem using Pulsar:
 
 <img src="data/imgs/a7/5_3.png" width="30%">
 
-In this case, i use the orthographic projection, changing the current camera to **FoVOrthographicCameras**. Otherwise, only the first image will be rendered correctly, and the other will not render the point cloud.
+Then, i created a batch of pointclouds to visualize with Pulsar at different viewpoints, using the method **image_grid** to visualize them. In this case, it is requires to pass a list of point clouds and a list of gamma values. However, the renderer did not accept a list of background colors, so we set the same value for all rendered images:
 
 <img src="data/imgs/a7/5_3_batch.png" width="30%">
+
 
 ### Plotly visualization of Point Clouds
 
