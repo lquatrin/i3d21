@@ -95,15 +95,15 @@ Rotating the object will consequently change the lighting effect, since the ligh
 
 ### Batched Rendering
 
-Using the **look_at_view_transform** method, it is possible to create a batch of different cameras to visualize the mesh at different viewpoints:
+Using the **look_at_view_transform** method, it is possible to create a batch of different cameras to visualize the mesh at different viewpoints, by passing a 1D tensor with different values:
 
 ![Batch of cows](data/imgs/a7/3_0.png)
 
-Here we have two different views, each one rendering the current mesh in a different viewport:
+After running this example, i made a batch of 2 images to generate two meshes facing each other:
 
 <img src="data/imgs/a7/4_1.png" width="30%">
 
-If we want to create a single object of **Meshes** with two objects, we use the method **join_meshes_as_scene**, and render the scene again:
+Then, to put two meshes in a same scene, i used the method **join_meshes_as_scene**, to create a single object of **Meshes** with two objects. To generate a similar result with two meshes facing each other, i used the object that i rotated before and offset both meshes so they not overlap. Then, i just rendered the scene again:
 
 ```python
 offset1 = mesh.verts_padded().new_tensor([0, 0, -1]).expand(mesh.verts_packed().shape)
@@ -117,11 +117,9 @@ lights.location = torch.tensor([[0.0, 0.0, -3.0]], device=device)
 images = renderer(double_mesh, cameras=cameras, lights=lights)
 ```
 
-Using our previously rotated cow_mesh, we get the following result:
+with the following image as result. We can note how the lighting effects are different at each mesh.
 
 <img src="data/imgs/a7/4_2.png" width="30%">
-
-We can note how the lighting effects are different at each mesh.
 
 ### Rendering Point Clouds
 
