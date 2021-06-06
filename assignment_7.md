@@ -125,13 +125,9 @@ We can note how the lighting effects are different at each mesh.
 
 ### Rendering Point Clouds
 
-Pytorch3D also provide an option to render point clouds, by creating a **PointClouds** object. Each object receives a list of vertex positions and a list of features, such as the rgb color attached to each point. In this case, a **PointsRasterizer** is created and passed as a parameter to a **PointsRenderer**:
+Pytorch3D also provide an option to render point clouds, by creating a **PointClouds** object. Each object receives a list of vertex positions and a list of features, such as the rgb color attached to each point. In this case, a **PointsRasterizer** is created with the cameras and rasterization settings to be passed to the **PointsRenderer**. Here i made some experiments rendering a point cloud, changing its background color.
 
-<img src="data/imgs/a7/5_0.png" width="30%">
-
-There are a few parameters that can be modified, such as background color and the compositor function that blends the points rendered at each pixel. 
-
-<img src="data/imgs/a7/5_1.png" width="30%"><img src="data/imgs/a7/5_2.png" width="30%">
+<img src="data/imgs/a7/5_0.png" width="30%"><img src="data/imgs/a7/5_1.png" width="30%"><img src="data/imgs/a7/5_2.png" width="30%">
 
 #### Pulsar Backend
 
