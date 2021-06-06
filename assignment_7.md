@@ -102,7 +102,8 @@ There are a few parameters that can be modified, such as background color and th
 
 #### Pulsar Backend
 
-The pulsar backend [1] is also available in PyTorch3D. In this case, it is a rendering based on spheres:
+The pulsar backend [1] is also available in PyTorch3D. In this case, the scene is represented by a set of spheres, each being defined by a position, a radius, an opacity and a feature vector, which can correspond to lighting properties or an abstract
+feature representation for use in a neural network.
 
 <img src="data/imgs/a7/5_3.png" width="30%">
 
