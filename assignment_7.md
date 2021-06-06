@@ -140,7 +140,7 @@ feature representation for use in a neural network. The renderer has a parameter
 
 <img src="data/imgs/a7/5_3.png" width="30%">
 
-Then, i created a batch of pointclouds to visualize with Pulsar at different viewpoints, using the method **image_grid** to visualize them. In this case, it is requires to pass a list of point clouds and a list of gamma values. However, the renderer did not accept a list of background colors, so we set the same for all rendered images:
+Then, i created a batch of pointclouds to visualize with Pulsar at different viewpoints, using the method **image_grid** to visualize them. In this case, it is requires to pass a list of point clouds and a list of gamma values. However, the renderer did not accept a list of background colors, so let set the same for all rendered images:
 
 <img src="data/imgs/a7/5_3_batch.png" width="30%">
 
@@ -150,11 +150,11 @@ It is possible to render point clouds using the avaiable methods from **pytorch3
 
 <img src="data/imgs/a7/6_1.png" width="100%">
 
-It is possible to pass a batch of points for the **PointClouds** object, similar to **Meshes**. In this case, i made a simple test by rendering a batch of 2 point clouds:
+It is also possible to pass a batch of points. In this case, i made a simple test by rendering a batch of 2 point clouds, offsetting the second one:
 
 <img src="data/imgs/a7/6_2.png" width="100%">
 
-Finally, using the **plot_batch_individually** method, it is possible to render each point cloud:
+Finally, using the **plot_batch_individually** method, it is possible to render each point cloud in a subplot:
 
 <img src="data/imgs/a7/6_3.png" width="100%">
 
