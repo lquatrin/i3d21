@@ -28,6 +28,7 @@ Some types of shader require some data to be presented in the **Meshes** object.
 vert_list = mesh.verts_list()[0]
 face_list = mesh.faces_list()[0]
 
+# Calculate the normal of each face
 number_of_faces = mesh.faces_list()[0].shape[0]
 face_normals = np.zeros((number_of_faces, 3))
 for i in range(number_of_faces):
@@ -46,6 +47,7 @@ for i in range(number_of_faces):
   
   face_normals[i] = f_normal
 
+# Accumulate the normals per each vertex
 number_of_vertices = mesh.verts_list()[0].shape[0]
 vert_n = np.zeros((number_of_vertices, 1), dtype=int)
 vert_normals = np.zeros((number_of_vertices, 3))
@@ -55,6 +57,7 @@ for f in range(number_of_faces):
     vert_normals[v] = vert_normals[v] + face_normals[f]
     vert_n[v] = vert_n[v] + 1
 
+# Normalize them
 for v in range(number_of_vertices):
   vert_normals[v] = vert_normals[v] / vert_n[v]
   vert_normals[v] = vert_normals[v] / np.linalg.norm(vert_normals[v])
@@ -157,6 +160,6 @@ Finally, using the **plot_batch_individually** method, it is possible to render 
 
 ### References
 
-[1] https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
+[1] PyTorch3D: shader. URL: https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html.
 
 [2] Lassner, C. and Zollhöfer, M., “Pulsar: Efficient Sphere-based Neural Rendering”, arXiv e-prints, 2020. URL: https://arxiv.org/pdf/2004.07484.pdf
