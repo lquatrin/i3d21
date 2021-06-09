@@ -14,7 +14,7 @@ First, i render the cow mesh with the **MeshRenderer**, using a perspective came
 
 <img src="data/imgs/a7/2_0.png" width="30%">
 
-Then, i modified other parameters. In the first image, i modified the light source position from [0.0, 0.0, -3.0] to [0.0, 5.0, 0.0]. In the second image, i changed the specular color and shininess of the materials parameter defined in renderer.
+Then, i modified other parameters. In the first image, i modified the light source position from [0.0, 0.0, -3.0] to [0.0, 5.0, 0.0]. In the second image, i changed the materials parameter defined in renderer.
 
 <img src="data/imgs/a7/2_1.png" width="30%"><img src="data/imgs/a7/2_3.png" width="30%">
 
