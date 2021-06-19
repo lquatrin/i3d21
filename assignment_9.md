@@ -133,9 +133,17 @@ We can see how the texture at the nose was slightly better. I also tried running
 
 <img src="data/imgs/a9/4_2_five_t_iterations_hw_losses.png" width="70%">
 
-4.2 Do you think it could be better? Analyze the losses values, the meshes, the hyperparemeters and try other values. Even if you don't get a better result, try to explain your intutition for the changes you made.
+Which generated a better result, but still with some limitations.
 
-4.3 Make a copy of the target mesh and now try to optimize the texture only, starting from the ground truth geometry. Describe your result.
+It is important to notice that both vertex positions and textures are being optimized together only with image observations. So, the texture color will be optimized according its position in relation to the image, which might be wrong during the mesh optimization. So, in a second result, i tried to optimize only the texture, by making a copy of the target mesh. In this case, i got the following result:
+
+<img src="data/imgs/a9/4_3_1.png" width="30%"><img src="data/imgs/a9/4_3_2.png" width="30%"><img src="data/imgs/a9/4_3_3.png" width="30%">
+
+<img src="data/imgs/a9/4_3.png" width="70%">
+
+which is still far from the original mesh, but better than the other tries.
+
+
 
 [EXTRA] E.1 Deform the textured cow into a sphere - you can choose to supervise with multi-view images (of a sphere) or the sphere geometry. Save the result, then deform the textured sphere into the cow again. What happened?
 
