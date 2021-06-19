@@ -141,14 +141,13 @@ It is important to notice that both vertex positions and textures are being opti
 
 <img src="data/imgs/a9/4_3.png" width="70%">
 
-which is still far from the original mesh, but better than the other tries.
+which is still far from the original mesh, but it seemed better compared with the other experiment with mesh prediction.
 
+One of the things that also must be considered, is that we're trying to compute the color of each vertex for a mesh, when the target mesh actually uses a UV mapping, where the color is calculated per each pixel based on the uv coordinates of each vertex. In a last experiment, i tried to deform the target mesh to a sphere, and then back to the original mesh using multi-view images. I got the following result after these two operations:
 
+<img src="data/imgs/a9/e_1.png" width="70%">
 
-[EXTRA] E.1 Deform the textured cow into a sphere - you can choose to supervise with multi-view images (of a sphere) or the sphere geometry. Save the result, then deform the textured sphere into the cow again. What happened?
-
-
-
+It shows how the vertices didn't go back to the original position after doing these two operations.
 
 ### Camera Position Optimization
 
