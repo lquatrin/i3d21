@@ -18,44 +18,57 @@ In PyTorch3D, they used a soft rasterizer [2] to solve these problems. The probl
 
 ### Dataset Creation
 
-We sample different camera positions that encode multiple viewpoints of the cow. We create a renderer with a shader that performs texture map interpolation. We render a synthetic dataset of images of the textured cow mesh from multiple viewpoints.
+In this assignment, the cow mesh was used. So, first,  different camera positions are sampled, encoding multiple viewpoints of the cow:
 
+<img src="data/imgs/a9/2_2_1.png" width="50%">
 
-2.1 Present a high level description of a rendering pipeline based on rasterization (not ray tracing!). Which steps are inherently not differentiable? How could we re-design these operations to build a fully differentiable pipeline?
+Using the silhouette renderer, it shows the top k faces per pixel, based on the 2d euclidean distance of the center of the pixel to the mesh face:
 
-2.2 Place a point light in the scene and render the meshes again using the silhouette renderer. Does it make any difference? Why?
+<img src="data/imgs/a9/2_2_sl_1.png" width="50%">
 
-No, because silhouette renderer does not compute lighting, only the top K faces for each pixel, based on the 2d euclidean distance of the center of the pixel to the mesh face. https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
+Using these shader, it is possible to compare the edges of the mesh according to each viewpoint. In these cases, the lighting is not computed, according to the documentation [3]. Here, i made a simple test by changing the light source position and generate the images with silhouette renderer:
+
+<img src="data/imgs/a9/2_2_1.png" width="50%"><img src="data/imgs/a9/2_2_sl_1.png" width="50%">
+
+<img src="data/imgs/a9/2_2_2.png" width="50%"><img src="data/imgs/a9/2_2_sl_2.png" width="50%">
+
+Both configurations generated the same images when using **SoftSilhouetteShader**.
 
 ### Mesh prediction via silhouette rendering
 
-In the previous section, we created a dataset of images of multiple viewpoints of a cow.
+In this first experiment, a mesh will be predicted by observing target images without any knowledge of the ground truth. Here, cameras and lighting positions are assumed to be known. The optimized mesh is initialized as a sphere, and an offset will be learned for each vertex at each optimization step. Here, i have the first ground truth images generated using multiple viewpoints of the cow mesh with silhouette renderer, that will be used to fit the sphere to the target mesh:
 
-Later, we will fit a mesh to the rendered RGB images, as well as to just images of just the cow silhouette. For the latter case, we will render a dataset of silhouette images. Most shaders in PyTorch3D will output an alpha channel along with the RGB image as a 4th channel in an RGBA image. The alpha channel encodes the probability that each pixel belongs to the foreground of the object. We contruct a soft silhouette shader to render this alpha channel.
+<img src="data/imgs/a9/3_0.png" width="50%">
 
-====
+The offsets were initialized on zero, and each iteration computes the loss from 2 randomly chosen views. The loss function evaluates the silhouette of the generated images with the target images. Besides that, edge loss (**mesh_edge_loss**), mesh normal consistency (**mesh_normal_consistency**), and mesh laplacian smoothing (**mesh_laplacian_smoothing**) were also added to the loss function. I start by using the following weights:
 
-In this section, we predict a mesh by observing those target images without any knowledge of the ground truth cow mesh. We assume we know the position of the cameras and lighting.
+```python
+losses = { "silhouette": { "weight": 1.0,  "values": []},
+           "edge":       { "weight": 1.0,  "values": []},
+           "normal":     { "weight": 0.01, "values": []},
+           "laplacian":  { "weight": 1.0,  "values": []}, }
+```
 
-We first define some helper functions to visualize the results of our mesh prediction:
+After 2000 iterations, i got the following result:
 
-====
+<img src="data/imgs/a9/3_1_plt1.png" width="30%"><img src="data/imgs/a9/3_1_plt2.png" width="30%"><img src="data/imgs/a9/3_1_plt3.png" width="30%">
 
-Starting from a sphere mesh, we will learn offsets of each vertex such that the predicted mesh silhouette is more similar to the target silhouette image at each optimization step. We begin by loading our initial sphere mesh:
+<img src="data/imgs/a9/3_0_losses.png" width="30%">
 
-====
-We initialize settings, losses, and the optimizer that will be used to iteratively fit our mesh to the target silhouettes:
+As we can see, the resultant mesh is smoother compared to the target, but it is also a similar result. Then, i changed the optimization step to use 1, 4 and 8 views per iteration.
 
-===
-
-We write an optimization loop to iteratively refine our predicted mesh from the sphere mesh into a mesh that matches the sillhouettes of the target images:
-
-3.1 Visualize the deformed mesh using Plotly and describe it qualitatively in comparinson with the target mesh. You can also download it and visualize it in another software if you wish.
 
 3.2 Experiment changing the number of images num_views_per_iteration used to compute the silhouette loss each iteration. Would it still work if we computed the loss using num_views_per_iteration? What if we only had a single image, a single point of view, in our dataset?
 
 3.3 Compare the target and source meshes sizes (number of vertices and faces). Are they close? Does the final result improve if you start from a source mesh with more vertices?
 
+Later, we will fit a mesh to the rendered RGB images, as well as to just images of just the cow silhouette. For the latter case, we will render a dataset of silhouette images. Most shaders in PyTorch3D will output an alpha channel along with the RGB image as a 4th channel in an RGBA image. The alpha channel encodes the probability that each pixel belongs to the foreground of the object. We contruct a soft silhouette shader to render this alpha channel.
+
+
+
+
+
+<img src="data/imgs/a9/3_3_views_elev00.png" width="50%">
 
 #### Using higher level icosphere 
 
@@ -117,3 +130,5 @@ The last experiment of this assignment was to optimize a light position given th
 [1] Accelerating 3D Deep Learning with PyTorch3D
 
 [2] Soft Rasterizer: Differentiable Rendering for Unsupervised Single-View Mesh Reconstruction
+
+[3] https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
