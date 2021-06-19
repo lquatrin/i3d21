@@ -77,6 +77,8 @@ As we can see, the resultant mesh is smoother compared to the target, but it is 
 
 With only 1 view per iteration, the result does not converge properly as using 2 views. However, from 4 to 8 views, i didn't get an effective change between the results.
 
+Since we're comparing images to approximate the mesh, it is important to have a good representation with multiple views. In fact, if we use only on point of view, we're not able to approximate the mesh correctly. Here, i made an additional test with only one point of view:
+
 **TODO: CHANGE THE DATASET TO HAVE ONLY ONE POINT OF VIEW INSTEAD OF MULTIPLE (20) VIEWS**
 
 #### Using higher level icosphere 
@@ -97,26 +99,39 @@ Then, i tried to change the current views used to optimize the mesh, trying to p
 
 <img src="data/imgs/a9/3_3_views_elev00.png" width="50%">
 
-After running the optimization procedure again, it is possible to check how this specific part of the mesh is closer to the target. In this way, we can see that good representative images are important to generate a good approximation of the mesh.
+After running the optimization procedure again, it is possible to check how this specific part of the mesh is closer to the target. However, other parts of the mesh were less similar compared to the target. In this way, we can see that good representative images are important to generate a good approximation of the mesh.
 
 <img src="data/imgs/a9/3_3_elev00_2vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly3.png" width="30%">
 
 ### Mesh and texture prediction via textured rendering
 
---Later, we will fit a mesh to the rendered RGB images, as well as to just images of just the cow silhouette. For the latter case, we will render a dataset of silhouette images. Most shaders in PyTorch3D will output an alpha channel along with the RGB image as a 4th channel in an RGBA image. The alpha channel encodes the probability that each pixel belongs to the foreground of the object. We contruct a soft silhouette shader to render this alpha channel.
+Now, the idead is to optimize both the mesh and its texture. An additional loss is added to compare the RGB of the image. The optimization procedure agains starts with a sphere but with a grey color defined at each vertex for texture prediction. In this case, **SoftPhongShader** is used instead of -**SoftSilhouetteShader**, comparing RGB images. After 2000 iterations, i got the following result:
 
+<img src="data/imgs/a9/4_1_1.png" width="30%"><img src="data/imgs/a9/4_1_2.png" width="30%"><img src="data/imgs/a9/4_1_3.png" width="30%">
 
+<img src="data/imgs/a9/4_0_losses.png" width="70%"><img src="data/imgs/a9/4_0_opt.png" width="30%">
 
-We can predict both the mesh and its texture if we add an additional loss based on the comparing a predicted rendered RGB image to the target image. As before, we start with a sphere mesh. We learn both translational offsets and RGB texture colors for each vertex in the sphere mesh. Since our loss is based on rendered RGB pixel values instead of just the silhouette, we use a SoftPhongShader instead of a SoftSilhouetteShader.
+We can see that the texture is converging, but still far in terms of detail and high color variations. One thing that i notice is the rgb loss was still slowly decreasing near the 2000 iterations, and the other losses converge to a value with fewer iterations. Trying to achieve a better result, i first tried to halve the other losses, ending up with the following loss weights:
 
+```python
+losses = { "rgb":        {"weight": 1.0,   "values": []},
+           "silhouette": {"weight": 0.5,   "values": []},
+           "edge":       {"weight": 0.5,   "values": []},
+           "normal":     {"weight": 0.005, "values": []},
+           "laplacian":  {"weight": 0.5,   "values": []}, }
+```
 
-We initialize settings, losses, and the optimizer that will be used to iteratively fit our mesh to the target RGB images:
+After 2000 iterations, i got the following result:
 
+<img src="data/imgs/a9/4_2_half_weights_plt1.png" width="30%"><img src="data/imgs/a9/4_2_half_weights_plt2.png" width="30%"><img src="data/imgs/a9/4_2_half_weights_plt3.png" width="30%">
 
-We write an optimization loop to iteratively refine our predicted mesh and its vertex colors from the sphere mesh into a mesh that matches the target images:
+<img src="data/imgs/a9/4_2_half_weights_losses.png" width="70%">
 
+We can see how the texture at the nose was slightly better. I also tried running the same weights with 5000 iterations, ending up with the current result:
 
-4.1 Compare the target and source meshes and describe the result qualitatively.
+<img src="data/imgs/a9/4_2_five_t_iterations_hw_plt1.png" width="30%"><img src="data/imgs/a9/4_2_five_t_iterations_hw_plt2.png" width="30%"><img src="data/imgs/a9/4_2_five_t_iterations_hw_plt3.png" width="30%">
+
+<img src="data/imgs/a9/4_2_five_t_iterations_hw_losses.png" width="70%">
 
 4.2 Do you think it could be better? Analyze the losses values, the meshes, the hyperparemeters and try other values. Even if you don't get a better result, try to explain your intutition for the changes you made.
 
