@@ -6,7 +6,7 @@
 
 ## Assignment 9 - View Optimization / Fit Mesh
 
-In this assignment, the idea is to practice operations with differentiable rendering using the PyTorch3D to optimize meshes and scene parameters from multiple viewpoints. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/blob/main/code/a9/Assignment9.ipynb).
+In this assignment, the idea is to practice operations with differentiable rendering using the PyTorch3D to optimize meshes and scene parameters from multiple viewpoints. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21_p/tree/main/code/a9/Assignment9.ipynb).
 
 ### Rendering pipeline and discontinuity issues
 
@@ -53,24 +53,35 @@ After 2000 iterations, i got the following result:
 
 <img src="data/imgs/a9/3_1_plt1.png" width="30%"><img src="data/imgs/a9/3_1_plt2.png" width="30%"><img src="data/imgs/a9/3_1_plt3.png" width="30%">
 
-<img src="data/imgs/a9/3_0_losses.png" width="30%">
+<img src="data/imgs/a9/3_0_losses.png" width="70%"><img src="data/imgs/a9/3_opt_final.png" width="30%">
 
-As we can see, the resultant mesh is smoother compared to the target, but it is also a similar result. Then, i changed the optimization step to use 1, 4 and 8 views per iteration.
+As we can see, the resultant mesh is smoother compared to the target, but it is also a similar result. Then, i changed the optimization step to use 1, 4 and 8 views per iteration:
 
+1 view per iteration
 
-3.2 Experiment changing the number of images num_views_per_iteration used to compute the silhouette loss each iteration. Would it still work if we computed the loss using num_views_per_iteration? What if we only had a single image, a single point of view, in our dataset?
+<img src="data/imgs/a9/3_2_1vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_1vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_1vpi_plotly3.png" width="30%">
 
-3.3 Compare the target and source meshes sizes (number of vertices and faces). Are they close? Does the final result improve if you start from a source mesh with more vertices?
+<img src="data/imgs/a9/3_2_1vpi_losses.png" width="70%"><img src="data/imgs/a9/3_2_1vpi_opt_sl.png" width="30%">
 
-Later, we will fit a mesh to the rendered RGB images, as well as to just images of just the cow silhouette. For the latter case, we will render a dataset of silhouette images. Most shaders in PyTorch3D will output an alpha channel along with the RGB image as a 4th channel in an RGBA image. The alpha channel encodes the probability that each pixel belongs to the foreground of the object. We contruct a soft silhouette shader to render this alpha channel.
+4 views per iteration
 
+<img src="data/imgs/a9/3_2_4vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_4vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_4vpi_plotly3.png" width="30%">
 
+<img src="data/imgs/a9/3_2_4vpi_losses.png" width="70%"><img src="data/imgs/a9/3_2_4vpi_opt_sl.png" width="30%">
 
+8 views per iteration
 
+<img src="data/imgs/a9/3_2_8vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_8vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_8vpi_plotly3.png" width="30%">
 
-<img src="data/imgs/a9/3_3_views_elev00.png" width="50%">
+<img src="data/imgs/a9/3_2_8vpi_losses.png" width="70%"><img src="data/imgs/a9/3_2_8vpi_opt_sl.png" width="30%">
+
+With only 1 view per iteration, the result does not converge properly as using 2 views. However, from 4 to 8 views, i didn't get an effective change between the results.
+
+**TODO: CHANGE THE DATASET TO HAVE ONLY ONE POINT OF VIEW INSTEAD OF MULTIPLE (20) VIEWS**
 
 #### Using higher level icosphere 
+
+For the first experiments, i use a sphere generated from **ico_sphere** [4] using level = 4. If we compare the number of vertices of each mesh, we can see the sphere with level = 4 has a similar number of vertices comparing with the cow mesh. In a last experiment, i tested if it is possible to generate better results using a sphere with level = 5:
 
 ```python
 Cow Mesh Vertices: 2930
@@ -78,7 +89,23 @@ Sphere level 4 Mesh Vertices: 2562
 Sphere level 5 Mesh Vertices: 10242
 ```
 
+After the optimization loop, i saw the cow's neck was not well defined, as it is shown by the following images:
+
+<img src="data/imgs/a9/3_3_2vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_3_2vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_3_2vpi_plotly3.png" width="30%">
+
+Then, i tried to change the current views used to optimize the mesh, trying to put more focus at the cow's neck:
+
+<img src="data/imgs/a9/3_3_views_elev00.png" width="50%">
+
+After running the optimization procedure again, it is possible to check how this specific part of the mesh is closer to the target. In this way, we can see that good representative images are important to generate a good approximation of the mesh.
+
+<img src="data/imgs/a9/3_3_elev00_2vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly3.png" width="30%">
+
 ### Mesh and texture prediction via textured rendering
+
+--Later, we will fit a mesh to the rendered RGB images, as well as to just images of just the cow silhouette. For the latter case, we will render a dataset of silhouette images. Most shaders in PyTorch3D will output an alpha channel along with the RGB image as a 4th channel in an RGBA image. The alpha channel encodes the probability that each pixel belongs to the foreground of the object. We contruct a soft silhouette shader to render this alpha channel.
+
+
 
 We can predict both the mesh and its texture if we add an additional loss based on the comparing a predicted rendered RGB image to the target image. As before, we start with a sphere mesh. We learn both translational offsets and RGB texture colors for each vertex in the sphere mesh. Since our loss is based on rendered RGB pixel values instead of just the silhouette, we use a SoftPhongShader instead of a SoftSilhouetteShader.
 
@@ -132,3 +159,5 @@ The last experiment of this assignment was to optimize a light position given th
 [2] Soft Rasterizer: Differentiable Rendering for Unsupervised Single-View Mesh Reconstruction
 
 [3] https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
+
+[4] https://pytorch3d.readthedocs.io/en/latest/_modules/pytorch3d/utils/ico_sphere.html
