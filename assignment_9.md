@@ -91,17 +91,17 @@ Sphere level 4 Mesh Vertices: 2562
 Sphere level 5 Mesh Vertices: 10242
 ```
 
-After the optimization loop, i saw the cow's neck was not well defined, as it is shown by the following images:
+After the optimization loop, i saw the cow's neck was not well defined:
 
 <img src="data/imgs/a9/3_3_2vpi_plotly2.png" width="50%">
 
-Then, i tried to change the current views used to optimize the mesh, trying to put more focus at the cow's neck:
+Trying to make a better investigation about why it happened, i change the current set of reference views used to optimize the mesh, trying to put more focus at the cow's neck:
 
 <img src="data/imgs/a9/3_3_views_elev00.png" width="50%">
 
-After running the optimization procedure again, it is possible to check how this specific part of the mesh is closer to the target. However, other parts of the mesh were less similar compared to the target. In this way, we can see that good representative images are important to generate a good approximation of the mesh.
+After running the optimization procedure again, it is possible to check how this specific part of the mesh is closer to the target. However, other parts of the mesh became less similar compared to the target. In this way, we can see that good representative images are important to generate a good approximation of the mesh when using differentiable rendering.
 
-<img src="data/imgs/a9/3_3_elev00_2vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly3.png" width="30%">
+<img src="data/imgs/a9/3_3_elev00_2vpi_plotly1.png" width="50%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly2.png" width="50%">
 
 ### Mesh and texture prediction via textured rendering
 
