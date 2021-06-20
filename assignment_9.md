@@ -133,15 +133,7 @@ After 2000 iterations, i got the following result:
 
 <img src="data/imgs/a9/4_2_half_weights_plt2.png" width="50%"><img src="data/imgs/a9/4_2_half_weights_plt3.png" width="50%">
 
-<img src="data/imgs/a9/4_2_half_weights_losses.png" width="70%">
-
-We can see how the texture at the nose was slightly better. I also tried running the same weights with 5000 iterations, ending up with the current result:
-
-<img src="data/imgs/a9/4_2_five_t_iterations_hw_plt1.png" width="30%"><img src="data/imgs/a9/4_2_five_t_iterations_hw_plt2.png" width="30%"><img src="data/imgs/a9/4_2_five_t_iterations_hw_plt3.png" width="30%">
-
-<img src="data/imgs/a9/4_2_five_t_iterations_hw_losses.png" width="70%">
-
-Which generated a better result, but still with some limitations.
+<img src="data/imgs/a9/4_2_half_weights_losses.png" width="100%">
 
 It is important to notice that both vertex positions and textures are being optimized together only with image observations. So, the texture color will be optimized according its position in relation to the image, which might be wrong during the mesh optimization. So, in a second result, i tried to optimize only the texture, by making a copy of the target mesh. In this case, i got the following result:
 
