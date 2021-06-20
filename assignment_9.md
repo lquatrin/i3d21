@@ -151,19 +151,41 @@ It shows how the vertices didn't go back to the original position after doing th
 
 ### Camera Position Optimization
 
-Until now, the cameras used to generate the images are known and we try to learn the geometry and texture of the mesh. Now, the objective is to use differentiable renderer to infer the camera position, knowing the geometry and texture of the object.
+Until now, the cameras used to generate the images are known and we try to learn the geometry and texture of the mesh. Now, the objective is to use differentiable renderer to infer the camera position, knowing the geometry and texture of the object. I tested the optimization procedure with some different elevation and azimuth angles. For each test, i calculate the difference between the two cameras by composing the cosine of the relative angle between the rotation components with the L2 ditance between translation vectors (from [Bundle Adjustment Assignment](https://github.com/lquatrin/i3d21/blob/main/assignment_3.md)):
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0.gif" width="300" height="300" />
+```python
+def calc_camera_distance(R1, R2, T1, T2):
+    # rotation distance
+    R_distance = (1.-so3_relative_angle(R1, R2, cos_angle=True)).mean()
+    
+    # translation distance
+    T_distance = ((T1 - T2)**2).sum(1).mean()
+    
+    # the final distance is the sum
+    return R_distance + T_distance
+```
 
- Can we infer the camera position by backpropagation?
+For each experiment, i generate the gif with images generated during the optimization, and the final result for visual comparison:
 
-Here we create a simple model class and initialize a parameter for the camera position.
+1. elevation = 50.0 | azimuth = 0.0 | Final distance = 0.0083
 
-Initialize the model and optimizer
-Now we can create an instance of the model above and set up an optimizer for the camera position parameter.
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_1_50_0.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_rgb.png" width="60%">
 
-Run the optimization
-We run several iterations of the forward and backward pass and save outputs every 10 iterations. When this has finished take a look at ./cow_optimization_demo.gif for a cool gif of the optimization process!
+2. elevation = 0.0 | azimuth = 90.0 | Final distance = 0.0083
+
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_2_0_90.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_1_rgb.png" width="60%">
+
+3. elevation = 0.0 | azimuth = -90.0 | Final distance = 1.8392
+
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_3_0_m90.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_2_rgb.png" width="60%">
+
+4. elevation = 0.0 | azimuth = 180.0 | Final distance = 2.0303
+
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_4_0_180.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_3_rgb.png" width="60%">
+
+5. elevation = 0.0 | azimuth = 45.0 | Final distance = 0.0080
+
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_5_0_45.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_4_rgb.png" width="60%">
 
 5.1 Evaluate how close our prediction is to the ground truth camera position. Explain your metric.
 
