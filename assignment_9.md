@@ -93,7 +93,7 @@ Sphere level 5 Mesh Vertices: 10242
 
 After the optimization loop, i saw the cow's neck was not well defined, as it is shown by the following images:
 
-<img src="data/imgs/a9/3_3_2vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_3_2vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_3_2vpi_plotly3.png" width="30%">
+<img src="data/imgs/a9/3_3_2vpi_plotly2.png" width="50%">
 
 Then, i tried to change the current views used to optimize the mesh, trying to put more focus at the cow's neck:
 
