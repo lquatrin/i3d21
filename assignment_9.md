@@ -51,7 +51,7 @@ losses = { "silhouette": { "weight": 1.0,  "values": []},
 
 After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/3_1_plt1.png" width="30%"><img src="data/imgs/a9/3_1_plt2.png" width="30%"><img src="data/imgs/a9/3_1_plt3.png" width="30%">
+<img src="data/imgs/a9/3_1_plt2.png" width="50%"><img src="data/imgs/a9/3_1_plt3.png" width="50%">
 
 <img src="data/imgs/a9/3_0_losses.png" width="70%"><img src="data/imgs/a9/3_opt_final.png" width="30%">
 
@@ -81,9 +81,9 @@ Since we're comparing images to approximate the mesh, it is important to have a 
 
 **TODO: CHANGE THE DATASET TO HAVE ONLY ONE POINT OF VIEW INSTEAD OF MULTIPLE (20) VIEWS**
 
-#### Using higher level icosphere 
+#### Using ico_sphere with higher detail level  
 
-For the first experiments, i use a sphere generated from **ico_sphere** [4] using level = 4. If we compare the number of vertices of each mesh, we can see the sphere with level = 4 has a similar number of vertices comparing with the cow mesh. In a last experiment, i tested if it is possible to generate better results using a sphere with level = 5:
+For the first experiments, i used a sphere generated from **ico_sphere** [4] using level = 4. Comparing the number of vertices of each mesh, the sphere with level = 4 has a similar number of vertices comparing with the cow mesh. In a last experiment, i made a test if it is possible to generate better results using a sphere with level = 5:
 
 ```python
 Cow Mesh Vertices: 2930
@@ -91,25 +91,27 @@ Sphere level 4 Mesh Vertices: 2562
 Sphere level 5 Mesh Vertices: 10242
 ```
 
-After the optimization loop, i saw the cow's neck was not well defined, as it is shown by the following images:
+After the optimization loop, i saw the cow's neck was not well defined:
 
-<img src="data/imgs/a9/3_3_2vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_3_2vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_3_2vpi_plotly3.png" width="30%">
+<img src="data/imgs/a9/3_3_2vpi_plotly2.png" width="50%">
 
-Then, i tried to change the current views used to optimize the mesh, trying to put more focus at the cow's neck:
+Trying to make a better investigation about why it happened, i change the current set of reference views used to optimize the mesh, trying to put more focus at the cow's neck:
 
 <img src="data/imgs/a9/3_3_views_elev00.png" width="50%">
 
-After running the optimization procedure again, it is possible to check how this specific part of the mesh is closer to the target. However, other parts of the mesh were less similar compared to the target. In this way, we can see that good representative images are important to generate a good approximation of the mesh.
+After running the optimization procedure again, it is possible to check how this specific part of the mesh is closer to the target. However, other parts of the mesh became less similar compared to the target. In this way, we can see that good representative images are important to generate a good approximation of the mesh when using differentiable rendering.
 
-<img src="data/imgs/a9/3_3_elev00_2vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly3.png" width="30%">
+<img src="data/imgs/a9/3_3_elev00_2vpi_plotly1.png" width="50%"><img src="data/imgs/a9/3_3_elev00_2vpi_plotly2.png" width="50%">
 
 ### Mesh and texture prediction via textured rendering
 
-Now, the idead is to optimize both the mesh and its texture. An additional loss is added to compare the RGB of the image. The optimization procedure agains starts with a sphere but with a grey color defined at each vertex for texture prediction. In this case, **SoftPhongShader** is used instead of -**SoftSilhouetteShader**, comparing RGB images. After 2000 iterations, i got the following result:
+Now, the idea is to optimize both mesh vertices and texture. In this case, the additional loss is added to compare the RGB of the image. The optimization procedure again starts with a sphere now with a grey color defined at each vertex to be optimized. In this case, **SoftPhongShader** is used instead of **SoftSilhouetteShader**, to be able to compare RGB images. After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/4_1_1.png" width="30%"><img src="data/imgs/a9/4_1_2.png" width="30%"><img src="data/imgs/a9/4_1_3.png" width="30%">
+<img src="data/imgs/a9/4_0_opt.png" width="50%">
 
-<img src="data/imgs/a9/4_0_losses.png" width="70%"><img src="data/imgs/a9/4_0_opt.png" width="30%">
+<img src="data/imgs/a9/4_1_2.png" width="50%"><img src="data/imgs/a9/4_1_3.png" width="50%">
+
+<img src="data/imgs/a9/4_0_losses.png" width="70%">
 
 We can see that the texture is converging, but still far in terms of detail and high color variations. One thing that i notice is the rgb loss was still slowly decreasing near the 2000 iterations, and the other losses converge to a value with fewer iterations. Trying to achieve a better result, i first tried to halve the other losses, ending up with the following loss weights:
 
@@ -123,7 +125,7 @@ losses = { "rgb":        {"weight": 1.0,   "values": []},
 
 After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/4_2_half_weights_plt1.png" width="30%"><img src="data/imgs/a9/4_2_half_weights_plt2.png" width="30%"><img src="data/imgs/a9/4_2_half_weights_plt3.png" width="30%">
+<img src="data/imgs/a9/4_2_half_weights_plt2.png" width="50%"><img src="data/imgs/a9/4_2_half_weights_plt3.png" width="50%">
 
 <img src="data/imgs/a9/4_2_half_weights_losses.png" width="70%">
 
@@ -151,29 +153,47 @@ It shows how the vertices didn't go back to the original position after doing th
 
 ### Camera Position Optimization
 
-Until now, the cameras used to generate the images are known and we try to learn the geometry and texture of the mesh. Now, the objective is to use differentiable renderer to infer the camera position, knowing the geometry and texture of the object.
+Until now, the cameras used to generate the images are known and we try to learn the geometry and texture of the mesh. Now, the objective is to use differentiable renderer to infer the camera position, knowing the geometry and texture of the object. I tested the optimization procedure with some different elevation and azimuth angles. For each test, i calculate the difference between the two cameras by composing the cosine of the relative angle between the rotation components with the L2 ditance between translation vectors (from [Bundle Adjustment Assignment](https://github.com/lquatrin/i3d21/blob/main/assignment_3.md)):
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0.gif" width="300" height="300" />
+```python
+def calc_camera_distance(R1, R2, T1, T2):
+    # rotation distance
+    R_distance = (1.-so3_relative_angle(R1, R2, cos_angle=True)).mean()
+    
+    # translation distance
+    T_distance = ((T1 - T2)**2).sum(1).mean()
+    
+    # the final distance is the sum
+    return R_distance + T_distance
+```
 
- Can we infer the camera position by backpropagation?
+For each experiment, i generate the gif with images generated during the optimization, and the final result for visual comparison:
 
-Here we create a simple model class and initialize a parameter for the camera position.
+1. elevation = 50.0 | azimuth = 0.0 | Final distance = 0.0083
 
-Initialize the model and optimizer
-Now we can create an instance of the model above and set up an optimizer for the camera position parameter.
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_1_50_0.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_rgb.png" width="60%">
 
-Run the optimization
-We run several iterations of the forward and backward pass and save outputs every 10 iterations. When this has finished take a look at ./cow_optimization_demo.gif for a cool gif of the optimization process!
+2. elevation = 0.0 | azimuth = 90.0 | Final distance = 0.0083
 
-5.1 Evaluate how close our prediction is to the ground truth camera position. Explain your metric.
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_2_0_90.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_1_rgb.png" width="60%">
 
-5.2 Experiment with other views - different target images and different initial positions to the camera model. Does it always work?
+3. elevation = 0.0 | azimuth = -90.0 | Final distance = 1.8392
 
-EXTRA E.2: Could you estimate the scene illumination - in this case, the location of a single point light? Set up and run an example
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_3_0_m90.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_2_rgb.png" width="60%">
+
+4. elevation = 0.0 | azimuth = 180.0 | Final distance = 2.0303
+
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_4_0_180.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_3_rgb.png" width="60%">
+
+5. elevation = 0.0 | azimuth = 45.0 | Final distance = 0.0080
+
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_5_0_45.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_4_rgb.png" width="60%">
+
+The 3th and 4th experiments didn't converge to the correct position. It seems that the optimization procedure gets stuck in a position where it can't find a better direction to converge based on the generated images.
 
 ### Light Position Optimization
 
-The last experiment of this assignment was to optimize a light position given the camera 
+The last experiment of this assignment was to optimize a light position knowing the camera parameters. In this case, i made a small modification to the model class and changed the parameter to be the light position:
 
 ```python
  class ModelE2(nn.Module):
@@ -201,15 +221,13 @@ The last experiment of this assignment was to optimize a light position given th
         return loss, image
 ```
 
-Here, i have the starting point for the optimized light position, and for the target light position at [1.0, 1.0, 2.0]:
+In this case, i started the light position at [0.0, 0.0, 0.0], and the target light position is at [1.0, 1.0, 2.0]. After 2000 iterations, i got the following result:
 
-![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/imgs/a9/e_2_start.png)
+1. Final optimized light position: [1.933383  1.3485548 2.8575547]
 
-And here we have the result along 2000 iterations:
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="300" height="300" /><img src="data/imgs/a9/e_2_end.png" width="60%">
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="300" height="300" />
-
-**TODO: PEGAR POSICAO FINAL**
+with distance between the optimized light and the target being 1.3145700074906765. It is possible to see how some specular effects are a little different from the reference image, but still similar to the target.
 
 ### References
 
@@ -217,6 +235,6 @@ And here we have the result along 2000 iterations:
 
 [2] Soft Rasterizer: Differentiable Rendering for Unsupervised Single-View Mesh Reconstruction
 
-[3] https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
+[3] Shader - PyTorch3D 0.2.0 documentation. Available at: https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
 
-[4] https://pytorch3d.readthedocs.io/en/latest/_modules/pytorch3d/utils/ico_sphere.html
+[4] pytorch3d.utils.ico_sphere - PyTorch3D 0.2.0 documentation. Available at:  https://pytorch3d.readthedocs.io/en/latest/_modules/pytorch3d/utils/ico_sphere.html
