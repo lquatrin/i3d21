@@ -131,9 +131,9 @@ losses = { "rgb":        {"weight": 1.0,   "values": []},
 
 After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/4_2_half_weights_plt2.png" width="50%"><img src="data/imgs/a9/4_2_half_weights_plt3.png" width="50%">
+<img src="data/imgs/a9/4_2_hw_opt.png" width="50%"><img src="data/imgs/a9/4_2_hw_plt.png" width="50%">
 
-<img src="data/imgs/a9/4_2_half_weights_losses.png" width="100%">
+<img src="data/imgs/a9/4_2_hw_losses.png" width="100%">
 
 It is important to notice that both vertex positions and textures are being optimized together only with image observations. So, the texture color will be optimized according its position in relation to the image, which might be wrong during the mesh optimization. So, in a second result, i tried to optimize only the texture, by making a copy of the target mesh. In this case, i got the following result:
 
