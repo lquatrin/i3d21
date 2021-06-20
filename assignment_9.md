@@ -115,11 +115,9 @@ After running the optimization procedure again, it is possible to check how this
 
 Now, the idea is to optimize both mesh vertices and texture. In this case, the additional loss is added to compare the RGB of the image. The optimization procedure again starts with a sphere now with a grey color defined at each vertex to be optimized. In this case, **SoftPhongShader** is used instead of **SoftSilhouetteShader**, to be able to compare RGB images. After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/4_0_opt.png" width="50%">
+<img src="data/imgs/a9/4_0_opt.png" width="50%"><img src="data/imgs/a9/4_1_1.png" width="50%">
 
-<img src="data/imgs/a9/4_1_2.png" width="50%"><img src="data/imgs/a9/4_1_3.png" width="50%">
-
-<img src="data/imgs/a9/4_0_losses.png" width="70%">
+<img src="data/imgs/a9/4_0_losses.png" width="100%">
 
 We can see that the texture is converging, but still far in terms of detail and high color variations. One thing that i notice is the rgb loss was still slowly decreasing near the 2000 iterations, and the other losses converge to a value with fewer iterations. Trying to achieve a better result, i first tried to halve the other losses, ending up with the following loss weights:
 
