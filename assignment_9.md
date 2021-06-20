@@ -187,7 +187,7 @@ For each experiment, i generate the gif with images generated during the optimiz
 
 <img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_5_0_45.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_4_rgb.png" width="60%">
 
-In this case, some cases didn't converge to the correct position. It seems that the optimization procedure gets stuck in a position where it can't find a better direction to converge.
+The 3th and 4th experiments didn't converge to the correct position. It seems that the optimization procedure gets stuck in a position where it can't find a better direction to converge based on the generated images.
 
 ### Light Position Optimization
 
