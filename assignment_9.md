@@ -211,6 +211,8 @@ And here we have the result along 2000 iterations:
 
 ![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif)
 
+**TODO: PEGAR POSICAO FINAL**
+
 ### References
 
 [1] Accelerating 3D Deep Learning with PyTorch3D
