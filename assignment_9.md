@@ -51,7 +51,7 @@ losses = { "silhouette": { "weight": 1.0,  "values": []},
 
 After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/3_1_plt1.png" width="30%"><img src="data/imgs/a9/3_1_plt2.png" width="30%"><img src="data/imgs/a9/3_1_plt3.png" width="30%">
+<img src="data/imgs/a9/3_1_plt2.png" width="50%"><img src="data/imgs/a9/3_1_plt3.png" width="50%">
 
 <img src="data/imgs/a9/3_0_losses.png" width="70%"><img src="data/imgs/a9/3_opt_final.png" width="30%">
 
@@ -81,9 +81,9 @@ Since we're comparing images to approximate the mesh, it is important to have a 
 
 **TODO: CHANGE THE DATASET TO HAVE ONLY ONE POINT OF VIEW INSTEAD OF MULTIPLE (20) VIEWS**
 
-#### Using higher level icosphere 
+#### Using ico_sphere with higher detail level  
 
-For the first experiments, i use a sphere generated from **ico_sphere** [4] using level = 4. If we compare the number of vertices of each mesh, we can see the sphere with level = 4 has a similar number of vertices comparing with the cow mesh. In a last experiment, i tested if it is possible to generate better results using a sphere with level = 5:
+For the first experiments, i used a sphere generated from **ico_sphere** [4] using level = 4. Comparing the number of vertices of each mesh, the sphere with level = 4 has a similar number of vertices comparing with the cow mesh. In a last experiment, i made a test if it is possible to generate better results using a sphere with level = 5:
 
 ```python
 Cow Mesh Vertices: 2930
@@ -105,11 +105,13 @@ After running the optimization procedure again, it is possible to check how this
 
 ### Mesh and texture prediction via textured rendering
 
-Now, the idead is to optimize both the mesh and its texture. An additional loss is added to compare the RGB of the image. The optimization procedure agains starts with a sphere but with a grey color defined at each vertex for texture prediction. In this case, **SoftPhongShader** is used instead of -**SoftSilhouetteShader**, comparing RGB images. After 2000 iterations, i got the following result:
+Now, the idea is to optimize both mesh vertices and texture. In this case, the additional loss is added to compare the RGB of the image. The optimization procedure again starts with a sphere now with a grey color defined at each vertex to be optimized. In this case, **SoftPhongShader** is used instead of **SoftSilhouetteShader**, to be able to compare RGB images. After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/4_1_1.png" width="30%"><img src="data/imgs/a9/4_1_2.png" width="30%"><img src="data/imgs/a9/4_1_3.png" width="30%">
+<img src="data/imgs/a9/4_0_opt.png" width="50%">
 
-<img src="data/imgs/a9/4_0_losses.png" width="70%"><img src="data/imgs/a9/4_0_opt.png" width="30%">
+<img src="data/imgs/a9/4_1_2.png" width="50%"><img src="data/imgs/a9/4_1_3.png" width="50%">
+
+<img src="data/imgs/a9/4_0_losses.png" width="70%">
 
 We can see that the texture is converging, but still far in terms of detail and high color variations. One thing that i notice is the rgb loss was still slowly decreasing near the 2000 iterations, and the other losses converge to a value with fewer iterations. Trying to achieve a better result, i first tried to halve the other losses, ending up with the following loss weights:
 
@@ -123,7 +125,7 @@ losses = { "rgb":        {"weight": 1.0,   "values": []},
 
 After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/4_2_half_weights_plt1.png" width="30%"><img src="data/imgs/a9/4_2_half_weights_plt2.png" width="30%"><img src="data/imgs/a9/4_2_half_weights_plt3.png" width="30%">
+<img src="data/imgs/a9/4_2_half_weights_plt2.png" width="50%"><img src="data/imgs/a9/4_2_half_weights_plt3.png" width="50%">
 
 <img src="data/imgs/a9/4_2_half_weights_losses.png" width="70%">
 
