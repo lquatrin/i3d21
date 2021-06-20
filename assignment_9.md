@@ -187,15 +187,12 @@ For each experiment, i generate the gif with images generated during the optimiz
 
 <img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_5_0_45.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_4_rgb.png" width="60%">
 
-5.1 Evaluate how close our prediction is to the ground truth camera position. Explain your metric.
 
-5.2 Experiment with other views - different target images and different initial positions to the camera model. Does it always work?
-
-EXTRA E.2: Could you estimate the scene illumination - in this case, the location of a single point light? Set up and run an example
+TODO: IT DOES NOT ALWAYS WORK
 
 ### Light Position Optimization
 
-The last experiment of this assignment was to optimize a light position given the camera 
+The last experiment of this assignment was to optimize a light position knowing the camera parameters. In this case, i made a small modification to the model class and changed the parameter to be the light position:
 
 ```python
  class ModelE2(nn.Module):
@@ -223,13 +220,13 @@ The last experiment of this assignment was to optimize a light position given th
         return loss, image
 ```
 
-Here, i have the starting point for the optimized light position, and for the target light position at [1.0, 1.0, 2.0]. Here i have the result after 2000 iterations:
+In this case, i started the light position at [0.0, 0.0, 0.0], and the target light position is at [1.0, 1.0, 2.0]. After 2000 iterations, i got the following result:
+
+1. Final optimized light position: [1.933383  1.3485548 2.8575547]
 
 <img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="300" height="300" /><img src="data/imgs/a9/e_2_end.png" width="60%">
 
-The distance between the optimized light ([1.933383  1.3485548 2.8575547]) and the target is 1.3145700074906765.
-
-**TODO: PEGAR POSICAO FINAL**
+with distance between the optimized light and the target being 1.3145700074906765. It is possible to see how some specular effects are a little different from the reference image, but still similar to the target.
 
 ### References
 
