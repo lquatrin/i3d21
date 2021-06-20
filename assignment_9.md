@@ -53,23 +53,23 @@ After 2000 iterations, i got the following result:
 
 <img src="data/imgs/a9/3_1_plt2.png" width="50%"><img src="data/imgs/a9/3_1_plt3.png" width="50%">
 
-<img src="data/imgs/a9/3_0_losses.png" width="70%"><img src="data/imgs/a9/3_opt_final.png" width="30%">
+<img src="data/imgs/a9/3_0_losses.png" width="100%">
 
-As we can see, the resultant mesh is smoother compared to the target, but it is also a similar result. Then, i changed the optimization step to use 1, 4 and 8 views per iteration:
+As we can see, the resultant mesh is smoother compared to the target, but it is also a similar result. I then made some additional testes by using different number of views per each iteration:
 
-1 view per iteration
+1. 1 view per iteration
 
-<img src="data/imgs/a9/3_2_1vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_1vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_1vpi_plotly3.png" width="30%">
+<img src="data/imgs/a9/3_2_1vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_1vpi_plotly3.png" width="50%">
 
-<img src="data/imgs/a9/3_2_1vpi_losses.png" width="70%"><img src="data/imgs/a9/3_2_1vpi_opt_sl.png" width="30%">
+<img src="data/imgs/a9/3_2_1vpi_losses.png" width="100%">
 
-4 views per iteration
+2. 4 views per iteration
 
 <img src="data/imgs/a9/3_2_4vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_4vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_4vpi_plotly3.png" width="30%">
 
 <img src="data/imgs/a9/3_2_4vpi_losses.png" width="70%"><img src="data/imgs/a9/3_2_4vpi_opt_sl.png" width="30%">
 
-8 views per iteration
+3. 8 views per iteration
 
 <img src="data/imgs/a9/3_2_8vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_8vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_8vpi_plotly3.png" width="30%">
 
