@@ -151,9 +151,12 @@ It shows how the vertices didn't go back to the original position after doing th
 
 ### Camera Position Optimization
 
-Until now, we assumed we knew the cameras and we learned how to infer the geometry and texture of a mesh using a differentiable renderer and supervising the training with the multiview images dataset.
+Until now, the cameras used to generate the images are known and we try to learn the geometry and texture of the mesh. Now, the objective is to use differentiable renderer to infer the camera position, knowing the geometry and texture of the object.
 
-Now, we'll assume we have the geometry and images of the object, but we don't know the cameras. Can we infer the camera position by backpropagation?
+![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0.gif)
+
+
+ Can we infer the camera position by backpropagation?
 
 Here we create a simple model class and initialize a parameter for the camera position.
 
@@ -173,6 +176,40 @@ EXTRA E.2: Could you estimate the scene illumination - in this case, the locatio
 
 The last experiment of this assignment was to optimize a light position given the camera 
 
+```python
+ class ModelE2(nn.Module):
+    def __init__(self, meshes, mesh_renderer, image_ref, camera):
+        super().__init__()
+        self.meshes = meshes
+        self.device = meshes.device
+        self.renderer = mesh_renderer
+        self.camera = camera
+        
+        # Get the rgb image
+        image_ref = torch.from_numpy(image_ref[..., :3])
+        self.register_buffer('image_ref', image_ref)
+        
+        # Create an optimizable parameter for the x, y, z position of the light.        
+        self.light_position = nn.Parameter(
+            torch.from_numpy(np.array([0.0,  0.0, 0.0], dtype=np.float32)).to(meshes.device))
+
+    def forward(self):
+        # Render the image using the updated light position.
+        cam_lights = PointLights(device=self.device, location=self.light_position[None, :])
+        image = self.renderer(meshes_world=self.meshes.clone(), cameras=self.camera, lights=cam_lights)
+        
+        loss = torch.sum((image[..., :3] - self.image_ref) ** 2)
+        return loss, image
+```
+
+Here, i have the starting point for the optimized light position, and for the target light position at [1.0, 1.0, 2.0]:
+
+![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/imgs/a9/e_2_start.png)
+
+
+And here we have the result after 2000 iterations:
+
+![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif)
 
 ### References
 
