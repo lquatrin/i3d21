@@ -65,21 +65,29 @@ As we can see, the resultant mesh is smoother compared to the target, but it is 
 
 2. 4 views per iteration
 
-<img src="data/imgs/a9/3_2_4vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_4vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_4vpi_plotly3.png" width="30%">
+<img src="data/imgs/a9/3_2_4vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_4vpi_plotly3.png" width="50%">
 
-<img src="data/imgs/a9/3_2_4vpi_losses.png" width="70%"><img src="data/imgs/a9/3_2_4vpi_opt_sl.png" width="30%">
+<img src="data/imgs/a9/3_2_4vpi_losses.png" width="100%">
 
 3. 8 views per iteration
 
-<img src="data/imgs/a9/3_2_8vpi_plotly1.png" width="30%"><img src="data/imgs/a9/3_2_8vpi_plotly2.png" width="30%"><img src="data/imgs/a9/3_2_8vpi_plotly3.png" width="30%">
+<img src="data/imgs/a9/3_2_8vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_8vpi_plotly3.png" width="50%">
 
-<img src="data/imgs/a9/3_2_8vpi_losses.png" width="70%"><img src="data/imgs/a9/3_2_8vpi_opt_sl.png" width="30%">
+<img src="data/imgs/a9/3_2_8vpi_losses.png" width="100%">
 
 With only 1 view per iteration, the result does not converge properly as using 2 views. However, from 4 to 8 views, i didn't get an effective change between the results.
 
-Since we're comparing images to approximate the mesh, it is important to have a good representation with multiple views. In fact, if we use only on point of view, we're not able to approximate the mesh correctly. Here, i made an additional test with only one point of view:
+Since we're comparing images to approximate the mesh, it is important to have a good representations of the object, defined by multiple views. Using only one image, it is not possible to approximate the mesh correctly (using this optimzation procedure). Here, i made an additional test with only one point of view:
 
-**TODO: CHANGE THE DATASET TO HAVE ONLY ONE POINT OF VIEW INSTEAD OF MULTIPLE (20) VIEWS**
+<img src="data/imgs/a9/single_view_plt1.png" width="50%"><img src="data/imgs/a9/single_view_plt2.png" width="50%">
+
+<img src="data/imgs/a9/single_view_losses.png" width="100%">
+
+wit the reference image being:
+
+<img src="data/imgs/a9/single_view_ref.png" width="30%">
+
+As we can see, using only one point of view, it is not possible to optimize the mesh properly.
 
 #### Using ico_sphere with higher detail level  
 
