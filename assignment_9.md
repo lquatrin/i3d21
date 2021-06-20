@@ -234,6 +234,6 @@ with distance between the optimized light and the target being 1.314570007490676
 
 [2] Soft Rasterizer: Differentiable Rendering for Unsupervised Single-View Mesh Reconstruction
 
-[3] https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
+[3] Shader - PyTorch3D 0.2.0 documentation. Available at: https://pytorch3d.readthedocs.io/en/latest/modules/renderer/shader.html
 
-[4] https://pytorch3d.readthedocs.io/en/latest/_modules/pytorch3d/utils/ico_sphere.html
+[4] pytorch3d.utils.ico_sphere - PyTorch3D 0.2.0 documentation. Available at:  https://pytorch3d.readthedocs.io/en/latest/_modules/pytorch3d/utils/ico_sphere.html
