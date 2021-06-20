@@ -223,13 +223,11 @@ The last experiment of this assignment was to optimize a light position given th
         return loss, image
 ```
 
-Here, i have the starting point for the optimized light position, and for the target light position at [1.0, 1.0, 2.0]:
+Here, i have the starting point for the optimized light position, and for the target light position at [1.0, 1.0, 2.0]. Here i have the result after 2000 iterations:
 
-![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/imgs/a9/e_2_start.png)
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="300" height="300" /><img src="data/imgs/a9/e_2_end.png" width="60%">
 
-And here we have the result along 2000 iterations:
-
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="300" height="300" />
+The distance between the optimized light ([1.933383  1.3485548 2.8575547]) and the target is 1.3145700074906765.
 
 **TODO: PEGAR POSICAO FINAL**
 
