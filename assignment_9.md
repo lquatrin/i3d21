@@ -209,7 +209,7 @@ Here, i have the starting point for the optimized light position, and for the ta
 
 And here we have the result along 2000 iterations:
 
-![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif)
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="40" height="40" />
 
 **TODO: PEGAR POSICAO FINAL**
 
