@@ -153,8 +153,7 @@ It shows how the vertices didn't go back to the original position after doing th
 
 Until now, the cameras used to generate the images are known and we try to learn the geometry and texture of the mesh. Now, the objective is to use differentiable renderer to infer the camera position, knowing the geometry and texture of the object.
 
-![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0.gif)
-
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0.gif" width="300" height="300" />
 
  Can we infer the camera position by backpropagation?
 
@@ -205,7 +204,6 @@ The last experiment of this assignment was to optimize a light position given th
 Here, i have the starting point for the optimized light position, and for the target light position at [1.0, 1.0, 2.0]:
 
 ![cow](https://github.com/lquatrin/i3d21_p/blob/main/data/imgs/a9/e_2_start.png)
-
 
 And here we have the result along 2000 iterations:
 
