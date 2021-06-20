@@ -57,19 +57,19 @@ After 2000 iterations, i got the following result:
 
 As we can see, the resultant mesh is smoother compared to the target, but it is also a similar result. I then made some additional testes by using different number of views per each iteration:
 
-1. 1 view per iteration
+1. **1 view per iteration**
 
 <img src="data/imgs/a9/3_2_1vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_1vpi_plotly3.png" width="50%">
 
 <img src="data/imgs/a9/3_2_1vpi_losses.png" width="100%">
 
-2. 4 views per iteration
+2. **4 views per iteration**
 
 <img src="data/imgs/a9/3_2_4vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_4vpi_plotly3.png" width="50%">
 
 <img src="data/imgs/a9/3_2_4vpi_losses.png" width="100%">
 
-3. 8 views per iteration
+3. **8 views per iteration**
 
 <img src="data/imgs/a9/3_2_8vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_8vpi_plotly3.png" width="50%">
 
