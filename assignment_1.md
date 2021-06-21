@@ -22,7 +22,7 @@ The type inferred by **torch.empty** can also be modified through a parameter, a
 
 ### Tensor operations
 
-A next experiment consisted on using the functions from PyTorch to optimize arithmetic operations. Here, the idea is to multiply each row of a matrix by a number. PyTorch supports broadcasting for element-wise operations, so we can use it to greatly improve the efficiency of the code. The simplest way to do this matrix multiplication would be implementing a for, multiplying each value of each row by number. However, for larger tensors, this turns out to be very costly.
+A next experiment consisted on using the functions from PyTorch to optimize arithmetic operations. Here, the idea is to multiply each row of a matrix by a number. PyTorch supports broadcasting for element-wise operations, so it can be used to greatly improve the efficiency of the code. The simplest way to do this matrix multiplication would be implementing a for, multiplying each value of each row by number. However, for larger tensors, this turns out to be very costly.
 
 Here, i made a test with a tensor of size 1000x600. When using the **torch.mul** function and * operator, i was able to drastically improve the performance:
 
