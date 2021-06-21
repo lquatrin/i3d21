@@ -10,10 +10,7 @@ In this first assignment, the objective was to get more familiar with pytorch an
 
 ### PyTorch Tensors
 
-The first part of the work consisted of creating and manipulating tensors using the PyTorch. I was able to observe some differences using the different ways to create Tensors:
-
-Both **torch.Tensor** and **torch.empty** use the default type that can be checked by calling the function **torch.get_default_dtype()**. We can also change the current default type by using:
-
+The first part of the work consisted of creating and manipulating tensors using the PyTorch. I was able to observe some differences using the different options to create Tensors. Both **torch.Tensor** and **torch.empty** use the default type, which can be checked using the method **torch.get_default_dtype()**. The default type can also be changed by using **torch.set_default_dtype()**:
 
 ```python
 torch.set_default_dtype(torch.float)
@@ -21,14 +18,13 @@ torch.get_default_dtype()
 > torch.float32
 ``` 
 
-However, the type inferred by **torch.empty** can also be modified through a parameter. In the case of **torch.tensor**, the type ends up being inferred according to the input data.
-
-Both the **torch.tensor** and **torch.Tensor** functions end up creating a copy of the data. Unlike the other methods, **torch.as_tensor** does not store a copy of the value that was passed. In this case, if a value is modified both from the tensor and from the input data, the change will be made in the same memory space.
+The type inferred by **torch.empty** can also be modified through a parameter, and **torch.tensor** data type ends up being inferred according to the input data. Both **torch.tensor** and **torch.Tensor** functions end up creating a copy of the data. Unlike the other methods, **torch.as_tensor** does not store a copy of the value that was passed, but uses the same memory space. In this case, the value can be modified from both the tensor or the input structure.
 
 ### Tensor operations
 
-When we need to compute large batch operations on tensor, it is better to use the available methods from PyTorch. If we perform a multiplication operation on each row of a matrix, the simplest way to do this would be to implementing a for, multiplying each row by a number. However, in cases where we have larger tensors, this turns out to be very costly.
-Thus, a test was performed using the **torch.mul** function and * operator. When comparing each implementation, we see how the performance improved, using a tensor of size 1000x600:
+A next experiment consisted on using the functions from PyTorch to optimize arithmetic operations. Here, the idea is to multiply each row of a matrix by a number. PyTorch supports broadcasting for element-wise operations, so we can use it to greatly improve the efficiency of the code. The simplest way to do this matrix multiplication would be implementing a for, multiplying each value of each row by number. However, for larger tensors, this turns out to be very costly.
+
+Here, i made a test with a tensor of size 1000x600. When using the **torch.mul** function and * operator, i was able to drastically improve the performance:
 
 ```python
 # 6.054009437561035 s
@@ -121,14 +117,14 @@ When passing the model to GPU, i realized that each iteration of the training en
 Finally, i generate the results using a intermediate layer using 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy using the validation data increasing according to each interation, and the loss function decreases. Then, an accuracy of 97.07% was achieved when using the data from test set. Below are the graphs with the values of precision and loss function throughout the training. The loss validation was not evaluated in this report.
 
 <p align="center">
-  <img src="data/imgs/a1/accuracy.png" width="30%">
+  <img src="data/imgs/a1/accuracy.png" width="80%">
   <br>
   <em>Fig. 2: Accuracy evaluated per iteration.</em>
 </p>
 
 
 <p align="center">
-  <img src="data/imgs/a1/loss_function.png" width="30%">
+  <img src="data/imgs/a1/loss_function.png" width="80%">
   <br>
   <em>Fig. 3: Graph of loss per iteration.</em>
 </p>
