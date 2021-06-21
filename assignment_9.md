@@ -26,21 +26,30 @@ In PyTorch3D, they used a soft rasterizer [2] to solve these problems. The probl
 
 ### Dataset Creation
 
-In this assignment, the cow mesh was used. So, first,  different camera positions are sampled, encoding multiple viewpoints of the cow:
+In this assignment, the cow mesh was used. So, first, different camera positions are sampled, encoding multiple viewpoints of the cow:
 
-<img src="data/imgs/a9/2_2_1.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/2_2_1.png" width="50%">
+  <br>
+  <em>Fig. 2: Multiple viewpoints of the cow mesh rendered using SoftPhongShader.</em>
+</p>
 
 Using the silhouette renderer, it shows the top k faces per pixel, based on the 2d euclidean distance of the center of the pixel to the mesh face:
 
-<img src="data/imgs/a9/2_2_sl_1.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/2_2_sl_1.png" width="50%">
+  <br>
+  <em>Fig. 3: Multiple viewpoints of the cow mesh rendered using SoftSilhouetteShader.</em>
+</p>
 
-Using these shader, it is possible to compare the edges of the mesh according to each viewpoint. In these cases, the lighting is not computed, according to the documentation [3]. Here, i made a simple test by changing the light source position and generate the images with silhouette renderer:
+Using this shader, it is possible to compare the edges of the mesh according to each viewpoint. In these cases, the lighting is not computed, according to the documentation [3]. Here, i made a simple test by changing the light source position and generate the images with silhouette renderer. We can see that both configurations generated the same images when using **SoftSilhouetteShader**.
 
-<img src="data/imgs/a9/2_2_1.png" width="50%"><img src="data/imgs/a9/2_2_sl_1.png" width="50%">
-
-<img src="data/imgs/a9/2_2_2.png" width="50%"><img src="data/imgs/a9/2_2_sl_2.png" width="50%">
-
-Both configurations generated the same images when using **SoftSilhouetteShader**.
+<p align="center">
+  <img src="data/imgs/a9/2_2_1.png" width="50%"><img src="data/imgs/a9/2_2_sl_1.png" width="50%">
+  <img src="data/imgs/a9/2_2_2.png" width="50%"><img src="data/imgs/a9/2_2_sl_2.png" width="50%">
+  <br>
+  <em>Fig. 4: Comparison of the multiple viewpoints of the cow mesh using different positions of the light source. When using SoftSilhouetteShader, the generated images are equal.</em>
+</p>
 
 ### Mesh prediction via silhouette rendering
 
