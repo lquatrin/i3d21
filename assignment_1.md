@@ -62,7 +62,7 @@ show_batch(images)
 ``` 
 
 <p align="center">
-  <img src="data/imgs/a1/bach_of_images.png" width="70%">
+  <img src="data/imgs/a1/bach_of_images.png" width="30%">
   <br>
   <em>Fig. 1: Batch of 32 digits.</em>
 </p>
@@ -120,9 +120,18 @@ When passing the model to GPU, i realized that each iteration of the training en
 
 Finally, i generate the results using a intermediate layer using 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy using the validation data increasing according to each interation, and the loss function decreases. Then, an accuracy of 97.07% was achieved when using the data from test set. Below are the graphs with the values of precision and loss function throughout the training. The loss validation was not evaluated in this report.
 
-![Accuracy per Iteration](data/imgs/a1/accuracy.png)
+<p align="center">
+  <img src="data/imgs/a1/accuracy.png" width="30%">
+  <br>
+  <em>Fig. 2: Accuracy evaluated per iteration.</em>
+</p>
 
-![Loss Function](data/imgs/a1/loss_function.png)
+
+<p align="center">
+  <img src="data/imgs/a1/loss_function.png" width="30%">
+  <br>
+  <em>Fig. 2: Graph of loss per iteration.</em>
+</p>
 
 I also plotted the confusion matrix to check the performance of the model for each category. As we can see, the majority of cases were correctly classified using the simple neural network implemented in this assignment.
 
