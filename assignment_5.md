@@ -43,7 +43,11 @@ Plotly has an advantage of providing an interactive rendering, but does not show
 
 Then, i tried to show two models in a same plot. Since they are centered at the origin, they will overlap. Using the method **plot_scene**, we can create two subplots to  visualize each mesh:
 
-<img src="data/imgs/a5/3_3.png" width="50%"><img src="data/imgs/a5/3_4.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a5/3_3.png" width="50%"><img src="data/imgs/a5/3_4.png" width="50%">
+  <br>
+  <em>Fig. 4: The first image shows two meshes overlapping in a same space. Then, two subplots are created to rende both meshes individually.</em>
+</p>
 
 In a last experiment, i created a batch of meshes, by adding them as a list of tensors. In this case, i used 10 models starting at 250:
 
