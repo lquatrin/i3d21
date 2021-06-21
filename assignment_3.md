@@ -10,7 +10,7 @@ In this assignment, the objective was to estimate the extrinsic parameters of a 
 
 ### Problem description
 
-Given an optical system of N cameras, we want to estimate their respective extrinsic parameters, corresponding to the rotation and translation matrices. To optimize these parameters, we calculate the relative transformations between each pair of cameras, which estimates the affine transformation from one camera to another. The intrinsic parameters of the cameras are implicitly known, so only the extrinsic parameters are considered.
+Given an optical system of N cameras, we want to estimate their absolut extrinsic parameters, corresponding to the rotation and translation matrices. To optimize these parameters, we calculate the relative transformations between each pair of cameras, which estimates the affine transformation from one camera to another. The intrinsic parameters of the cameras are implicitly known, so only the extrinsic parameters are considered.
 
 The optimization procedure starts by randomly initializing a set of cameras, plotted in orange:
 
