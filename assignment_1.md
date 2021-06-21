@@ -122,5 +122,5 @@ Finally, i generate the results using a intermediate layer using 128 nodes, trai
 
 I also plotted the confusion matrix to check the performance of the model for each category. As we can see, the majority of cases were correctly classified using the simple neural network implemented in this assignment.
 
-![Confusion Matrix](data/imgs/a1/confusion_matrix.png)
-
+<img src="data/imgs/a1/confusion_matrix.png" width="70%">
+<figcaption>Confusion matrix of the resulted model.</figcaption>
