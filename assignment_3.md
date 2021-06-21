@@ -84,15 +84,13 @@ Using the Cow Mesh, it is possible to generate a qualitative comparison between 
   <em>Fig. 5: Images generated using the cow mesh and the cameras initialized with random values.</em>
 </p>
 
-Now comparing the Ground truth, with the optimzed cameras:
+Now comparing the Ground truth, with the optimzed cameras, i noticed that the first camera does not change during the optimization process, since it is the trivial case. There is some small differences between the ground truth and the optimized cameras. Take the image from the second row and third column as an example: it generated a slightly different image.
 
 <p align="center">
   <img src="data/imgs/a3/gt.png" width="50%"><img src="data/imgs/a3/approx.png" width="50%">
   <br>
   <em>Fig. 6: Images generated using the cow mesh. The first set of images were generated using the ground truth cameras, and the second set of images were generated using the optimized cameras.</em>
 </p>
-
-We can note that the first camera does not change during the optimization process, since it is the trivial case. There is some small differences between the ground truth and the optimized cameras. Take the image from the second row and third column as an example: we can note how it generated a slightly different image.
 
 ### Additional Results
 
