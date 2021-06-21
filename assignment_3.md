@@ -110,7 +110,7 @@ We can see by the images generated with the optimized cameras are closer to the 
   <em>Fig. 8: Images generated using the cow mesh. First, the images were generated using the ground truth cameras. The second set of images were generated using the optimized cameras.</em>
 </p>
 
-Lastly, i made an additional experiment representing each rotation as a quaternion. It also seemed to be a good representation since its interpolation works better than using axis-angle representation for rotations. However, the quaternions were transformed back to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. I also apply the trivial initialization for all cameras, but in this case, each rotation is initialized with the identity quaternion, which means no rotation. I was able to reach a camera_distance = 4.957e-08 as the final loss:
+Lastly, i made an additional experiment representing each rotation as a quaternion. It also seemed to be a good experiment since its interpolation works better than using axis-angle representation. However, i ended up transforming back the quaternions to a matrix (using the method **quaternion_to_matrix**) to compute the relative cameras and the loss function. I also apply the trivial initialization for all cameras, but in this case, each rotation is initialized with the identity quaternion, which means no rotation. I was able to reach a camera_distance = 4.957e-08 as the final loss:
 
 <p align="center">
   <img src="data/imgs/a3/camera_quat.png" width="40%">
