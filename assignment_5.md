@@ -22,7 +22,7 @@ In this assignment, it was used a subset of ShapeNet containing 329 models. The 
 <p align="center">
   <img src="data/imgs/a5/shapenet_render.png" width="100%">
   <br>
-  <em>Fig. 1: Randomly chosen images from ShapeNet.</em>
+  <em>Fig. 1: Randomly images chosen from ShapeNet.</em>
 </p>
 
 Now using plotly, i first started by rendering the mesh using the method **plot_scene**:
