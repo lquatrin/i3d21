@@ -6,7 +6,7 @@
 
 ## Assignment 9 - View Optimization / Fit Mesh
 
-In this assignment, the idea is to practice operations with differentiable rendering using the PyTorch3D to optimize meshes and scene parameters from multiple viewpoints. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21_p/tree/main/code/a9/Assignment9.ipynb).
+In this assignment, the idea is to practice operations with differentiable rendering using the PyTorch3D to optimize meshes and scene parameters from multiple viewpoints. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/tree/main/code/a9/Assignment9.ipynb).
 
 ### Rendering pipeline and discontinuity issues
 
