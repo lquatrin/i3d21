@@ -8,7 +8,7 @@
 
 In this assignment, the objective was to estimate the extrinsic parameters of a set (bundle) of cameras, given multiple pairs of relative transformations between them. The PyTorch3D API was used to represent and optimize the transformation matrix of each camera. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/blob/main/code/a3/Assignment3.ipynb).
 
-### Setup
+### Problem description
 
 Given an optical system of N cameras, we want to find the extrinsic parameters of each camera. To optimize these parameters, the relative positions between each pair of cameras are computed, computing the relative matrix which maps one camera to another. The intrinsic parameters of the cameras are implicitly known, so only the extrinsic parameters are considered. Considering the epipolar geometry, we compute the essential matrix, estimating an affine transformation from one camera to another. 
 
