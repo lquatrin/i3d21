@@ -32,7 +32,7 @@ To be able to find a valid solution to this problem, the first camera must be se
 
 ### Representing rotations
 
-One of the problems of this assignment was how to represent each rotation matrix. The initial solution to this problem uses the log axis-angle representation. Using PyTorch3D API, it is possible to recover the 3x3 rotation matrix from the axis-angle using the method **so3_exponential_map**. In fact, there are a few possible solution to represent rotations:
+One of the problems of this assignment is how to represent each rotation matrix. In fact, there are a few possible solutions to represent rotations:
 
 #### 1. Fixed/Euler angles:
 
@@ -42,7 +42,7 @@ There are a few problems when using this representation: it has a singularity pr
 
 #### 2. Axis angle:
 
-This is the standard reprensetation used in this assignment. In this case, the rotation is calculated based on an arbitrary axis, which is defined by the composition of 3 angles. According to the PyTorch3D documentation, the arbitrary axis is calculated using the Rodriguez Formula (from **so3_exponential_map**).
+This is the standard reprensetation used in this assignment. In this case, the rotation is calculated based on an arbitrary axis, which is defined by the composition of 3 angles. According to the PyTorch3D documentation, the arbitrary axis is calculated using the Rodriguez Formula, and the 3x3 rotation matrix can be recovered using the method **so3_exponential_map**.
 
 This representation does not generate the singularity problem, but we must convert back to a matrix to be able to composite a rotation. In addition, there is an ambiguity if we have the same axis with exchanged sign, since they can represent the same rotation. Still, they present the same limitation from the euler angles: it is difficult to provide a smooth interpolation between two points, and the small change of the parameters does not represent the same amount in a rigid body.
 
