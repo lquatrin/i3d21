@@ -35,7 +35,11 @@ Now using plotly, i first started by rendering the mesh using the method **plot_
 
 Plotly has an advantage of providing an interactive rendering, but does not show the textures when using UV mapping. However, it is possible to define a color for each vertex. Here, i made an adjustment to the mesh setting a **TexturesVertex** object using randomized values:
 
-<img src="data/imgs/a5/3_2.png" width="60%">
+<p align="center">
+  <img src="data/imgs/a5/3_2.png" width="60%">
+  <br>
+  <em>Fig. 3: A ShapeNet mesh visualization using plotly with a TexturesVertex object attached.</em>
+</p>
 
 Then, i tried to show two models in a same plot. Since they are centered at the origin, they will overlap. Using the method **plot_scene**, we can create two subplots to  visualize each mesh:
 
