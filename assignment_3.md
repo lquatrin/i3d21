@@ -58,7 +58,7 @@ A recent paper used SVD to predict rotations. In this case, 9 values are used to
 
 The SGD optimizer was used to estimate the extrinsic parameters of each camera. For each loop step, the relative matrix between each pair of cameras is evaluated and compared with a ground truth, which defines the loss function **camera_distance**. Each relative matrix is computed by getting the view matrix (or extrinsic camera matrix) of one camera, and multiplying by the inverse of a second view matrix, from other camera. Then, the rotation and translation of these relative matrices are used to compare with a known ground truth, also computing the loss function.
 
-The first camera is initialized with the trivial case, and the others are initialized with random values. Since the axis-angle represetation is being used in this first experiment, both rotation and translation of the first camera are initialized with the a zero vector.
+The first camera is initialized with the trivial case, and the others are initialized with random values. Since the axis-angle represetation is being used in this first experiment, both rotation and translation of the first camera are initialized with the zero vector.
 
 For the first result, using 2000 iterations, i reached a result with a camera_distance = 4.597e-03 at the last iteration:
 
