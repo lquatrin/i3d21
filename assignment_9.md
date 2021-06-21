@@ -137,7 +137,7 @@ After 2000 iterations, i got the following result:
 
 It is important to notice that both vertex positions and textures are being optimized together only with image observations. So, the texture color will be optimized according its position in relation to the image, which might be wrong during the mesh optimization. So, in a second result, i tried to optimize only the texture, by making a copy of the target mesh. In this case, i got the following result:
 
-<img src="data/imgs/a9/4_3_opt.png" width="30%"><img src="data/imgs/a9/4_3_plt.png" width="30%">
+<img src="data/imgs/a9/4_3_opt.png" width="50%"><img src="data/imgs/a9/4_3_plt.png" width="50%">
 
 <img src="data/imgs/a9/4_3.png" width="100%">
 
@@ -169,23 +169,23 @@ For each experiment, i generate the gif with images generated during the optimiz
 
 1. elevation = 50.0 | azimuth = 0.0 | Final distance = 0.0083
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_1_50_0.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_rgb.png" width="60%">
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_1_50_0.gif" width="33%"/><img src="data/imgs/a9/5_0_rgb.png" width="60%">
 
 2. elevation = 0.0 | azimuth = 90.0 | Final distance = 0.0083
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_2_0_90.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_1_rgb.png" width="60%">
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_2_0_90.gif" width="33%"/><img src="data/imgs/a9/5_0_1_rgb.png" width="60%">
 
 3. elevation = 0.0 | azimuth = -90.0 | Final distance = 1.8392
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_3_0_m90.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_2_rgb.png" width="60%">
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_3_0_m90.gif" width="33%"/><img src="data/imgs/a9/5_0_2_rgb.png" width="60%">
 
 4. elevation = 0.0 | azimuth = 180.0 | Final distance = 2.0303
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_4_0_180.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_3_rgb.png" width="60%">
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_4_0_180.gif" width="33%"/><img src="data/imgs/a9/5_0_3_rgb.png" width="66%">
 
 5. elevation = 0.0 | azimuth = 45.0 | Final distance = 0.0080
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_5_0_45.gif" width="300" height="300" /><img src="data/imgs/a9/5_0_4_rgb.png" width="60%">
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_5_0_5_0_45.gif"  width="33%"/><img src="data/imgs/a9/5_0_4_rgb.png" width="66%">
 
 The 3th and 4th experiments didn't converge to the correct position. It seems that the optimization procedure gets stuck in a position where it can't find a better direction to converge based on the generated images.
 
@@ -223,7 +223,7 @@ In this case, i started the light position at [0.0, 0.0, 0.0], and the target li
 
 1. Final optimized light position: [1.933383  1.3485548 2.8575547]
 
-<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="300" height="300" /><img src="data/imgs/a9/e_2_end.png" width="60%">
+<img src="https://github.com/lquatrin/i3d21_p/blob/main/data/gifs/a9/cow_optimization_demo_e_2.gif" width="33%"/><img src="data/imgs/a9/e_2_end.png" width="60%">
 
 with distance between the optimized light and the target being 1.3145700074906765. It is possible to see how some specular effects are a little different from the reference image, but still similar to the target.
 
