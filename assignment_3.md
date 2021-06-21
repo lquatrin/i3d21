@@ -6,7 +6,7 @@
 
 ## Assignment 3 - Camera - Bundle Adjustment
 
-In this assignment, the objective is to estimate the extrinsic parameters of a set (bundle) of cameras, given multiple pairs of relative transformations between them. The PyTorch3D API was used to represent and optimize the transformation matrix of each camera. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/blob/main/code/a3/Assignment3.ipynb).
+In this assignment, the objective was to estimate the extrinsic parameters of a set (bundle) of cameras, given multiple pairs of relative transformations between them. The PyTorch3D API was used to represent and optimize the transformation matrix of each camera. The code of this assignment can be found [here](https://github.com/lquatrin/i3d21/blob/main/code/a3/Assignment3.ipynb).
 
 ### Setup
 
