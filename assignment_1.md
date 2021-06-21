@@ -61,7 +61,11 @@ def show_batch(batch):
 show_batch(images)
 ``` 
 
-![Batch of 32 images](data/imgs/a1/bach_of_images.png)
+<p align="center">
+  <img src="data/imgs/a1/bach_of_images.png" width="70%">
+  <br>
+  <em>Fig. 1: Batch of 32 digits.</em>
+</p>
 
 Through the **torch.bincount** function, it is also possible to check how balanced a batch is:
 
@@ -122,4 +126,8 @@ Finally, i generate the results using a intermediate layer using 128 nodes, trai
 
 I also plotted the confusion matrix to check the performance of the model for each category. As we can see, the majority of cases were correctly classified using the simple neural network implemented in this assignment.
 
-<img src="data/imgs/a1/confusion_matrix.png" width="70%">
+<p align="center">
+  <img src="data/imgs/a1/confusion_matrix.png" width="70%">
+  <br>
+  <em>Figure 1 training process of NN.</em>
+</p>
