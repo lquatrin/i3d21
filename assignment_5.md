@@ -18,7 +18,12 @@ It is possible to note several challenges encountered when determining a vast da
 
 In this assignment, it was used a subset of ShapeNet containing 329 models. The ShapeNet dataloader has its own render function to visualize the models, but in this assignment, the idead was to focus on visualizations with Plotly. Here we have an example showing some of the models using the ShapeNet's renderer:
 
-<img src="data/imgs/a5/shapenet_render.png" width="100%">
+
+<p align="center">
+  <img src="data/imgs/a5/shapenet_render.png" width="100%">
+  <br>
+  <em>Fig. 1: Randomly chosen images from ShapeNet.</em>
+</p>
 
 Now using plotly, i first started by rendering the mesh using the method **plot_scene**:
 
