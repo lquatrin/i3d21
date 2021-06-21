@@ -102,7 +102,7 @@ To improve the approximation, i tried to not randomly initialize the rotation an
   <em>Fig. 7: The estimated cameras after 2000 iterations, using the axis-angle representation with trivial initialization.</em>
 </p>
 
-We can see by the images generated after this optmization are closer to the ground truth. Here, we have first the results generated with the ground truth, then using the trivial initialization:
+We can see by the images generated with the optimized cameras are closer to the ground truth. Here, we have first the results generated with the ground truth, then using the trivial initialization:
 
 <p align="center">
   <img src="data/imgs/a3/gt.png" width="50%"><img src="data/imgs/a3/images_init.png" width="50%">
