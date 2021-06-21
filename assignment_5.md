@@ -62,7 +62,11 @@ model_meshes_l_10 = Meshes(verts=model_verts_l, faces=model_faces_l, textures=mo
 
 In this case, i use the method **plot_batch_individually** with 5 columns per line to visualize the current batch of meshes:
 
-<img src="data/imgs/a5/e_2.png" width="100%">
+<p align="center">
+  <img src="data/imgs/a5/e_2.png" width="100%">
+  <br>
+  <em>Fig. 5: Different images being rendered with plot_batch_individually method.</em>
+</p>
 
 ### Creating new meshes using parametric models
 
