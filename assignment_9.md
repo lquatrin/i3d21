@@ -88,33 +88,69 @@ As we can see, the resultant mesh is smoother compared to the target, but it is 
 
 1. **1 view per iteration**
 
-<img src="data/imgs/a9/3_2_1vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_1vpi_plotly3.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/3_2_1vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_1vpi_plotly3.png" width="50%">
+  <br>
+  <em>Fig. 8: Comparison between the optimized mesh in blue after 2000 iterations and the target mesh in red.</em>
+</p>
 
-<img src="data/imgs/a9/3_2_1vpi_losses.png" width="100%">
+<p align="center">
+  <img src="data/imgs/a9/3_2_1vpi_losses.png" width="100%">
+  <br>
+  <em>Fig. 9: Graph of loss vs iterations using 1 view per iteration.</em>
+</p>
 
 2. **4 views per iteration**
 
-<img src="data/imgs/a9/3_2_4vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_4vpi_plotly3.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/3_2_4vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_4vpi_plotly3.png" width="50%">
+  <br>
+  <em>Fig. 10: Comparison between the optimized mesh in blue after 2000 iterations and the target mesh in red.</em>
+</p>
 
-<img src="data/imgs/a9/3_2_4vpi_losses.png" width="100%">
+<p align="center">
+  <img src="data/imgs/a9/3_2_4vpi_losses.png" width="100%">
+  <br>
+  <em>Fig. 11: Graph of loss vs iterations using 4 views per iteration.</em>
+</p>
 
 3. **8 views per iteration**
 
-<img src="data/imgs/a9/3_2_8vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_8vpi_plotly3.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/3_2_8vpi_plotly2.png" width="50%"><img src="data/imgs/a9/3_2_8vpi_plotly3.png" width="50%">
+  <br>
+  <em>Fig. 12: Comparison between the optimized mesh in blue after 2000 iterations and the target mesh in red.</em>
+</p>
 
-<img src="data/imgs/a9/3_2_8vpi_losses.png" width="100%">
+<p align="center">
+  <img src="data/imgs/a9/3_2_8vpi_losses.png" width="100%">
+  <br>
+  <em>Fig. 13: Graph of loss vs iterations using 8 views per iteration.</em>
+</p>
 
 With only 1 view per iteration, the result does not converge properly as using 2 views. However, from 4 to 8 views, i didn't get an effective change between the results.
 
 Since we're comparing images to approximate the mesh, it is important to have a good representations of the object, defined by multiple views. Using only one image, it is not possible to approximate the mesh correctly (using this optimzation procedure). Here, i made an additional test with only one point of view:
 
-<img src="data/imgs/a9/single_view_plt1.png" width="50%"><img src="data/imgs/a9/single_view_plt2.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/single_view_plt1.png" width="50%"><img src="data/imgs/a9/single_view_plt2.png" width="50%">
+  <br>
+  <em>Fig. 14: Comparison between the optimized mesh in blue after 2000 iterations and the target mesh in red, using only 1 reference view.</em>
+</p>
 
-<img src="data/imgs/a9/single_view_losses.png" width="100%">
+<p align="center">
+  <img src="data/imgs/a9/single_view_losses.png" width="100%">
+  <br>
+  <em>Fig. 15: Graph of loss vs iterations using a single reference view.</em>
+</p>
 
 wit the reference image being:
 
-<img src="data/imgs/a9/single_view_ref.png" width="30%">
+<p align="center">
+  <img src="data/imgs/a9/single_view_ref.png" width="30%">
+  <br>
+  <em>Fig. 16: View used as reference for the experiment.</em>
+</p>
 
 As we can see, using only one point of view, it is not possible to optimize the mesh properly.
 
