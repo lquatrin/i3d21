@@ -90,7 +90,12 @@ We can see the gerenated images using the quaternion representation are also sim
 
 In this case, i also think some modifications could be done in the optimization loop to compare and compute the relative transformations with quaternions properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
 
-![Computed Losses](data/imgs/a3/all_losses.png)
+<p align="center">
+  <img src="data/imgs/a3/all_losses.png" width="80%">
+  <br>
+  <em>Fig. 1: Graph of loss function vs iterations considering the camera representations used in the experiments.</em>
+</p>
+
 
 ### References
 
