@@ -16,7 +16,7 @@ The rendering pipeline first receives the data from each object, and evaluates a
 
 According to [1], there are two steps that are not differentiable in the rendering pipeline. First, the z discontinuity, which happens when two triangles are close in terms of depth, and a small change in its vertices may cause them to overlap. The overlap causes a step change in pixel color when the nearest face changes, generating a discontinuity. There is also a second problem caused by changing the position of a triangle in screen space. In this case, a step change in pixel color is caused due to its boundaries.
 
-In PyTorch3D, they used a soft rasterizer [2] to solve these problems. The problem of z discontinuity is solved by soft aggregating the K nearest faces. The second discontinuity problem was solved by decaying each face’s influence toward its boundary. It is important to notice that PyTorch3D is implemented based on each face that intersects the camera's image plane, instead of considering each pixel, since the face blending have to be calculated. Here i took an image from [1] that illustrates how they solved the discontinuity problems with soft aggregation:
+In PyTorch3D, they used a soft rasterizer [2] to solve these problems. The problem of z discontinuity is solved by soft aggregating the K nearest faces. The second discontinuity problem was solved by decaying each face’s influence toward its boundary. Here i took an image from [1] that illustrates how they solved the discontinuity problems with soft aggregation:
 
 <img src="data/imgs/a9/pytorch_soft_aggregation.png" width="100%">
 
