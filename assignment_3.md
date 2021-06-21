@@ -126,7 +126,7 @@ We can see the gerenated images using the quaternion representation are also sim
   <em>Fig. 10: Cow mesh visualizations using first the ground truth cameras, then the optimized cameras.</em>
 </p>
 
-In this case, i also think some modifications could be done in the optimization loop to compare and compute the relative transformations with quaternions properly, but I ended up not progressing in this experiment. Finally, we compute the loss function for each experiment:
+In this case, i also think some modifications could be done in the optimization loop to compare and compute the relative transformations with quaternions properly, but I ended up not progressing in this experiment. Finally, i computed the loss function for each experiment:
 
 <p align="center">
   <img src="data/imgs/a3/all_losses.png" width="80%">
