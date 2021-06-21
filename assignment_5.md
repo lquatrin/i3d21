@@ -72,11 +72,15 @@ In this case, i use the method **plot_batch_individually** with 5 columns per li
 
 In the last part of this assignment, i experimented the generation of new meshes using parametric functions, by applying a surface of revolution. For each mesh, a curve is rotated around the Y-axis, with each vertex being defined by:
 
+<p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;v_{pos}=[r(v)%20sin(u%202%20\pi),%20v,%20r(v)%20cos(u%202%20\pi)]" />
+</p>
 
 where **r** is the curve along the interval [0,1] and **u**,**v** defines the vertices of our mesh. The UV coordinates were estimated to map an image on the surface of the mesh. Two approaches were implemented: first, we directly map the UV values into the UV coordinates. In the second approach, we compute the curve distance by summing the arc length function along the **v** coordinate:
 
+<p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;s=%20\int_{a}^{b}%20\sqrt{1%20+%20\left(\frac{dy}{dx}\right)^2}%20\,dx%20\" />
+</p>
 
 with dy/dx being evaluated using finite differences. To compute the distance from 0 to a certain v, steps of 0.01 are accumulated to approximate the arc length. For the following results, the first image uses the arc length, and the second image uses uniform distribution.
 
