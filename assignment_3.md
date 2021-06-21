@@ -48,7 +48,7 @@ This representation does not generate the singularity problem, but we must conve
 
 #### 3. Quaternion:
 
-Considered a most robust way to represent rotations, which also provides a smooth interpolation and consistent rotation between the parameters. However, it requires a 4D vector to represent each rotation. Similar to Euler angles, the order of each rotation matters. Also, there is a particular property of quaternions that, if we want to generate a set of random unit quaternions, it will be more uniform at a sphere.
+Considered a most robust way to represent rotations, which also provides a smooth interpolation and consistent rotation between the parameters. However, it requires a 4D vector to represent each rotation. Similar to Euler angles, the order of each rotation matters. Also, there is a particular property of quaternions that, if we want to generate a set of random unit quaternions, it will be more uniform on the sphere.
 
 #### 4. Other representations:
 
