@@ -27,7 +27,11 @@ In this assignment, it was used a subset of ShapeNet containing 329 models. The 
 
 Now using plotly, i first started by rendering the mesh using the method **plot_scene**:
 
-<img src="data/imgs/a5/3_1.png" width="60%">
+<p align="center">
+  <img src="data/imgs/a5/3_1.png" width="60%">
+  <br>
+  <em>Fig. 2: A ShapeNet mesh visualization using plotly.</em>
+</p>
 
 Plotly has an advantage of providing an interactive rendering, but does not show the textures when using UV mapping. However, it is possible to define a color for each vertex. Here, i made an adjustment to the mesh setting a **TexturesVertex** object using randomized values:
 
