@@ -79,7 +79,7 @@ loss_function = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(mnist_model.parameters(), lr = 0.01)
 ``` 
 
-Since i'm using a batch size of 32 images, i retrieve the batch size to correctly transform the images into arrays. The main optimization loop was implemented as follows:
+With the main optimization loop being implemented as follows:
 
 ```python
 for epoch in loop:
@@ -98,7 +98,7 @@ for epoch in loop:
     optimizer.step()
 ```
 
-I generate the results using a intermediate layer with 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy using the validation data increasing according to each interation, and the loss function decreases. Then, an accuracy of 97.07% was achieved when using the data from test set. Below are the graphs with the values of precision and loss function throughout the training. The loss validation was not evaluated in this report.
+I generate the results using an intermediate layer with 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy is increasing (estimated in a validation loop), and the loss function is decreasing during the training step. After the optimization loop, an accuracy of 97.07% was achieved with the test data. Below are the graphs with the values of accuracy and loss function throughout the training. The loss validation was not evaluated in this report.
 
 <p align="center">
   <img src="data/imgs/a1/accuracy.png" width="80%">
