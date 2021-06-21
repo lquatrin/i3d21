@@ -47,15 +47,7 @@ def multLinesTensor2(ts):
 
 ### Neural network for digit recognition
 
-The last part of this assignment consisted on making some tests on a simple 2-layer neural network for digit recognition using the MNIST dataset. Each image is 28x28 pixels with 1 color channel, defining grayscale images. We can use the **torchvision.utils.make_grid** function to see each batch in a more compact view.
-
-```python
-def show_batch(batch):
-    im = torchvision.utils.make_grid(batch, nrow=8)
-    plt.imshow(np.transpose(im.numpy(), (1, 2, 0)))
-    plt.axis('off')
-show_batch(images)
-``` 
+The last part of this assignment consisted on making some tests with a simple 2-layer neural network for digit recognition using the MNIST dataset, composed by grayscale images of size 28x28:
 
 <p align="center">
   <img src="data/imgs/a1/bach_of_images.png" width="30%">
@@ -63,7 +55,7 @@ show_batch(images)
   <em>Fig. 1: Batch of 32 digits.</em>
 </p>
 
-Through the **torch.bincount** function, it is also possible to check how balanced a batch is:
+Using the **torch.bincount** method, it is possible to see if a batch is balanced:
 
 ```python
 print("Batch bincount:", torch.bincount(labels))
@@ -74,7 +66,7 @@ print("Test dataset bincount:", mnist_test_data.targets.bincount())
 > Test dataset bincount: tensor([980, 1135, 1032, 1010,  982,  892,  958, 1028,  974, 1009])
 ``` 
 
-Now, to perform the digit recognition using the MNIST dataset, a network was created using a nn.Sequential class, with an intermediate layer (usually defined by 128 nodes), followed by a ReLU activation function. In order to pass each set of images to the network, it was necessary to transform the image into a vector. In addition, the stochastic gradient gradient method was chosen:
+Now, to perform the digit recognition using the MNIST dataset, i created a 2-layer network using the **nn.Sequential** class. In order to pass each set of images to the network, it is necessary to transform the image into a vector. In addition, the stochastic gradient gradient optimizer was used in this model:
 
 ```python
 mnist_model = nn.Sequential(
@@ -87,7 +79,7 @@ loss_function = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(mnist_model.parameters(), lr = 0.01)
 ``` 
 
-The optimization loop was defined by:
+Since i'm using a batch size of 32 images, i retrieve the batch size to correctly transform the images into arrays. The optimization loop was implemented as follows:
 
 ```python
 for epoch in loop:
@@ -106,15 +98,9 @@ for epoch in loop:
     optimizer.step()
 ```
 
-A validation loop is also added to compute the accuracy for each epoch using the validation data.
+I also added a validation loop to compute the accuracy for each epoch using the validation data. 
 
-When using a low learning rate, it was necessary more iterations to converge on a reasonable accuracy, which was also noticed when increasing the number of nodes in the intermediate layey. However, using a high learning rate can make the model never converge.
-
-The batch size also affects the performance of the training. For smaller batches, the loss function decreased faster, obtaining greater accuracy: 97.71 for 8 images per batch, 97.64 for 16, and 96.95 to 32. However, it took a longer time per iteration: 11.68, 8.99 and 7.16 respectively.
-
-When passing the model to GPU, i realized that each iteration of the training ended up taking more time compared to CPU (7.16 to 9.68 seconds), using an intermediate layer of 128 nodes. Then, i did a test extrapolating the number of nodes in the intermediate layer to 10000. In this case, trainin the model in CPU took about 50 s per iteration, while in GPU remained at 9 s. I could note that a simple network does not end up having such a performance impact, as it cannot exploit GPU parallelization effectively. In addition, passing the model to the GPU can generate additional time due to memory allocation and transfer issues.
-
-Finally, i generate the results using a intermediate layer using 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy using the validation data increasing according to each interation, and the loss function decreases. Then, an accuracy of 97.07% was achieved when using the data from test set. Below are the graphs with the values of precision and loss function throughout the training. The loss validation was not evaluated in this report.
+I generate the results using a intermediate layer using 128 nodes, trained with batches of 32 images, and using a learning rate of 0.01. In the graphs below, we can see that the accuracy using the validation data increasing according to each interation, and the loss function decreases. Then, an accuracy of 97.07% was achieved when using the data from test set. Below are the graphs with the values of precision and loss function throughout the training. The loss validation was not evaluated in this report.
 
 <p align="center">
   <img src="data/imgs/a1/accuracy.png" width="80%">
@@ -136,3 +122,11 @@ I also plotted the confusion matrix to check the performance of the model for ea
   <br>
   <em>Fig. 4: Confusion matrix considering the predicted results using the result model.</em>
 </p>
+
+#### Additional considerations
+
+When using a low learning rate, it was necessary more iterations to converge, which was also noticed when increasing the number of nodes in the intermediate layer.
+
+The batch size also affects the performance of the training. For smaller batches, the loss function decreased faster, obtaining greater accuracy: 97.71 for 8 images per batch, 97.64 for 16, and 96.95 to 32. However, it took a longer time per iteration: 11.68, 8.99 and 7.16 respectively.
+
+When passing the model to GPU, i realized that each iteration of the training ended up taking more time compared to CPU (7.16 to 9.68 seconds), using an intermediate layer of 128 nodes. Then, i did a test extrapolating the number of nodes in the intermediate layer to 10000. In this case, trainin the model in CPU took about 50 s per iteration, while in GPU remained at 9 s. I could note that a simple network does not end up having such a performance impact, as it cannot exploit GPU parallelization effectively. In addition, passing the model to the GPU can generate additional time due to memory allocation and transfer issues.
