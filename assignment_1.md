@@ -130,7 +130,7 @@ Finally, i generate the results using a intermediate layer using 128 nodes, trai
 <p align="center">
   <img src="data/imgs/a1/loss_function.png" width="30%">
   <br>
-  <em>Fig. 2: Graph of loss per iteration.</em>
+  <em>Fig. 3: Graph of loss per iteration.</em>
 </p>
 
 I also plotted the confusion matrix to check the performance of the model for each category. As we can see, the majority of cases were correctly classified using the simple neural network implemented in this assignment.
@@ -138,5 +138,5 @@ I also plotted the confusion matrix to check the performance of the model for ea
 <p align="center">
   <img src="data/imgs/a1/confusion_matrix.png" width="70%">
   <br>
-  <em>Figure 1 training process of NN.</em>
+  <em>Fig. 4: Confusion matrix considering the predicted results using the result model.</em>
 </p>
