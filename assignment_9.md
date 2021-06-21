@@ -61,7 +61,7 @@ In this first experiment, a mesh will be predicted by observing target images wi
   <em>Fig. 5: Multiple viewpoints of the cow mesh rendered using SoftSilhouetteShader, but now enabling differentiability solving the XY and Z discontinuities.</em>
 </p>
 
-The offsets were initialized on zero, and each iteration computes the loss from 2 randomly chosen views. The loss function evaluates the silhouette of the generated images with the target images. Besides that, edge loss (**mesh_edge_loss**), mesh normal consistency (**mesh_normal_consistency**), and mesh laplacian smoothing (**mesh_laplacian_smoothing**) were also added to the loss function. I start by using the following weights:
+The offsets were initialized with zeros, and each iteration computes the loss from 2 randomly chosen views. The loss function evaluates the silhouette of the generated images with the target images. Besides that, edge loss (**mesh_edge_loss**), mesh normal consistency (**mesh_normal_consistency**), and mesh laplacian smoothing (**mesh_laplacian_smoothing**) were also added to the loss function. I started by using the following weights:
 
 ```python
 losses = { "silhouette": { "weight": 1.0,  "values": []},
@@ -72,9 +72,17 @@ losses = { "silhouette": { "weight": 1.0,  "values": []},
 
 After 2000 iterations, i got the following result:
 
-<img src="data/imgs/a9/3_1_plt2.png" width="50%"><img src="data/imgs/a9/3_1_plt3.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/3_1_plt2.png" width="50%"><img src="data/imgs/a9/3_1_plt3.png" width="50%">
+  <br>
+  <em>Fig. 6: Comparison between the optimized mesh in blue after 2000 iterations and the target mesh in red.</em>
+</p>
 
-<img src="data/imgs/a9/3_0_losses.png" width="100%">
+<p align="center">
+  <img src="data/imgs/a9/3_0_losses.png" width="100%">
+  <br>
+  <em>Fig. 7: Graph of loss vs iterations using 2 views per iteration.</em>
+</p>
 
 As we can see, the resultant mesh is smoother compared to the target, but it is also a similar result. I then made some additional testes by using different number of views per each iteration:
 
