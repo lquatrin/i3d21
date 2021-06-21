@@ -60,13 +60,21 @@ The SGD optimizer was used to estimate the extrinsic parameters of each camera. 
 
 The first camera is initialized with the trivial case, and the others are initialized with random values. Since the axis-angle represetation is being used in this first experiment, both rotation and translation of the first camera are initialized with the a zero vector.
 
-For the first result, using 2000 iterations, we reached a result with a camera_distance = 4.597e-03 at the last iteration:
+For the first result, using 2000 iterations, i reached a result with a camera_distance = 4.597e-03 at the last iteration:
 
-![Bundle after optimization](data/imgs/a3/camera_std.png)
+<p align="center">
+  <img src="data/imgs/a3/camera_std.png" width="40%">
+  <br>
+  <em>Fig. 3: The estimated cameras after 2000 iterations, using the axis-angle representation.</em>
+</p>
 
 with the cameras in purple being our ground truth, and the orange cameras being the approximated ones. The graph of loss vs iterations shows how the distance between the cameras are decreasing during the optimization loop. We can see that in the first steps, the accumulated loss is higher, since the cameras are initialized with random values:
 
-![Loss per iteration](data/imgs/a3/loss.png)
+<p align="center">
+  <img src="data/imgs/a3/loss.png" width="80%">
+  <br>
+  <em>Fig. 4: Graph of loss vs iterations during training.</em>
+</p>
 
 Using the Cow Mesh, it is possible to generate a qualitative comparison between the optimized cameras with the ground truth. First we have the images generated using the initial state of the cameras:
 
