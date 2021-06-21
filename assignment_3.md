@@ -14,11 +14,19 @@ Given an optical system of N cameras, we want to find the extrinsic parameters o
 
 The optimization procedure starts by randomly initializing the estimated cameras, plotted in orange:
 
-![Initialization](https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_initialization.png)
+<p align="center">
+  <img src="https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_initialization.png" width="50%">
+  <br>
+  <em>Fig. 1: Cameras randomly initialized in orange compared with the ground truth, in purple.</em>
+</p>
 
 Then, for each loop, the optimization triest to align the orange cameras with the ground truth, defined in purple, minimizing the distance between pairs of relative cameras:
 
-![Solution](https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_final.png?raw=1)
+<p align="center">
+  <img src="https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_final.png?raw=1" width="50%">
+  <br>
+  <em>Fig. 2: The estimated cameras after 2000 iterations.</em>
+</p>
 
 To be able to find a valid solution to this problem, the first camera must be set as an anchor of the set of cameras, defining a reference coordinate system. Thus, the solution to the problem will consist on finding the relative transformations between each pair of cameras. With that in mind, the first camera is considered the trivial case, where its rotation matrix is the identity, and the translation is a zero vector. We can also visualize this as a normalization process, which can be done for any set of cameras given to the optimization procedure.
 
@@ -93,7 +101,7 @@ In this case, i also think some modifications could be done in the optimization 
 <p align="center">
   <img src="data/imgs/a3/all_losses.png" width="80%">
   <br>
-  <em>Fig. 1: Graph of loss function vs iterations considering the camera representations used in the experiments.</em>
+  <em>Fig. 1: Graph of loss function vs iterations considering the camera representations used in my experiments.</em>
 </p>
 
 
