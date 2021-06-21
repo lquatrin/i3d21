@@ -18,7 +18,11 @@ According to [1], there are two steps that are not differentiable in the renderi
 
 In PyTorch3D, they used a soft rasterizer [2] to solve these problems. The problem of z discontinuity is solved by soft aggregating the K nearest faces. The second discontinuity problem was solved by decaying each face’s influence toward its boundary. Here i took an image from [1] that illustrates how they solved the discontinuity problems with soft aggregation:
 
-<img src="data/imgs/a9/pytorch_soft_aggregation.png" width="100%">
+<p align="center">
+  <img src="data/imgs/a9/pytorch_soft_aggregation.png" width="100%">
+  <br>
+  <em>Fig. 1: Problems with differentiability in rendering and the soft formulations to enable differentiability, according to [1].</em>
+</p>
 
 ### Dataset Creation
 
