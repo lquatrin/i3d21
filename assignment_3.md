@@ -68,7 +68,7 @@ For the first result, using 2000 iterations, i reached a result with a camera_di
   <em>Fig. 3: The estimated cameras after 2000 iterations, using the axis-angle representation.</em>
 </p>
 
-with the cameras in purple being our ground truth, and the orange cameras being the approximated ones. The graph of loss vs iterations shows how the distance between the cameras are decreasing during the optimization loop. We can see that in the first steps, the accumulated loss is higher, since the cameras are initialized with random values:
+with the cameras in purple being our ground truth, and the orange cameras being the optimized ones. The graph of loss vs iterations shows how the distance between the cameras are decreasing during the optimization loop. We can see that in the first steps, the accumulated loss is higher, since the cameras are initialized with random values:
 
 <p align="center">
   <img src="data/imgs/a3/loss.png" width="80%">
