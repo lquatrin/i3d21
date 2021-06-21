@@ -53,9 +53,13 @@ Using this shader, it is possible to compare the edges of the mesh according to 
 
 ### Mesh prediction via silhouette rendering
 
-In this first experiment, a mesh will be predicted by observing target images without any knowledge of the ground truth. Here, cameras and lighting positions are assumed to be known. The optimized mesh is initialized as a sphere, and an offset will be learned for each vertex at each optimization step. Here, i have the first ground truth images generated using multiple viewpoints of the cow mesh with silhouette renderer, that will be used to fit the sphere to the target mesh:
+In this first experiment, a mesh will be predicted by observing target images without any knowledge of the ground truth. Here, cameras and lighting positions are assumed to be known. The optimized mesh is initialized as a sphere, and an offset will be learned for each vertex during the optimization loop. Here, i have the first ground truth images generated using multiple viewpoints of the cow mesh with silhouette renderer, that will be used to fit the sphere to the target mesh:
 
-<img src="data/imgs/a9/3_0.png" width="50%">
+<p align="center">
+  <img src="data/imgs/a9/3_0.png" width="50%">
+  <br>
+  <em>Fig. 5: Multiple viewpoints of the cow mesh rendered using SoftSilhouetteShader, but now enabling differentiability solving the XY and Z discontinuities.</em>
+</p>
 
 The offsets were initialized on zero, and each iteration computes the loss from 2 randomly chosen views. The loss function evaluates the silhouette of the generated images with the target images. Besides that, edge loss (**mesh_edge_loss**), mesh normal consistency (**mesh_normal_consistency**), and mesh laplacian smoothing (**mesh_laplacian_smoothing**) were also added to the loss function. I start by using the following weights:
 
