@@ -94,7 +94,7 @@ Now comparing the Ground truth with the optimzed cameras, i noticed that the fir
 
 ### Additional Results
 
-To improve the approximation, i tried to not randomly initialize the rotation and translation of the cameras, but making all start as the trivial case. It seemed to be a better initial guess instead of just using random values. In this case, running the same optimization loop, i was able to achieve a result of camera_distance = 7.092e-08 at the last iteration:
+To improve the approximation, i tried to not randomly initialize the rotation and translation of the cameras, but making all start at the trivial position. It seemed to be a better initial guess instead of just using random values. In this case, running the same optimization loop, i was able to achieve a result of camera_distance = 7.092e-08 at the last iteration:
 
 <p align="center">
   <img src="data/imgs/a3/camera_init.png" width="40%">
