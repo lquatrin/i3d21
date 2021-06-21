@@ -10,9 +10,9 @@ In this assignment, the objective was to estimate the extrinsic parameters of a 
 
 ### Problem description
 
-Given an optical system of N cameras, we want to find the extrinsic parameters of each camera. To optimize these parameters, the relative positions between each pair of cameras are computed, computing the relative matrix which maps one camera to another. The intrinsic parameters of the cameras are implicitly known, so only the extrinsic parameters are considered. Considering the epipolar geometry, we compute the essential matrix, estimating an affine transformation from one camera to another. 
+Given an optical system of N cameras, we want to estimate their respective extrinsic parameters, corresponding to the rotation and translation matrices. To optimize these parameters, we calculate the essential matrix between each pair of cameras, which estimates the affine transformation from one camera to another. The intrinsic parameters of the cameras are implicitly known, so only the extrinsic parameters are considered.
 
-The optimization procedure starts by randomly initializing the estimated cameras, plotted in orange:
+The optimization procedure starts by randomly initializing a set of cameras, plotted in orange:
 
 <p align="center">
   <img src="https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_initialization.png" width="50%">
@@ -20,7 +20,7 @@ The optimization procedure starts by randomly initializing the estimated cameras
   <em>Fig. 1: Cameras randomly initialized in orange compared with the ground truth, in purple.</em>
 </p>
 
-Then, for each loop, the optimization triest to align the orange cameras with the ground truth, defined in purple, minimizing the distance between pairs of relative cameras:
+Then, for each loop, the optimization procedure tries to align the orange cameras with the ground truth, defined in purple, minimizing the distance between pairs of relative cameras:
 
 <p align="center">
   <img src="https://github.com/facebookresearch/pytorch3d/blob/master/docs/tutorials/data/bundle_adjustment_final.png?raw=1" width="50%">
@@ -28,7 +28,7 @@ Then, for each loop, the optimization triest to align the orange cameras with th
   <em>Fig. 2: The estimated cameras after 2000 iterations.</em>
 </p>
 
-To be able to find a valid solution to this problem, the first camera must be set as an anchor of the set of cameras, defining a reference coordinate system. Thus, the solution to the problem will consist on finding the relative transformations between each pair of cameras. With that in mind, the first camera is considered the trivial case, where its rotation matrix is the identity, and the translation is a zero vector. We can also visualize this as a normalization process, which can be done for any set of cameras given to the optimization procedure.
+To be able to find a valid solution to this problem, the first camera must be set as an anchor of the set of cameras, defining a reference coordinate system. Thus, the solution to the problem will consist on finding the relative transformations between each pair of cameras. With that in mind, the first camera is considered the trivial case, where its rotation matrix is the identity, and the translation is a zero vector. We can also visualize this as a normalization process, which can be done for any set of cameras.
 
 ### Representing rotations
 
